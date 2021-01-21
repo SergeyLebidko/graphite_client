@@ -16,29 +16,30 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        let self = this;
         $.ajax(CONST.GENDER_LIST_URL).then(data => {
-            console.log(data);
             setTimeout(() => {
-                this.setState({
-                    hasInit: true,
-                    genderList: data
-                })
-            }, 1500);
+                $('#preloader').animate({"opacity": "hide"}, 'slow', 'swing', () => {
+                    self.setState({
+                        hasInit: true,
+                        genderList: data
+                    });
+                });
+            }, 2000);
+            // Таймаут в 2 с выше выставлен, чтобы можно было увидеть прелоадер при работе и с локальным сервером
         });
     }
 
     render() {
-        if (!this.state.hasInit) {
-            return <Preloader/>
-        }
         return (
-            [
-                <Header/>,
+            <>
+                {(!this.state.hasInit) ? <Preloader/> : null}
+                <Header/>
                 <div className={style.content}>
                     <RegisterForm/>
                 </div>
-            ]
-        );
+            </>
+        )
     }
 }
 

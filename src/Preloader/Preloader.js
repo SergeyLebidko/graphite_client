@@ -7,7 +7,7 @@ function Preloader() {
         pulsars.push(<div className={style.pulsar} style={{animationDelay: `${delay}ms`}}></div>);
     }
     return (
-        <div className={style.preloader}>
+        <div className={style.preloader} id="preloader">
             {pulsars}
         </div>
     )
