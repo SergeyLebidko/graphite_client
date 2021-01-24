@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './App.module.css';
-import * as CONST from './settings';
+import {GENDER_LIST_URL} from "./settings";
 import Preloader from "./Preloader/Preloader";
 import Header from "./Header/Header";
 import RegisterForm from "./RegisterForm/RegisterForm";
@@ -12,12 +12,16 @@ class App extends React.Component {
         super(props);
         this.state = {
             hasInit: false,
+            genderList: null,
+            account: null
         }
+
+        this.accountRegisterHandler = this.accountRegisterHandler.bind(this);
     }
 
     componentDidMount() {
         let self = this;
-        $.ajax(CONST.GENDER_LIST_URL).then(data => {
+        $.ajax(GENDER_LIST_URL).then(data => {
             setTimeout(() => {
                 $('#preloader').animate({"opacity": "hide"}, 'slow', 'swing', () => {
                     self.setState({
@@ -30,13 +34,20 @@ class App extends React.Component {
         });
     }
 
+    accountRegisterHandler(account, token) {
+        localStorage.setItem('token', token);
+        this.setState({
+            account: account
+        });
+    }
+
     render() {
         return (
             <>
                 {(!this.state.hasInit) ? <Preloader/> : null}
                 <Header/>
                 <div className={style.content}>
-                    <RegisterForm/>
+                    <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/>
                 </div>
             </>
         )
