@@ -106,7 +106,7 @@ class RegisterForm extends React.Component {
                 login: this.state.login,
                 password: password
             }
-        }).then((data) => {
+        }).then(data => {
             account = data;
             return $.ajax(LOGIN_URL, {
                 method: 'POST',
@@ -115,10 +115,10 @@ class RegisterForm extends React.Component {
                     password: password
                 }
             });
-        }).then((data) => {
+        }).then(data => {
             token = data.token;
             this.props.accountRegisterHandler(account, token);
-        }).catch((data) => {
+        }).catch(data => {
             let response = data.responseJSON;
             let errors = [];
             for (let fieldName of Object.keys(response)) {
@@ -131,7 +131,7 @@ class RegisterForm extends React.Component {
     }
 
     showPasswordButtonHandler() {
-        this.setState((prevState) => {
+        this.setState(prevState => {
             return {showPasswordFlag: !prevState.showPasswordFlag}
         })
     }

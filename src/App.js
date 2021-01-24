@@ -1,7 +1,11 @@
 import React from 'react';
+import {HashRouter} from "react-router-dom";
 import $ from 'jquery';
+
 import style from './App.module.css';
+
 import {GENDER_LIST_URL} from "./settings";
+
 import Preloader from "./Preloader/Preloader";
 import Header from "./Header/Header";
 import RegisterForm from "./RegisterForm/RegisterForm";
@@ -43,13 +47,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <>
+            <HashRouter>
                 {(!this.state.hasInit) ? <Preloader/> : null}
                 <Header/>
                 <div className={style.content}>
                     <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/>
                 </div>
-            </>
+            </HashRouter>
         )
     }
 }
