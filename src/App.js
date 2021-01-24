@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter} from "react-router-dom";
+import {HashRouter, Switch, Route} from "react-router-dom";
 import $ from 'jquery';
 
 import style from './App.module.css';
@@ -51,10 +51,20 @@ class App extends React.Component {
                 {(!this.state.hasInit) ? <Preloader/> : null}
                 <Header/>
                 <div className={style.content}>
-                    <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/>
+                    <Switch>
+                        <Route path="/menu">
+                            <div>Здесь будет меню</div>
+                        </Route>
+                        <Route path="/search">
+                            <div>Здесь будут результаты поиска</div>
+                        </Route>
+                        <Route path="/login">
+                            <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/>
+                        </Route>
+                    </Switch>
                 </div>
             </HashRouter>
-        )
+        );
     }
 }
 

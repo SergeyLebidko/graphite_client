@@ -1,4 +1,6 @@
 .header {
+    display: flex;
+    justify-content: center;
     background-color: whitesmoke;
     position: fixed;
     top: 0;
@@ -9,5 +11,13 @@
 }
 
 .header_content {
-    max-width: 1000px;
+    position: absolute;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.special_link {
+    color: red;
+    text-decoration: none;
 }
