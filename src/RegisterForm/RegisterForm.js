@@ -103,7 +103,7 @@ class RegisterForm extends React.Component {
             method: 'POST',
             data: {
                 username: this.state.username,
-                login: this.state.login,
+                login: $.trim(this.state.login),
                 password: password
             }
         }).then(data => {
@@ -111,7 +111,7 @@ class RegisterForm extends React.Component {
             return $.ajax(LOGIN_URL, {
                 method: 'POST',
                 data: {
-                    login: this.state.login,
+                    login: $.trim(this.state.login),
                     password: password
                 }
             });

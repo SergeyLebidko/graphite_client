@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import style from './App.module.css';
 
-import {GENDER_LIST_URL} from "./settings";
+import {CHECK_ACCOUNT_URL} from "./settings";
 
 import Preloader from "./Preloader/Preloader";
 import Header from "./Header/Header";
@@ -23,18 +23,30 @@ class App extends React.Component {
         this.accountRegisterHandler = this.accountRegisterHandler.bind(this);
     }
 
-    componentDidMount() {
+    checkAccount() {
         let self = this;
-        $.ajax(GENDER_LIST_URL).then(data => {
+        let token = localStorage.getItem('token');
+        if (token !== null) {
+            $.ajax(CHECK_ACCOUNT_URL, {
+                headers: {'Authorization': token}
+            }).then(data => {
+                self.setState({
+                    account: data
+                });
+            });
+        }
+    }
+
+    componentDidMount() {
+        // Промисы для действий, выполняемых при загрузке приложения
+        let checkAccountPromise = this.checkAccount();
+
+        $.when(checkAccountPromise).then(() => {
             setTimeout(() => {
-                $('#preloader').animate({"opacity": "hide"}, 'slow', 'swing', () => {
-                    self.setState({
-                        hasInit: true,
-                        genderList: data
-                    });
+                this.setState({
+                    hasInit: true
                 });
             }, 2000);
-            // Таймаут в 2с выставлен, чтобы можно было увидеть прелоадер при работе и с локальным сервером
         });
     }
 
@@ -51,6 +63,9 @@ class App extends React.Component {
                 {(!this.state.hasInit) ? <Preloader/> : null}
                 <Header/>
                 <div className={style.content}>
+                    <div>Текущий
+                        пользователь{this.state.account !== null ? this.state.account.username : 'Не известен...'}
+                    </div>
                     <Switch>
                         <Route path="/menu">
                             <div>Здесь будет меню</div>
