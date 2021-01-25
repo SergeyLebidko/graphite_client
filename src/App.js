@@ -61,11 +61,8 @@ class App extends React.Component {
         return (
             <HashRouter>
                 {(!this.state.hasInit) ? <Preloader/> : null}
-                <Header/>
+                <Header account={this.state.account}/>
                 <div className={style.content}>
-                    <div>Текущий
-                        пользователь{this.state.account !== null ? this.state.account.username : 'Не известен...'}
-                    </div>
                     <Switch>
                         <Route path="/menu">
                             <div>Здесь будет меню</div>
