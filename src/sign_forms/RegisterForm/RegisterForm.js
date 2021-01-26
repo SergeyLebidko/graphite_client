@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './RegisterForm.module.css';
-import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../settings';
+import style from '../styles.module.css';
+import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../../settings';
 import $ from 'jquery';
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
@@ -191,7 +191,7 @@ class RegisterForm extends React.Component {
         }
         return (
             <div className={style.form_container}>
-                <div className={style.register_form}>
+                <div className={style.sign_form}>
                     <div className={style.header_block}>
                         <h1>Добро пожаловать в Graphite</h1>
                     </div>
@@ -238,7 +238,7 @@ class RegisterForm extends React.Component {
                         </div>
                     </form>
                     {errorBlock}
-                    <span className={style.register_button} onClick={this.registerButtonHandler}>
+                    <span className={style.action_button} onClick={this.registerButtonHandler}>
                         Зарегистрироваться
                     </span>
                 </div>

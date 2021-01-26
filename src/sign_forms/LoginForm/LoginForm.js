@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './LoginForm.module.css';
+import style from '../styles.module.css';
 
 
 class LoginForm extends React.Component {
@@ -7,7 +7,7 @@ class LoginForm extends React.Component {
         let errorBlock = null;
         return (
             <div className={style.form_container}>
-                <div className={style.register_form}>
+                <div className={style.sign_form}>
                     <div className={style.header_block}>
                         <h1>Добро пожаловать в Graphite</h1>
                     </div>

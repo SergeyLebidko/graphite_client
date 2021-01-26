@@ -5,8 +5,8 @@ import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
 import Preloader from './Preloader/Preloader';
 import Header from './Header/Header';
-import LoginForm from './LoginForm/LoginForm'
-import RegisterForm from './RegisterForm/RegisterForm';
+import LoginForm from './sign_forms/LoginForm/LoginForm'
+import RegisterForm from './sign_forms/RegisterForm/RegisterForm';
 
 
 class App extends React.Component {

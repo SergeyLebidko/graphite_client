@@ -142,7 +142,7 @@
 .register_button {
     display: block;
     padding-right: 5px;
-    color: blue;
+    color: gray;
     text-decoration: underline;
     cursor: pointer;
 }

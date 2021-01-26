@@ -4,7 +4,7 @@
     align-items: flex-start;
 }
 
-.register_form {
+.sign_form {
     margin: 20px;
     padding: 20px;
     background-color: whitesmoke;
@@ -30,28 +30,28 @@
     border-top-right-radius: 10px;
 }
 
-.register_form form {
+.sign_form form {
     margin-top: 40px;
 }
 
-.register_form div {
+.sign_form div {
     display: flex;
     flex-flow: column;
     margin-bottom: 20px;
 }
 
-.register_form p {
+.sign_form p {
     font-size: 0.9em;
 }
 
-.register_form input, .register_form textarea {
+.sign_form input, .sign_form textarea {
     padding: 10px;
     border-radius: 7px;
     border: 1px solid lightgrey;
     background-color: snow;
 }
 
-.register_button {
+.action_button {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -65,7 +65,7 @@
     max-width: 10em;
 }
 
-.register_button:active {
+.action_button:active {
     background-image: linear-gradient(to right bottom, forestgreen, limegreen);
 }
 
