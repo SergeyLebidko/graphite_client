@@ -71,6 +71,11 @@
     padding-left: 0;
 }
 
+.menu li {
+    padding: 5px;
+    cursor: pointer;
+}
+
 /* Стили для строки поиска */
 
 .search_block {

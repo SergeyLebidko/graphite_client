@@ -20,7 +20,8 @@ class App extends React.Component {
             account: null
         }
 
-        this.accountRegisterHandler = this.accountRegisterHandler.bind(this);
+        this.accountLoginHandler = this.accountLoginHandler.bind(this);
+        this.accountLogoutHandler = this.accountLogoutHandler.bind(this);
     }
 
     checkAccount() {
@@ -50,18 +51,25 @@ class App extends React.Component {
         });
     }
 
-    accountRegisterHandler(account, token) {
+    accountLoginHandler(account, token) {
         localStorage.setItem('token', token);
         this.setState({
             account: account
         });
     }
 
+    accountLogoutHandler(){
+        localStorage.removeItem('token');
+        this.setState({
+            account: null
+        })
+    }
+
     render() {
         return (
             <HashRouter>
                 {(!this.state.hasInit) ? <Preloader/> : null}
-                <Header account={this.state.account}/>
+                <Header account={this.state.account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
                     <Switch>
                         <Route path="/menu">
@@ -71,7 +79,7 @@ class App extends React.Component {
                             <div>Здесь будут результаты поиска</div>
                         </Route>
                         <Route path="/login">
-                            <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/>
+                            <RegisterForm accountLoginHandler={this.accountLoginHandler}/>
                         </Route>
                     </Switch>
                 </div>

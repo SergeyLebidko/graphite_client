@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
+import {LOGOUT_URL} from "../settings";
+
 import style from './Header.module.css';
 
 class Header extends React.Component {
@@ -36,7 +38,7 @@ class Header extends React.Component {
                         <SignComponent account={this.props.account}/>
                     </div>
                 </div>
-                <Menu/>
+                <Menu accountLogoutHandler={this.props.accountLogoutHandler}/>
             </>
         )
     }
@@ -52,42 +54,59 @@ function MenuButton(props) {
         }
     }
     return (
-        <div className={style.menu_button} style={inlineStyle} onClick={props.clickHandler}>G</div>
+        <div className={style.menu_button} style={inlineStyle} onClick={props.clickHandler} id="menu_button">G</div>
     );
 }
 
-function Menu() {
-    return (
-        <div className={style.menu} id="menu">
-            <div>
-                <p>Посты</p>
-                <ul>
-                    <li>Последние обновления</li>
-                    <li>Самые читаемые</li>
-                    <li>Урожай лайков</li>
-                    <li>Оживленное обсуждение</li>
-                </ul>
+class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
+    }
+
+    logoutButtonHandler() {
+        let token = localStorage.getItem('token');
+        $.ajax(LOGOUT_URL, {
+            headers: {'Authorization': token}
+        }).then(() => {
+            this.props.accountLogoutHandler();
+        });
+    }
+
+    render() {
+        return (
+            <div className={style.menu} id="menu">
+                <div>
+                    <p>Посты</p>
+                    <ul>
+                        <li>Последние обновления</li>
+                        <li>Самые читаемые</li>
+                        <li>Урожай лайков</li>
+                        <li>Оживленное обсуждение</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Авторы</p>
+                    <ul>
+                        <li>Новички</li>
+                        <li>Самые читаемые</li>
+                        <li>Урожай лайков</li>
+                        <li>Оживленное обсуждение</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Мой Graphite</p>
+                    <ul>
+                        <li>Добавить пост</li>
+                        <li>Мои посты</li>
+                        <li>Моя страница</li>
+                        <li onClick={this.logoutButtonHandler}>Выход</li>
+                    </ul>
+                </div>
             </div>
-            <div>
-                <p>Авторы</p>
-                <ul>
-                    <li>Новички</li>
-                    <li>Самые читаемые</li>
-                    <li>Урожай лайков</li>
-                    <li>Оживленное обсуждение</li>
-                </ul>
-            </div>
-            <div>
-                <p>Мой Graphite</p>
-                <ul>
-                    <li>Добавить пост</li>
-                    <li>Мои посты</li>
-                    <li>Моя страница</li>
-                    <li>Выход</li>
-                </ul>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 class SearchField extends React.Component {
@@ -112,7 +131,7 @@ function SignComponent(props) {
         )
     }
     return (
-        <div></div>
+        <div>Заглушка</div>
     )
 }
 
