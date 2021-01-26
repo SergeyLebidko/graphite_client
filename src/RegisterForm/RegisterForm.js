@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './RegisterForm.module.css';
+import style from './RegisterForm.module.css';
 import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../settings';
 import $ from 'jquery';
 
@@ -184,15 +184,15 @@ class RegisterForm extends React.Component {
         let errorBlock = null;
         if (this.state.errors.length !== 0) {
             errorBlock = (
-                <div className={styles.error_block}>
+                <div className={style.error_block}>
                     <ul>{this.state.errors.map((value, index) => <li key={index}>{value}</li>)}</ul>
                 </div>
             );
         }
         return (
-            <div className={styles.form_container}>
-                <div className={styles.register_form}>
-                    <div className={styles.header_block}>
+            <div className={style.form_container}>
+                <div className={style.register_form}>
+                    <div className={style.header_block}>
                         <h1>Добро пожаловать в Graphite</h1>
                     </div>
                     <form>
@@ -205,7 +205,7 @@ class RegisterForm extends React.Component {
                         <div>
                             <p>
                                 Логин для входа
-                                <span className={styles.login_help_text}>(?)</span>
+                                <span className={style.login_help_text}>(?)</span>
                             </p>
                             <input type="text" name="login"
                                    onChange={this.changeLoginHandler}
@@ -213,13 +213,13 @@ class RegisterForm extends React.Component {
                         </div>
                         <div>
                             <p>
-                                Пароль <span className={styles.password_help_text}>(?)</span>
-                                <span className={styles.password_control_container}>
-                                    <span className={styles.password_control_element}
+                                Пароль <span className={style.password_help_text}>(?)</span>
+                                <span className={style.password_control_container}>
+                                    <span className={style.password_control_element}
                                           onClick={this.createPasswordButtonHandler}>
                                         создать пароль
                                     </span>
-                                    <span className={styles.password_control_element}
+                                    <span className={style.password_control_element}
                                           onClick={this.showPasswordButtonHandler}
                                           id="showPasswordBtn">
                                         {this.state.showPasswordFlag ? 'скрыть' : 'показать'}
@@ -238,7 +238,7 @@ class RegisterForm extends React.Component {
                         </div>
                     </form>
                     {errorBlock}
-                    <span className={styles.register_button} onClick={this.registerButtonHandler}>
+                    <span className={style.register_button} onClick={this.registerButtonHandler}>
                         Зарегистрироваться
                     </span>
                 </div>

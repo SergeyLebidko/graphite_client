@@ -1,14 +1,12 @@
 import React from 'react';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route} from 'react-router-dom';
 import $ from 'jquery';
-
 import style from './App.module.css';
-
-import {CHECK_ACCOUNT_URL} from "./settings";
-
-import Preloader from "./Preloader/Preloader";
-import Header from "./Header/Header";
-import RegisterForm from "./RegisterForm/RegisterForm";
+import {CHECK_ACCOUNT_URL} from './settings';
+import Preloader from './Preloader/Preloader';
+import Header from './Header/Header';
+import LoginForm from './LoginForm/LoginForm'
+import RegisterForm from './RegisterForm/RegisterForm';
 
 
 class App extends React.Component {
@@ -72,14 +70,11 @@ class App extends React.Component {
                 <Header account={this.state.account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
                     <Switch>
-                        <Route path="/menu">
-                            <div>Здесь будет меню</div>
-                        </Route>
-                        <Route path="/search">
-                            <div>Здесь будут результаты поиска</div>
+                        <Route path="/register">
+                            <RegisterForm accountLoginHandler={this.accountLoginHandler}/>
                         </Route>
                         <Route path="/login">
-                            <RegisterForm accountLoginHandler={this.accountLoginHandler}/>
+                            <LoginForm accountLoginHandler={this.accountLoginHandler}/>
                         </Route>
                     </Switch>
                 </div>

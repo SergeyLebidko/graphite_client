@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import {LOGOUT_URL} from '../settings';
 import style from './Header.module.css';
@@ -33,7 +34,7 @@ class Header extends React.Component {
                     <div className={style.header_content}>
                         <MenuButton clickHandler={this.menuButtonClickHandler} hasOpenMenu={this.state.hasOpenMenu}/>
                         <SearchField/>
-                        <SignComponent account={this.props.account}/>
+                        <SignComponent account={this.props.account} history={this.props.history}/>
                     </div>
                 </div>
                 <Menu accountLogoutHandler={this.props.accountLogoutHandler}/>
@@ -134,14 +135,19 @@ function SignComponent(props) {
     }
     return (
         <div className={style.sign_control}>
-            <span className={style.register_button}>
+            <span className={style.register_button} onClick={() => {
+                props.history.push('/register')
+            }}>
                 регистрация
             </span>
-            <span className={style.login_button}>
+            <span className={style.login_button} onClick={() => {
+                props.history.push('/login')
+            }}>
                 Вход
             </span>
         </div>
     )
 }
 
-export default Header;
+
+export default withRouter(Header);

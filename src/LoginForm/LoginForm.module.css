@@ -1,0 +1,35 @@
+.form_container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.register_form {
+    margin: 20px;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    position: relative;
+    width: 400px;
+}
+
+.header_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-image: linear-gradient(to right bottom, deepskyblue, cornflowerblue);
+    color: white;
+    text-align: center;
+    border-bottom: 2px solid cornflowerblue;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.register_form form {
+    margin-top: 40px;
+}
