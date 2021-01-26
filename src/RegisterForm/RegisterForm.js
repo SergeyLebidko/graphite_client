@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RegisterForm.module.css';
-import {REGISTER_ACCOUNT_URL, LOGIN_URL} from "../settings";
+import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../settings';
 import $ from 'jquery';
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';

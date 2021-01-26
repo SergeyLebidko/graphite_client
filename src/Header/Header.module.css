@@ -57,7 +57,8 @@
 }
 
 .menu div {
-    margin: 10px 80px;
+    margin: 20px;
+    width: 300px;
 }
 
 .menu p {
@@ -72,8 +73,13 @@
 }
 
 .menu li {
-    padding: 5px;
+    padding: 5px 20px 5px 5px;
     cursor: pointer;
+}
+
+.menu li:hover {
+    background-color: dimgray;
+    color: white;
 }
 
 /* Стили для строки поиска */
@@ -115,13 +121,45 @@
 
 /* Стили для аватара */
 
-.no_avatar {
+.avatar_block {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.no_avatar img {
+.avatar_block img {
     display: block;
 }
 
+/* Стили для кнопок регистрации и входа */
+
+.sign_control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_button {
+    display: block;
+    padding-right: 5px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.login_button:active {
+    background-image: linear-gradient(to right bottom, forestgreen, limegreen);
+}

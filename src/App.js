@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter, Switch, Route} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import $ from 'jquery';
 
 import style from './App.module.css';
@@ -67,7 +67,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <HashRouter>
+            <>
                 {(!this.state.hasInit) ? <Preloader/> : null}
                 <Header account={this.state.account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
@@ -83,7 +83,7 @@ class App extends React.Component {
                         </Route>
                     </Switch>
                 </div>
-            </HashRouter>
+            </>
         );
     }
 }

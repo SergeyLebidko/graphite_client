@@ -1,8 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
-import {LOGOUT_URL} from "../settings";
-
+import {LOGOUT_URL} from '../settings';
 import style from './Header.module.css';
 
 class Header extends React.Component {
@@ -65,6 +63,10 @@ class Menu extends React.Component {
         this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
     }
 
+    closeMenu(event) {
+        if (event.target.tagName === 'LI') $('#menu_button').trigger('click');
+    }
+
     logoutButtonHandler() {
         let token = localStorage.getItem('token');
         $.ajax(LOGOUT_URL, {
@@ -76,7 +78,7 @@ class Menu extends React.Component {
 
     render() {
         return (
-            <div className={style.menu} id="menu">
+            <div className={style.menu} id="menu" onClick={this.closeMenu}>
                 <div>
                     <p>Посты</p>
                     <ul>
@@ -125,13 +127,20 @@ function SignComponent(props) {
     if (props.account !== null) {
         let avatarURL = props.account.avatar;
         return (
-            <div className={style.no_avatar}>
+            <div className={style.avatar_block}>
                 <img src={(avatarURL == null) ? '/images/no_avatar.svg' : avatarURL}/>
             </div>
         )
     }
     return (
-        <div>Заглушка</div>
+        <div className={style.sign_control}>
+            <span className={style.register_button}>
+                регистрация
+            </span>
+            <span className={style.login_button}>
+                Вход
+            </span>
+        </div>
     )
 }
 
