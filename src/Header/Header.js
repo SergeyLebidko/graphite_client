@@ -149,5 +149,4 @@ function SignComponent(props) {
     )
 }
 
-
 export default withRouter(Header);

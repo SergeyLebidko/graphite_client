@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../styles.module.css';
 import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../../settings';
 import $ from 'jquery';
+import {errorsCollector} from '../errorsCollector';
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const lowLetters = upLetters.toLowerCase();
@@ -119,14 +120,9 @@ class RegisterForm extends React.Component {
             token = data.token;
             this.props.accountLoginHandler(account, token);
         }).catch(data => {
-            let response = data.responseJSON;
-            let errors = [];
-            for (let fieldName of Object.keys(response)) {
-                for (let value of response[fieldName]) errors.push(value);
-            }
             this.setState({
-                errors: errors
-            })
+                errors: errorsCollector(data)
+            });
         });
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
@@ -54,13 +55,15 @@ class App extends React.Component {
         this.setState({
             account: account
         });
+        this.props.history.push('/');
     }
 
-    accountLogoutHandler(){
+    accountLogoutHandler() {
         localStorage.removeItem('token');
         this.setState({
             account: null
-        })
+        });
+        this.props.history.push('/');
     }
 
     render() {
@@ -76,6 +79,9 @@ class App extends React.Component {
                         <Route path="/login">
                             <LoginForm accountLoginHandler={this.accountLoginHandler}/>
                         </Route>
+                        <Route path="/">
+                            <div>Здесь будет контент</div>
+                        </Route>
                     </Switch>
                 </div>
             </>
@@ -83,4 +89,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default withRouter(App);
