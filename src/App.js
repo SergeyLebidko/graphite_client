@@ -5,7 +5,7 @@ import $ from 'jquery';
 import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
 import Preloader from './Preloader/Preloader';
-import Header from './Header/Header';
+import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 
@@ -80,7 +80,7 @@ class App extends React.Component {
                             <LoginForm accountLoginHandler={this.accountLoginHandler}/>
                         </Route>
                         <Route path="/">
-                            <div>Здесь будет контент</div>
+                            <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
                         </Route>
                     </Switch>
                 </div>
