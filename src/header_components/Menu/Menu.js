@@ -44,15 +44,17 @@ class Menu extends React.Component {
                         <li>Оживленное обсуждение</li>
                     </ul>
                 </div>
-                <div>
-                    <p>Мой Graphite</p>
-                    <ul>
-                        <li>Добавить пост</li>
-                        <li>Мои посты</li>
-                        <li>Моя страница</li>
-                        <li onClick={this.logoutButtonHandler}>Выход</li>
-                    </ul>
-                </div>
+                {(this.props.hasLogin) ? (
+                    <div>
+                        <p>Мой Graphite</p>
+                        <ul>
+                            <li>Добавить пост</li>
+                            <li>Мои посты</li>
+                            <li>Моя страница</li>
+                            <li onClick={this.logoutButtonHandler}>Выход</li>
+                        </ul>
+                    </div>
+                ) : null}
             </div>
         );
     }

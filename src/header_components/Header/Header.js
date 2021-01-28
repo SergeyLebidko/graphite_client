@@ -40,7 +40,7 @@ class Header extends React.Component {
                         <SignBlock account={this.props.account} history={this.props.history}/>
                     </div>
                 </div>
-                <Menu accountLogoutHandler={this.props.accountLogoutHandler}/>
+                <Menu accountLogoutHandler={this.props.accountLogoutHandler} hasLogin={this.props.account !== null}/>
             </>
         )
     }

@@ -84,6 +84,9 @@ class App extends React.Component {
                 <Header account={this.state.account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
                     <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/content"/>
+                        </Route>
                         <Route path="/register">
                             {(this.state.account == null) ?
                                 <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/> :
@@ -104,9 +107,6 @@ class App extends React.Component {
                         </Route>
                         <Route path="/content">
                             <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
-                        </Route>
-                        <Route exact path="/">
-                            <Redirect to="/content"/>
                         </Route>
                         <Route path="*">
                             <NoMatch/>
