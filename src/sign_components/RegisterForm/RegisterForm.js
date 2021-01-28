@@ -118,7 +118,7 @@ class RegisterForm extends React.Component {
             });
         }).then(data => {
             token = data.token;
-            this.props.accountLoginHandler(account, token);
+            this.props.accountRegisterHandler(account, token);
         }).catch(data => {
             this.setState({
                 errors: errorsCollector(data)
