@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Preloader.module.css';
 
+
 function Preloader() {
     let pulsars = [];
     for (let delay = 0, key = 0; delay <= 800; delay += 100, key++) {

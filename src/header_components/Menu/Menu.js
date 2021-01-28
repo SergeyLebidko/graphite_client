@@ -3,11 +3,13 @@ import $ from 'jquery';
 import style from './Menu.module.css';
 import {LOGOUT_URL} from '../../settings';
 
+
 class Menu extends React.Component {
     constructor(props) {
         super(props);
 
         this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
+        this.accountButtonHandler = this.accountButtonHandler.bind(this);
     }
 
     closeMenu(event) {
@@ -18,9 +20,13 @@ class Menu extends React.Component {
         let token = localStorage.getItem('token');
         $.ajax(LOGOUT_URL, {
             headers: {'Authorization': token}
-        }).then(() => {
+        }).always(() => {
             this.props.accountLogoutHandler();
         });
+    }
+
+    accountButtonHandler() {
+        this.props.history.push('/account');
     }
 
     render() {
@@ -29,19 +35,19 @@ class Menu extends React.Component {
                 <div>
                     <p>Посты</p>
                     <ul>
-                        <li>Последние обновления</li>
-                        <li>Самые читаемые</li>
-                        <li>Урожай лайков</li>
-                        <li>Оживленное обсуждение</li>
+                        <li>Пункт 1</li>
+                        <li>Пункт 2</li>
+                        <li>Пункт 3</li>
+                        <li>Пункт 4</li>
                     </ul>
                 </div>
                 <div>
                     <p>Авторы</p>
                     <ul>
-                        <li>Новички</li>
-                        <li>Самые читаемые</li>
-                        <li>Урожай лайков</li>
-                        <li>Оживленное обсуждение</li>
+                        <li>Пункт 1</li>
+                        <li>Пункт 2</li>
+                        <li>Пункт 3</li>
+                        <li>Пункт 4</li>
                     </ul>
                 </div>
                 {(this.props.hasLogin) ? (
@@ -50,7 +56,7 @@ class Menu extends React.Component {
                         <ul>
                             <li>Добавить пост</li>
                             <li>Мои посты</li>
-                            <li>Моя страница</li>
+                            <li onClick={this.accountButtonHandler}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
                         </ul>
                     </div>

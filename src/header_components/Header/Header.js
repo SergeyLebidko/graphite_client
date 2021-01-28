@@ -7,6 +7,7 @@ import SearchField from '../SearchField/SearchField';
 import SignBlock from '../SignBlock/SignBlock';
 import style from './Header.module.css';
 
+
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -40,7 +41,9 @@ class Header extends React.Component {
                         <SignBlock account={this.props.account} history={this.props.history}/>
                     </div>
                 </div>
-                <Menu accountLogoutHandler={this.props.accountLogoutHandler} hasLogin={this.props.account !== null}/>
+                <Menu accountLogoutHandler={this.props.accountLogoutHandler}
+                      hasLogin={this.props.account !== null}
+                      history={this.props.history}/>
             </>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './MenuButton.module.css';
 
+
 function MenuButton(props) {
     let inlineStyle = {};
     if (props.hasOpenMenu) {

@@ -1,8 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
+import {Switch, Route, Redirect, withRouter, useLocation} from 'react-router-dom';
 import $ from 'jquery';
 import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
@@ -26,6 +23,7 @@ class App extends React.Component {
     }
 
     checkAccount() {
+        // Пробуем по токену из localstorage получить аккаунт. Если попытка неудачна - удаляем токен
         let self = this;
         let token = localStorage.getItem('token');
         if (token !== null) {
@@ -35,7 +33,7 @@ class App extends React.Component {
                 self.setState({
                     account: data
                 });
-            });
+            }).catch(() => {localStorage.removeItem('token')});
         }
     }
 

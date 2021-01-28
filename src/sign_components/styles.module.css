@@ -74,8 +74,12 @@
 }
 
 .password_control_element {
-    color: blue;
+    color: gray;
     cursor: pointer;
+}
+
+.password_control_element:hover {
+    text-decoration: underline;
 }
 
 .password_control_element:not(:last-child) {
@@ -97,7 +101,7 @@
 
 .login_help_text, .password_help_text {
     position: relative;
-    color: blue;
+    color: gray;
     cursor: pointer;
 }
 

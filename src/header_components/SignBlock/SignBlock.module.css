@@ -8,8 +8,11 @@
     display: block;
     padding-right: 5px;
     color: gray;
-    text-decoration: underline;
     cursor: pointer;
+}
+
+.register_button:hover {
+    text-decoration: underline;
 }
 
 .login_button {
@@ -31,4 +34,5 @@
 
 .sign_block img {
     display: block;
+    cursor: pointer;
 }

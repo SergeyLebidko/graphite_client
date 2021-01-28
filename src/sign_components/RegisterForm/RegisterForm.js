@@ -4,6 +4,7 @@ import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../../settings';
 import $ from 'jquery';
 import {errorsCollector} from '../errorsCollector';
 
+
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const lowLetters = upLetters.toLowerCase();
 const digits = '0123456789';

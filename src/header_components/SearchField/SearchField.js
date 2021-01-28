@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './SearchField.module.css';
 
+
 class SearchField extends React.Component {
     render() {
         return (

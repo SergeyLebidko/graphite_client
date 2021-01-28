@@ -4,6 +4,7 @@ import $ from 'jquery';
 import {LOGIN_URL, CHECK_ACCOUNT_URL} from '../../settings';
 import {errorsCollector} from '../errorsCollector';
 
+
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
