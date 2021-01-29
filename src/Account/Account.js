@@ -40,26 +40,35 @@ class Account extends React.Component {
     render() {
         return (
             <div className={style.account_container}>
-                <div className={style.account_data}>
-                    <p>{this.props.account.username}</p>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td>Пол:</td>
-                            <td>{this.getGenderBlock()}</td>
-                        </tr>
-                        <tr>
-                            <td>Дата рождения:</td>
-                            <td>{this.getBirthDateBlock()}</td>
-                        </tr>
-                        <tr>
-                            <td>Немного о себе:</td>
-                            <td>{this.getDescriptionBlock()}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                <div className={style.avatar_container}>
+                    <img className={style.avatar} src="/images/no_avatar.svg"/>
                 </div>
-                <img className={style.avatar} src="/images/no_avatar.svg"/>
+
+                <div className={style.control_container}>
+
+                    <div className={style.basic_data_container}>
+                        <p>{this.props.account.username}</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>Пол:</td>
+                                <td>{this.getGenderBlock()}</td>
+                            </tr>
+                            <tr>
+                                <td>Дата рождения:</td>
+                                <td>{this.getBirthDateBlock()}</td>
+                            </tr>
+                            <tr>
+                                <td>Немного о себе:</td>
+                                <td>{this.getDescriptionBlock()}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
             </div>
         )
     }
