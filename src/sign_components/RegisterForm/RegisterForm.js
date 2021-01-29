@@ -10,6 +10,8 @@ const lowLetters = upLetters.toLowerCase();
 const digits = '0123456789';
 const specLetters = '_/*-+!@#$%^&=';
 
+const maxUsernameLen = 40;
+
 const loginLetters = upLetters + lowLetters + digits + '_';
 const passwordLetters = upLetters + lowLetters + digits + specLetters;
 
@@ -145,6 +147,7 @@ class RegisterForm extends React.Component {
     changeUsernameHandler(event) {
         let value = event.target.value;
         if (value === ' ') value = '';
+        if (value.length > maxUsernameLen) value = this.state.value;
         this.setState({
             username: value
         });
