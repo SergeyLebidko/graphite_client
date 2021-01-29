@@ -41,8 +41,12 @@ class App extends React.Component {
 
     componentDidMount() {
         // При получении запроса со статусом 403 (Forbidden) переводим пользователя на страницу логина
-        $(document).on("ajaxError", function errorControl(event, jqXHR) {
+        $(document).on("ajaxError", (_, jqXHR) => {
             if (jqXHR.status === 403) {
+                this.setState({
+                    account: null
+                });
+                localStorage.removeItem('token');
                 this.props.history.push('/login');
             }
         });
