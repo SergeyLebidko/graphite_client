@@ -2,14 +2,14 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 750px;
+    max-width: 850px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .control_container {
-    width: 430px;
+    width: 530px;
 }
 
 .basic_data_container {

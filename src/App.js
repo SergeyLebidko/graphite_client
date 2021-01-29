@@ -20,6 +20,7 @@ class App extends React.Component {
 
         this.accountLoginHandler = this.accountLoginHandler.bind(this);
         this.accountLogoutHandler = this.accountLogoutHandler.bind(this);
+        this.refreshAccount = this.refreshAccount.bind(this);
     }
 
     checkAccount() {
@@ -88,6 +89,12 @@ class App extends React.Component {
         this.props.history.push('/content');
     }
 
+    refreshAccount(account){
+        this.setState({
+            account: account
+        })
+    }
+
     render() {
         return (
             <>
@@ -113,7 +120,7 @@ class App extends React.Component {
                         <Route path="/account">
                             {(this.state.account == null) ?
                                 <Redirect to="/login"/> :
-                                <Account account={this.state.account}/>
+                                <Account account={this.state.account} refreshAccount={this.refreshAccount}/>
                             }
                         </Route>
                         <Route path="/content">

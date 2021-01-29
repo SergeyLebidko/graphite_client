@@ -6,3 +6,6 @@ export const LOGOUT_URL = `${HOST}/api/logout/`;
 export const LOGOUT_ALL_DEVICES_URL = `${HOST}/api/logout_all_devices/`;
 export const CHECK_ACCOUNT_URL = `${HOST}/api/check_account/`;
 export const GENDER_LIST_URL = `${HOST}/api/gender_list/`;
+export const ACCOUNT_CHANGE_USERNAME_URL = `${HOST}/api/account_change_username/`;
+
+export const USERNAME_MAX_LEN = 40;

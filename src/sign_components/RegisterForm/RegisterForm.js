@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../styles.module.css';
-import {REGISTER_ACCOUNT_URL, LOGIN_URL} from '../../settings';
 import $ from 'jquery';
+import {REGISTER_ACCOUNT_URL, LOGIN_URL, USERNAME_MAX_LEN} from '../../settings';
 import {errorsCollector} from '../errorsCollector';
 
 
@@ -9,8 +9,6 @@ const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const lowLetters = upLetters.toLowerCase();
 const digits = '0123456789';
 const specLetters = '_/*-+!@#$%^&=';
-
-const maxUsernameLen = 40;
 
 const loginLetters = upLetters + lowLetters + digits + '_';
 const passwordLetters = upLetters + lowLetters + digits + specLetters;
@@ -147,7 +145,7 @@ class RegisterForm extends React.Component {
     changeUsernameHandler(event) {
         let value = event.target.value;
         if (value === ' ') value = '';
-        if (value.length > maxUsernameLen) value = this.state.value;
+        if (value.length > USERNAME_MAX_LEN) value = this.state.value;
         this.setState({
             username: value
         });
