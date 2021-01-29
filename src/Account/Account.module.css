@@ -12,7 +12,7 @@
     display: block;
     width: 300px;
     height: 300px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(210, 210, 210);
 }
 
@@ -21,7 +21,7 @@
 }
 
 .basic_data_container {
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(210, 210, 210);
     background-color: whitesmoke;
     padding: 10px;

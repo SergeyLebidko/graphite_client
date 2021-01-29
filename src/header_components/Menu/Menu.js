@@ -58,6 +58,7 @@ class Menu extends React.Component {
                             <li>Мои посты</li>
                             <li onClick={this.accountButtonHandler}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
+                            <li>Выход на всех устройствах</li>
                         </ul>
                     </div>
                 ) : null}

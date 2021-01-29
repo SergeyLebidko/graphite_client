@@ -21,7 +21,7 @@ class Header extends React.Component {
     menuButtonClickHandler() {
         let topPosition;
         if (this.state.hasOpenMenu) {
-            topPosition = '-190px';
+            topPosition = '-220px';
         } else {
             topPosition = '50px';
         }

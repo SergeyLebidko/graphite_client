@@ -8,7 +8,7 @@
     margin: 20px;
     padding: 20px;
     background-color: whitesmoke;
-    border-radius: 10px;
+    border-radius: 5px;
     position: relative;
     width: 400px;
 }
@@ -26,8 +26,8 @@
     color: white;
     text-align: center;
     border-bottom: 2px solid cornflowerblue;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .sign_form form {
@@ -44,9 +44,9 @@
     font-size: 0.9em;
 }
 
-.sign_form input, .sign_form textarea {
+.sign_form input {
     padding: 10px;
-    border-radius: 7px;
+    border-radius: 5px;
     border: 1px solid lightgrey;
     background-color: snow;
 }
@@ -113,7 +113,7 @@
     color: black;
     background-color: beige;
     border: 1px solid black;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 5px;
     display: none;
 }
