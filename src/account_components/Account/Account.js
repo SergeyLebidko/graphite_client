@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './Account.module.css';
-import {GENDER_LIST_URL} from '../settings';
+import {GENDER_LIST_URL} from '../../settings';
 
 
 class Account extends React.Component {

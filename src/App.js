@@ -7,7 +7,7 @@ import Preloader from './Preloader/Preloader';
 import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
-import Account from './Account/Account';
+import Account from './account_components/Account/Account';
 
 
 class App extends React.Component {
