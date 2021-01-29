@@ -33,11 +33,20 @@ class App extends React.Component {
                 self.setState({
                     account: data
                 });
-            }).catch(() => {localStorage.removeItem('token')});
+            }).catch(() => {
+                localStorage.removeItem('token')
+            });
         }
     }
 
     componentDidMount() {
+        // При получении запроса со статусом 403 (Forbidden) переводим пользователя на страницу логина
+        $(document).on("ajaxError", function errorControl(event, jqXHR) {
+            if (jqXHR.status === 403) {
+                this.props.history.push('/login');
+            }
+        })
+
         // Промисы для действий, выполняемых при загрузке приложения
         let checkAccountPromise = this.checkAccount();
 
