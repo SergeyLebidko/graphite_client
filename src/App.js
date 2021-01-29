@@ -45,7 +45,7 @@ class App extends React.Component {
             if (jqXHR.status === 403) {
                 this.props.history.push('/login');
             }
-        })
+        });
 
         // Промисы для действий, выполняемых при загрузке приложения
         let checkAccountPromise = this.checkAccount();
