@@ -8,14 +8,6 @@
     margin-right: auto;
 }
 
-.avatar_container img {
-    display: block;
-    width: 300px;
-    height: 300px;
-    border-radius: 5px;
-    border: 1px solid rgb(210, 210, 210);
-}
-
 .control_container {
     width: 430px;
 }

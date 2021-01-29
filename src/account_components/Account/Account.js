@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './Account.module.css';
+import Avatar from '../Avatar/Avatar';
 import {GENDER_LIST_URL} from '../../settings';
 
 
@@ -40,13 +41,8 @@ class Account extends React.Component {
     render() {
         return (
             <div className={style.account_container}>
-
-                <div className={style.avatar_container}>
-                    <img className={style.avatar} src="/images/no_avatar.svg"/>
-                </div>
-
+                <Avatar account={this.props.account}/>
                 <div className={style.control_container}>
-
                     <div className={style.basic_data_container}>
                         <p>{this.props.account.username}</p>
                         <table>
@@ -66,9 +62,7 @@ class Account extends React.Component {
                             </tbody>
                         </table>
                     </div>
-
                 </div>
-
             </div>
         )
     }
