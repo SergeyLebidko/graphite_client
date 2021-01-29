@@ -1,0 +1,17 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="52" height="52" id="canvas_background" fill="#fff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_3" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#fff" stroke="#000" stroke-width="1.5" cx="313" cy="200.453125" id="svg_1" rx="162.5" ry="88"/>
+  <path fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" opacity="0.5" d="m24.25715,35.10893" id="svg_8"/>
+  <path stroke="#000" id="svg_39" d="m48.332237,40.410592l-15.409191,-15.409191l15.40639,-15.409191l-7.920246,-7.925847l-15.409191,15.409191l-15.409191,-15.409191l-7.920246,7.925847l15.40639,15.409191l-15.409191,15.409191l7.925847,7.923046l15.40639,-15.409191l15.40639,15.409191" stroke-opacity="null" stroke-width="NaN" fill="#ff0000"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_40" y2="39.949517" x2="48.080842" y1="48.232358" x1="40.000022" stroke-opacity="null" stroke-width="NaN" stroke="#000" fill="none"/>
+ </g>
+</svg>
