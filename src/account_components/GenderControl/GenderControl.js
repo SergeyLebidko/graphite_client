@@ -1,0 +1,106 @@
+import React from 'react';
+import $ from 'jquery';
+import style from './GenderControl.module.css';
+import {GENDER_LIST_URL, UPDATE_ACCOUNT_URL} from '../../settings';
+
+class GenderControl extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            editMode: false,
+            genderList: null,
+            gender: this.props.account.gender
+        }
+
+        this.genderClickHandler = this.genderClickHandler.bind(this);
+        this.onGenderClickHandler = this.onGenderClickHandler.bind(this);
+        this.okClickHandler = this.okClickHandler.bind(this);
+        this.cancelClickHandler = this.cancelClickHandler.bind(this);
+    }
+
+    componentDidMount() {
+        $.ajax(GENDER_LIST_URL).then(data => {
+            this.setState({genderList: data})
+        });
+    }
+
+    onGenderClickHandler(event) {
+        this.setState({
+            gender: event.target.value
+        })
+    }
+
+    okClickHandler() {
+        let gender = (this.state.gender === null) ? Object.keys(this.state.genderList)[0] : this.state.gender;
+        let token = localStorage.getItem('token');
+
+        $.ajax(UPDATE_ACCOUNT_URL, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': token
+            },
+            data: {gender}
+        }).then((data) => {
+            this.setState({editMode: false, gender});
+            this.props.refreshAccount(data);
+        });
+    }
+
+    cancelClickHandler() {
+        this.setState({
+            editMode: false
+        });
+    }
+
+    getEditorContent() {
+        let options = [];
+        let index = 0;
+        let account = this.props.account;
+        for (let key of Object.keys(this.state.genderList)) {
+            options.push(
+                <p key={'p_' + key}>
+                    <label>
+                        <input type="radio"
+                               name="gender_choice"
+                               value={key}
+                               key={'radio_' + key}
+                               defaultChecked={(account.gender === null && index === 0) || (account.gender === key)}
+                               onClick={this.onGenderClickHandler}
+                        />
+                        {this.state.genderList[key]}
+                    </label>
+                </p>
+            );
+            index++;
+        }
+        return (
+            <div className={style.editor_container}>
+                {options}
+                <img src="/images/ok.svg" onClick={this.okClickHandler}/>
+                <img src="/images/cancel.svg" onClick={this.cancelClickHandler}/>
+            </div>
+        );
+    }
+
+    getGenderContent() {
+        if (this.state.genderList === null) return null;
+        if (this.props.account.gender === null) return <span onClick={this.genderClickHandler}>указать</span>
+        return <span onClick={this.genderClickHandler}>{this.state.genderList[this.props.account.gender]}</span>
+    }
+
+    genderClickHandler() {
+        this.setState({
+            editMode: true
+        })
+    }
+
+    render() {
+        return (
+            <div className={style.control_container}>
+                {(this.state.editMode) ? this.getEditorContent() : this.getGenderContent()}
+            </div>
+        )
+    }
+}
+
+export default GenderControl;

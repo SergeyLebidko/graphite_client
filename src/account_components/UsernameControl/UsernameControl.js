@@ -3,7 +3,7 @@ import $ from 'jquery';
 import style from '../UsernameControl/UsernameControl.module.css';
 import {errorsCollector} from '../../sign_components/errorsCollector';
 import additional_style from '../../sign_components/styles.module.css';
-import {USERNAME_MAX_LEN, ACCOUNT_CHANGE_USERNAME_URL} from '../../settings';
+import {USERNAME_MAX_LEN, UPDATE_ACCOUNT_URL} from '../../settings';
 
 class UsernameControl extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class UsernameControl extends React.Component {
         }
 
         let token = localStorage.getItem('token');
-        $.ajax(ACCOUNT_CHANGE_USERNAME_URL, {
+        $.ajax(UPDATE_ACCOUNT_URL, {
             method: 'PATCH',
             headers: {
                 'Authorization': token

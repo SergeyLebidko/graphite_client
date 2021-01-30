@@ -1,0 +1,21 @@
+.control_container span {
+    cursor: pointer;
+}
+
+.control_container span:hover {
+    text-decoration: underline;
+}
+
+.control_container img {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.editor_container {
+    padding: 7px 5px 0 5px;
+    border: 1px dotted gray;
+    border-radius: 5px;
+}

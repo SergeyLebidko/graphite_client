@@ -26,3 +26,7 @@
     width: 100%;
     margin-top: 15px;
 }
+
+.basic_data_container td {
+    padding: 5px 0;
+}
