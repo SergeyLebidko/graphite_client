@@ -75,7 +75,7 @@ class UsernameControl extends React.Component {
         let errorBlock = null;
         if (this.state.errors.length !== 0) {
             errorBlock = (
-                <div className={additional_style.error_block} style={{color: 'white'}}>
+                <div className={additional_style.error_block} style={{color: 'white', padding: '3px'}}>
                     <ul>{this.state.errors.map((value, index) => <li key={index}>{value}</li>)}</ul>
                 </div>
             );

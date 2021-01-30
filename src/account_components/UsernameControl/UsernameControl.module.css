@@ -1,9 +1,18 @@
+.control_container {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted dimgray;
+}
+
 .control_container div {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    font-size: 1.1em;
     color: rgb(50, 50, 50);
+    padding-bottom: 5px;
+}
+
+.control_container span {
+    font-size: 1.1em;
 }
 
 .control_container span:hover {
