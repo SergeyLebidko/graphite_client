@@ -4,6 +4,7 @@ import style from './Account.module.css';
 import Avatar from '../Avatar/Avatar';
 import UsernameControl from '../UsernameControl/UsernameControl';
 import GenderControl from '../GenderControl/GenderControl';
+import BirthDateControl from '../BirthDateControl/BirthDateControl';
 import {GENDER_LIST_URL} from '../../settings';
 
 
@@ -30,12 +31,15 @@ class Account extends React.Component {
                             <tbody>
                             <tr>
                                 <td>Пол:</td>
-                                <td><GenderControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
+                                <td><GenderControl account={this.props.account}
+                                                   refreshAccount={this.props.refreshAccount}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Дата рождения:</td>
-                                <td>здесь будет дата рождения</td>
+                                <td><BirthDateControl account={this.props.account}
+                                                      refreshAccount={this.props.refreshAccount}/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Немного о себе:</td>

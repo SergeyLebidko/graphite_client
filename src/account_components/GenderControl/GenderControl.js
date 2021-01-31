@@ -13,7 +13,7 @@ class GenderControl extends React.Component {
         }
 
         this.genderClickHandler = this.genderClickHandler.bind(this);
-        this.onGenderClickHandler = this.onGenderClickHandler.bind(this);
+        this.genderChoiceHandler = this.genderChoiceHandler.bind(this);
         this.okClickHandler = this.okClickHandler.bind(this);
         this.cancelClickHandler = this.cancelClickHandler.bind(this);
     }
@@ -24,7 +24,7 @@ class GenderControl extends React.Component {
         });
     }
 
-    onGenderClickHandler(event) {
+    genderChoiceHandler(event) {
         this.setState({
             gender: event.target.value
         })
@@ -65,7 +65,7 @@ class GenderControl extends React.Component {
                                value={key}
                                key={'radio_' + key}
                                defaultChecked={(account.gender === null && index === 0) || (account.gender === key)}
-                               onClick={this.onGenderClickHandler}
+                               onClick={this.genderChoiceHandler}
                         />
                         {this.state.genderList[key]}
                     </label>
