@@ -21,6 +21,8 @@ class App extends React.Component {
         this.accountLoginHandler = this.accountLoginHandler.bind(this);
         this.accountLogoutHandler = this.accountLogoutHandler.bind(this);
         this.refreshAccount = this.refreshAccount.bind(this);
+        this.accountRegisterHandler = this.accountRegisterHandler.bind(this);
+        this.accountLoginHandler = this.accountLoginHandler.bind(this);
     }
 
     checkAccount() {
