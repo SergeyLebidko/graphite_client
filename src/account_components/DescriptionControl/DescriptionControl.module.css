@@ -1,0 +1,52 @@
+.control_container {
+    margin-top: 5px;
+}
+
+.control_container > p:first-child {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.control_container > p:first-child:hover {
+    text-decoration: underline;
+}
+
+.description_container {
+    color: dimgray;
+}
+
+.editor_container {
+    border: 1px dotted dimgray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.editor_container textarea {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    background-color: snow;
+}
+
+.editor_container div:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.editor_container div:last-child {
+    padding-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.control_container div:last-child img {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 5px;
+    cursor: pointer;
+}

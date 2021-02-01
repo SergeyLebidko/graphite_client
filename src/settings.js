@@ -23,3 +23,6 @@ export const GENDER_LIST_URL = `${HOST}/api/gender_list/`;
 
 // Максимальная длина имени пользователя
 export const USERNAME_MAX_LEN = 30;
+
+// Максимальная длина текста в разделе "О себе"
+export const ACCOUNT_DESCRIPTION_MAX_LEN = 1000;

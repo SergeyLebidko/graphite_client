@@ -5,6 +5,7 @@ import Avatar from '../Avatar/Avatar';
 import UsernameControl from '../UsernameControl/UsernameControl';
 import GenderControl from '../GenderControl/GenderControl';
 import BirthDateControl from '../BirthDateControl/BirthDateControl';
+import DescriptionControl from '../DescriptionControl/DescriptionControl';
 import {GENDER_LIST_URL} from '../../settings';
 
 
@@ -41,12 +42,9 @@ class Account extends React.Component {
                                                       refreshAccount={this.props.refreshAccount}/>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Немного о себе:</td>
-                                <td>здесь будет раздел О себе</td>
-                            </tr>
                             </tbody>
                         </table>
+                        <DescriptionControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
                     </div>
                 </div>
             </div>

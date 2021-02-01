@@ -10,8 +10,15 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    margin: 0 5px;
     cursor: pointer;
+}
+
+.control_container img {
+    padding: 0 5px;
+}
+
+.control_container img:nth-of-type(1) {
+    padding: 0 5px 0 1px;
 }
 
 .editor_container {

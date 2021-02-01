@@ -14,7 +14,7 @@ class BirthDateControl extends React.Component {
         super(props);
         this.state = {
             editMode: false,
-            birthDate: this.props.account.birth_date
+            birthDate: props.account.birth_date
         }
 
         this.birthDateClickHandler = this.birthDateClickHandler.bind(this);
