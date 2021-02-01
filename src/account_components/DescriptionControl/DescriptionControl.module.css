@@ -45,8 +45,8 @@
 
 .control_container div:last-child img {
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin: 0 5px;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 2px;
     cursor: pointer;
 }

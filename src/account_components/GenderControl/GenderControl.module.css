@@ -8,17 +8,13 @@
 
 .control_container img {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
     cursor: pointer;
 }
 
 .control_container img {
-    padding: 0 5px;
-}
-
-.control_container img:nth-of-type(1) {
-    padding: 0 5px 0 1px;
+    padding: 0 2px;
 }
 
 .editor_container {

@@ -1,6 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" version="1.1" viewBox="0 0 32 32">
- <g transform="scale(2)">
-  <circle style="fill:#4caf50" cx="8" cy="8" r="7"/>
-  <path style="fill:#ffffff" d="M 11.535,4.4 7.2928,8.6 4.4647,5.8 3.0506,7.2 5.8787,10.1 7.2928,11.5 12.949,5.8 Z"/>
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_1" transform="translate(-4.729729652404785,15.13513469696045) scale(2) ">
+   <circle stroke="null" id="svg_2" fill="#4caf50" r="7.912163" cy="0.452171" cx="10.354006"/>
+   <path stroke="null" id="svg_3" fill="#ffffff" d="m15.033368,-4.588042l-5.615499,5.880248l-3.743622,-3.920165l-1.871877,1.960083l3.743622,4.060171l1.871877,1.960083l7.487243,-7.980336l-1.871745,-1.960083z"/>
+  </g>
  </g>
 </svg>
