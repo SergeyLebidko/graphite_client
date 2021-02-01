@@ -8,7 +8,8 @@ class Avatar extends React.Component {
         super(props);
         this.state = {
             avatar: this.props.account.avatar,
-            formatError: false
+            formatError: false,
+            errorTimer: null
         }
 
         this.fileChoiceHandler = this.fileChoiceHandler.bind(this);
@@ -22,8 +23,14 @@ class Avatar extends React.Component {
     fileChoiceHandler(event) {
         let filePath = event.target.value;
         if (!/(.jpg|.JPG|.jpeg|.JPEG)$/.test(filePath)) {
+            clearInterval(this.state.errorTimer);
             this.setState({
-                formatError: true
+                formatError: true,
+                errorTimer: setTimeout(() => {
+                    this.setState({
+                        formatError: false
+                    })
+                }, 3000)
             });
             return;
         }
@@ -40,12 +47,10 @@ class Avatar extends React.Component {
             headers: {
                 'Authorization': token
             },
-            dataType: "json",
             data: formData,
             processData: false,
             contentType: false
         }).then(data => {
-            console.log(data);
             this.props.refreshAccount(data);
             this.setState({
                 avatar: data.avatar
@@ -59,7 +64,10 @@ class Avatar extends React.Component {
             <div className={style.avatar_container}>
                 <img src={(avatar === null) ? '/images/no_avatar.svg' : `${HOST}${avatar}`}
                      onClick={this.avatarClickHandler}/>
-                {(this.state.formatError) ? <div>Допустимы только изображения в формате jpg</div> : null}
+                {(this.state.formatError) ?
+                    <div className={style.error_block}>
+                        <p>Допустимы только изображения в формате jpg</p>
+                    </div> : null}
                 <input type="file" style={{display: 'none'}} onChange={this.fileChoiceHandler} id="avatar_chooser"/>
             </div>
         );

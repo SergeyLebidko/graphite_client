@@ -1,8 +1,21 @@
+.avatar_container {
+    width: 300px;
+}
+
 .avatar_container img {
     display: block;
-    width: 300px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid rgb(210, 210, 210);
     cursor: pointer;
     object-fit: contain;
+}
+
+.error_block {
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, orangered, red);
+    border-radius: 5px;
+    color: white;
 }
