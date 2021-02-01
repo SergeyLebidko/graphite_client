@@ -24,7 +24,7 @@ class Account extends React.Component {
     render() {
         return (
             <div className={style.account_container}>
-                <Avatar account={this.props.account}/>
+                <Avatar account={this.props.account} refreshAccount={this.props.refreshAccount}/>
                 <div className={style.control_container}>
                     <div className={style.basic_data_container}>
                         <UsernameControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>

@@ -1,4 +1,4 @@
-const HOST = 'http://127.0.0.1:8000'
+export const HOST = 'http://127.0.0.1:8000'
 
 // Хук регистрации аккаунта
 export const REGISTER_ACCOUNT_URL = `${HOST}/api/register_account/`;

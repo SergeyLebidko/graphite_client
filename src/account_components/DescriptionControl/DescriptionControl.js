@@ -20,9 +20,9 @@ class DescriptionControl extends React.Component {
     getDescriptionContent() {
         let content = this.state.description.split('\n');
         if (this.state.description === '') return
-        return (<p className={style.description_container}>
+        return (<div className={style.description_container}>
             {content.map((value, index) => <p key={index}>{value}</p>)}
-        </p>);
+        </div>);
     }
 
     getEditorContent() {

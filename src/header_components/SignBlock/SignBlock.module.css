@@ -35,4 +35,8 @@
 .sign_block img {
     display: block;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
 }
