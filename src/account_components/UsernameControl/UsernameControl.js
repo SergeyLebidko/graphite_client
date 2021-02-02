@@ -5,6 +5,8 @@ import {errorsCollector} from '../../sign_components/errorsCollector';
 import additional_style from '../../sign_components/styles.module.css';
 import {USERNAME_MAX_LEN, UPDATE_ACCOUNT_URL} from '../../settings';
 
+import {MiniButton} from '../../MiniButton/MiniButton';
+
 class UsernameControl extends React.Component {
     constructor(props) {
         super(props);
@@ -86,8 +88,8 @@ class UsernameControl extends React.Component {
                     <>
                         <div>
                             <input type="text" value={this.state.username} onChange={this.usernameChangeHandler}/>
-                            <img src="/images/ok.svg" onClick={this.okClickHandler}/>
-                            <img src="/images/cancel.svg" onClick={this.cancelClickHandler}/>
+                            <MiniButton buttonType="ok" clickHandler={this.okClickHandler}/>
+                            <MiniButton buttonType="cancel" clickHandler={this.cancelClickHandler}/>
                         </div>
                         {errorBlock}
                     </>

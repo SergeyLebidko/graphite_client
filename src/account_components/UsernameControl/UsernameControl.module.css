@@ -4,11 +4,10 @@
     border-bottom: 1px dotted dimgray;
 }
 
-.control_container div {
+.control_container > div {
     display: flex;
     align-items: center;
     color: rgb(50, 50, 50);
-    padding-bottom: 5px;
 }
 
 .control_container span {
@@ -27,12 +26,4 @@
     border: 1px solid lightgrey;
     background-color: snow;
     margin-right: 5px;
-}
-
-.control_container img {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    margin: 0 2px;
-    cursor: pointer;
 }
