@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './DescriptionControl.module.css';
+import {MiniButton} from '../../MiniButton/MiniButton';
 import {UPDATE_ACCOUNT_URL, ACCOUNT_DESCRIPTION_MAX_LEN} from '../../settings';
 
 class DescriptionControl extends React.Component {
@@ -32,8 +33,8 @@ class DescriptionControl extends React.Component {
                     <textarea rows={10} value={this.state.description} onChange={this.changeDescriptionHandler}/>
                 </div>
                 <div>
-                    <img src="/images/ok.svg" onClick={this.okClickHandler}/>
-                    <img src="/images/cancel.svg" onClick={this.cancelClickHandler}/>
+                    <MiniButton buttonType="ok" clickHandler={this.okClickHandler}/>
+                    <MiniButton buttonType="cancel" clickHandler={this.cancelClickHandler}/>
                 </div>
             </div>
         );

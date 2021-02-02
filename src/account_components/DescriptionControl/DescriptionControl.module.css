@@ -37,16 +37,7 @@
 }
 
 .editor_container div:last-child {
-    padding-top: 5px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-}
-
-.control_container div:last-child img {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    margin: 0 2px;
-    cursor: pointer;
 }
