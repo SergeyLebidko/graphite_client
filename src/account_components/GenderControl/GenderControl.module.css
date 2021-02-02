@@ -6,19 +6,14 @@
     text-decoration: underline;
 }
 
-.control_container img {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    cursor: pointer;
-}
-
-.control_container img {
-    padding: 0 2px;
-}
-
 .editor_container {
     padding: 7px 5px 0 5px;
     border: 1px dotted gray;
     border-radius: 5px;
+}
+
+.button_block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

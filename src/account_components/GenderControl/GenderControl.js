@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './GenderControl.module.css';
+import {MiniButton} from '../../MiniButton/MiniButton';
 import {GENDER_LIST_URL, UPDATE_ACCOUNT_URL} from '../../settings';
 
 class GenderControl extends React.Component {
@@ -76,8 +77,10 @@ class GenderControl extends React.Component {
         return (
             <div className={style.editor_container}>
                 {options}
-                <img src="/images/ok.svg" onClick={this.okClickHandler}/>
-                <img src="/images/cancel.svg" onClick={this.cancelClickHandler}/>
+                <div className={style.button_block}>
+                    <MiniButton buttonType="ok" clickHandler={this.okClickHandler}/>
+                    <MiniButton buttonType="cancel" clickHandler={this.cancelClickHandler}/>
+                </div>
             </div>
         );
     }
