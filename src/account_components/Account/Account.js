@@ -1,24 +1,18 @@
 import React from 'react';
-import $ from 'jquery';
 import style from './Account.module.css';
 import Avatar from '../Avatar/Avatar';
 import UsernameControl from '../UsernameControl/UsernameControl';
 import GenderControl from '../GenderControl/GenderControl';
 import BirthDateControl from '../BirthDateControl/BirthDateControl';
 import DescriptionControl from '../DescriptionControl/DescriptionControl';
-import {GENDER_LIST_URL} from '../../settings';
-
+import SettingsButton from '../SettingsButton/SettingsButton';
 
 class Account extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            genderList: null
+            showSettingsFlag: false
         }
-    }
-
-    componentDidMount() {
-        $.ajax(GENDER_LIST_URL).then(data => this.setState({genderList: data}));
     }
 
     render() {
@@ -46,6 +40,7 @@ class Account extends React.Component {
                         </table>
                         <DescriptionControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
                     </div>
+                    <SettingsButton/>
                 </div>
             </div>
         )
