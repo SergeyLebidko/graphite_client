@@ -20,7 +20,6 @@
     align-items: center;
     height: 35px;
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
-    color: white;
     margin-left: -1px;
     padding: 7px;
     box-sizing: border-box;
@@ -31,4 +30,8 @@
 
 .search_block span:active {
     background-image: linear-gradient(to right bottom, forestgreen, limegreen);
+}
+
+.search_block img {
+    max-height: 25px;
 }

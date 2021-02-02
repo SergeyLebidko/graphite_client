@@ -7,7 +7,7 @@ class SearchField extends React.Component {
         return (
             <div className={style.search_block}>
                 <input type="text"/>
-                <span><p>Найти</p></span>
+                <span><img src="/images/find.svg"/></span>
             </div>
         )
     }
