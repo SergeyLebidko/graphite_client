@@ -6,14 +6,6 @@
     text-decoration: underline;
 }
 
-.control_container img {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    margin: 0 2px;
-    cursor: pointer;
-}
-
 .control_container input {
     padding: 5px;
     border-radius: 5px;

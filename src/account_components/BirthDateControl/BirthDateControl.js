@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import {UPDATE_ACCOUNT_URL} from '../../settings';
+import {MiniButton} from '../../MiniButton/MiniButton';
 import style from './BirthDateControl.module.css';
 
 function dateStringForDisplay(dateString) {
@@ -34,8 +35,8 @@ class BirthDateControl extends React.Component {
         return (
             <div className={style.editor_container}>
                 <input type="date" value={this.state.birthDate} onChange={this.birthDateChoiceHandler}/>
-                <img src="/images/ok.svg" onClick={this.okClickHandler}/>
-                <img src="/images/cancel.svg" onClick={this.cancelClickHandler}/>
+                <MiniButton buttonType="ok" clickHandler={this.okClickHandler}/>
+                <MiniButton buttonType="cancel" clickHandler={this.cancelClickHandler}/>
             </div>
         )
     }
