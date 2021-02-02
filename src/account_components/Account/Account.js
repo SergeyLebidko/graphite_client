@@ -7,6 +7,7 @@ import GenderControl from '../GenderControl/GenderControl';
 import BirthDateControl from '../BirthDateControl/BirthDateControl';
 import DescriptionControl from '../DescriptionControl/DescriptionControl';
 import SettingsButton from '../SettingsButton/SettingsButton';
+import LoginControl from '../LoginControl/LoginControl';
 
 class Account extends React.Component {
     constructor(props) {
@@ -45,11 +46,7 @@ class Account extends React.Component {
                     </div>
                     <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
-                        <p>Здесь будут настройки работы с аккаунтом</p>
-                        <p>Изменение логина</p>
-                        <p>Изменение пароля</p>
-                        <p>Выход из аккаунта на всех устройствах</p>
-                        <p>Удаление аккаунта</p>
+                        <LoginControl/>
                     </div>
                 </div>
             </div>

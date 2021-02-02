@@ -1,0 +1,30 @@
+h3 {
+    font-weight: normal;
+    border-bottom: 1px dotted dimgray;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.help_text {
+    color: gray;
+    position: relative;
+    cursor: pointer;
+}
+
+.help_text:after {
+    content: 'Чтобы изменить логин, введите в поля ниже новый желаемый логин, текущий пароль и нажмите кнопку "Изменить логин"';
+    position: absolute;
+    width: 200px;
+    left: 150%;
+    top: 0;
+    color: black;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+}
+
+.help_text:hover:after {
+    display: block;
+}
