@@ -12,15 +12,13 @@
     width: 630px;
 }
 
-.basic_data_container {
+.basic_data_container, .settings_container {
     border-radius: 5px;
     border: 1px solid rgb(210, 210, 210);
     background-color: whitesmoke;
     padding: 10px;
     box-sizing: border-box;
 }
-
-/* overflow: hidden; */
 
 .basic_data_container table {
     width: 100%;
@@ -33,4 +31,8 @@
 
 .basic_data_container td:first-child {
     width: 200px;
+}
+
+.settings_container {
+    margin-top: 10px;
 }

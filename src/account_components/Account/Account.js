@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import style from './Account.module.css';
 import Avatar from '../Avatar/Avatar';
 import UsernameControl from '../UsernameControl/UsernameControl';
@@ -10,9 +11,11 @@ import SettingsButton from '../SettingsButton/SettingsButton';
 class Account extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showSettingsFlag: false
-        }
+        this.settingsButtonClickHandler = this.settingsButtonClickHandler.bind(this);
+    }
+
+    settingsButtonClickHandler() {
+        $('#settings_block').slideToggle('normal');
     }
 
     render() {
@@ -40,7 +43,14 @@ class Account extends React.Component {
                         </table>
                         <DescriptionControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
                     </div>
-                    <SettingsButton/>
+                    <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
+                    <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
+                        <p>Здесь будут настройки работы с аккаунтом</p>
+                        <p>Изменение логина</p>
+                        <p>Изменение пароля</p>
+                        <p>Выход из аккаунта на всех устройствах</p>
+                        <p>Удаление аккаунта</p>
+                    </div>
                 </div>
             </div>
         )
