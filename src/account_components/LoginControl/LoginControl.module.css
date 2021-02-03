@@ -12,7 +12,7 @@ h3 {
 }
 
 .help_text:after {
-    content: 'Для изменения логина, введите новый логин, текущий пароль и нажмите кнопку "Изменить логин"';
+    content: 'Для изменения логина введите новый логин, текущий пароль и нажмите кнопку "Изменить логин"';
     position: absolute;
     width: 250px;
     left: 150%;
@@ -50,6 +50,10 @@ h3 {
     float: right;
     color: gray;
     cursor: pointer;
+}
+
+.show_password_btn:hover {
+    text-decoration: underline;
 }
 
 .action_button {

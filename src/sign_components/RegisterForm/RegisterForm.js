@@ -29,7 +29,7 @@ function mixArr(arr) {
     }
 }
 
-function createPassword() {
+export function createPassword() {
     let result = [];
     result = result.concat(
         getRandomLetters(upLetters, 3),
@@ -39,6 +39,26 @@ function createPassword() {
     );
     mixArr(result);
     return result.join('');
+}
+
+function checkPassword(password) {
+    let errors = [];
+
+    if (password.length < 8) errors.push('Длина пароля меньше 8 символов');
+    let upLettersFlag, lowLettersFlag, digitsFlag, specLettersFlag;
+    upLettersFlag = lowLettersFlag = digitsFlag = specLettersFlag = false;
+    for (let letter of password) {
+        upLettersFlag = upLettersFlag || (upLetters.indexOf(letter) >= 0);
+        lowLettersFlag = lowLettersFlag || (lowLetters.indexOf(letter) >= 0);
+        digitsFlag = digitsFlag || (digits.indexOf(letter) >= 0);
+        specLettersFlag = specLettersFlag || (specLetters.indexOf(letter) >= 0);
+    }
+    if (!upLettersFlag) errors.push('В пароле должны содержаться прописные латинские буквы');
+    if (!lowLettersFlag) errors.push('В пароле должны содержаться строчные латинские буквы');
+    if (!digitsFlag) errors.push('В пароле должны содержаться цифры');
+    if (!specLettersFlag) errors.push('В пароле должен содержаться по крайней мере один из символов ' + specLetters);
+
+    return errors;
 }
 
 class RegisterForm extends React.Component {
@@ -72,20 +92,7 @@ class RegisterForm extends React.Component {
             errors.push('Пароль и подтверждение пароля не совпадают');
         } else {
             password = this.state.password1;
-            if (password.length < 8) errors.push('Длина пароля меньше 8 символов');
-
-            let upLettersFlag, lowLettersFlag, digitsFlag, specLettersFlag;
-            upLettersFlag = lowLettersFlag = digitsFlag = specLettersFlag = false;
-            for (let letter of password) {
-                upLettersFlag = upLettersFlag || (upLetters.indexOf(letter) >= 0);
-                lowLettersFlag = lowLettersFlag || (lowLetters.indexOf(letter) >= 0);
-                digitsFlag = digitsFlag || (digits.indexOf(letter) >= 0);
-                specLettersFlag = specLettersFlag || (specLetters.indexOf(letter) >= 0);
-            }
-            if (!upLettersFlag) errors.push('В пароле должны содержаться прописные латинские буквы');
-            if (!lowLettersFlag) errors.push('В пароле должны содержаться строчные латинские буквы');
-            if (!digitsFlag) errors.push('В пароле должны содержаться цифры');
-            if (!specLettersFlag) errors.push('В пароле должен содержаться по крайней мере один из символов ' + specLetters);
+            errors = errors.concat(checkPassword(password));
         }
 
         if (this.state.login === '') errors.push('Введите логин');
