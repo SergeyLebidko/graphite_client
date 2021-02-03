@@ -10,8 +10,8 @@ const lowLetters = upLetters.toLowerCase();
 const digits = '0123456789';
 const specLetters = '_/*-+!@#$%^&=';
 
-const loginLetters = upLetters + lowLetters + digits + '_';
-const passwordLetters = upLetters + lowLetters + digits + specLetters;
+export const loginLetters = upLetters + lowLetters + digits + '_';
+export const passwordLetters = upLetters + lowLetters + digits + specLetters;
 
 function getRandomLetters(letters, count) {
     let result = [];
@@ -160,21 +160,22 @@ class RegisterForm extends React.Component {
         });
     }
 
-    changePassword1Handler(event) {
+    getNextPasswordValue(event) {
         let currentValue = event.target.value;
         let nextValue = '';
         for (let letter of currentValue) if (passwordLetters.indexOf(letter) >= 0) nextValue += letter;
+        return nextValue;
+    }
+
+    changePassword1Handler(event) {
         this.setState({
-            password1: nextValue
+            password1: this.getNextPasswordValue(event)
         });
     }
 
     changePassword2Handler(event) {
-        let currentValue = event.target.value;
-        let nextValue = '';
-        for (let letter of currentValue) if (passwordLetters.indexOf(letter) >= 0) nextValue += letter;
         this.setState({
-            password2: nextValue
+            password2: this.getNextPasswordValue(event)
         });
     }
 

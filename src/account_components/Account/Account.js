@@ -46,7 +46,7 @@ class Account extends React.Component {
                     </div>
                     <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
-                        <LoginControl/>
+                        <LoginControl refreshAccount={this.props.refreshAccount}/>
                     </div>
                 </div>
             </div>

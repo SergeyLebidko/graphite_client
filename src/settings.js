@@ -26,3 +26,6 @@ export const USERNAME_MAX_LEN = 30;
 
 // Максимальная длина текста в разделе "О себе"
 export const ACCOUNT_DESCRIPTION_MAX_LEN = 1000;
+
+// Хук для смены логина
+export const CHANGE_LOGIN_URL = `${HOST}/api/change_login/`;

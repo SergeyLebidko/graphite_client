@@ -6,15 +6,15 @@ h3 {
 }
 
 .help_text {
-    color: gray;
     position: relative;
+    color: gray;
     cursor: pointer;
 }
 
 .help_text:after {
-    content: 'Чтобы изменить логин, введите в поля ниже новый желаемый логин, текущий пароль и нажмите кнопку "Изменить логин"';
+    content: 'Для изменения логина, введите новый логин, текущий пароль и нажмите кнопку "Изменить логин"';
     position: absolute;
-    width: 200px;
+    width: 250px;
     left: 150%;
     top: 0;
     color: black;
@@ -27,4 +27,64 @@ h3 {
 
 .help_text:hover:after {
     display: block;
+}
+
+.login_control_container input {
+    display: block;
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    background-color: snow;
+    box-sizing: border-box;
+}
+
+.login_control_container p {
+    font-size: 0.9em;
+    width: 60%;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.show_password_btn {
+    float: right;
+    color: gray;
+    cursor: pointer;
+}
+
+.action_button {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    max-width: 8em;
+}
+
+.action_button:active {
+    background-image: linear-gradient(to right bottom, forestgreen, limegreen);
+}
+
+.error_block, .info_block {
+    margin-top: 10px;
+    width: 60%;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.error_block {
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, orangered, red);
+}
+
+.info_block {
+    border: 1px solid greenyellow;
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
