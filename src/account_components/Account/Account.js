@@ -8,6 +8,7 @@ import BirthDateControl from '../BirthDateControl/BirthDateControl';
 import DescriptionControl from '../DescriptionControl/DescriptionControl';
 import SettingsButton from '../SettingsButton/SettingsButton';
 import LoginControl from '../LoginControl/LoginControl';
+import PasswordControl from '../PasswordControl/PasswordControl';
 
 class Account extends React.Component {
     constructor(props) {
@@ -53,6 +54,7 @@ class Account extends React.Component {
                     <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
                         <LoginControl hasShow={this.state.hasShowSettings}/>
+                        <PasswordControl hasShow={this.state.hasShowSettings}/>
                     </div>
                 </div>
             </div>
