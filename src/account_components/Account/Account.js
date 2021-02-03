@@ -12,11 +12,17 @@ import LoginControl from '../LoginControl/LoginControl';
 class Account extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            hasShowSettings: false
+        }
         this.settingsButtonClickHandler = this.settingsButtonClickHandler.bind(this);
     }
 
     settingsButtonClickHandler() {
         $('#settings_block').slideToggle('normal');
+        this.setState(prevState => {
+            return {hasShowSettings: !prevState.hasShowSettings}
+        });
     }
 
     render() {
@@ -46,7 +52,7 @@ class Account extends React.Component {
                     </div>
                     <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
-                        <LoginControl refreshAccount={this.props.refreshAccount}/>
+                        <LoginControl hasShow={this.state.hasShowSettings}/>
                     </div>
                 </div>
             </div>

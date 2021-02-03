@@ -25,10 +25,29 @@ class LoginControl extends React.Component {
         this.setMessage = this.setMessage.bind(this);
     }
 
+    resetState() {
+        clearInterval(this.state.errorTimeout);
+        clearInterval(this.state.infoTimeout);
+        this.setState({
+            showPasswordFlag: false,
+            nextLogin: '',
+            password: '',
+            error: null,
+            errorTimeout: null,
+            info: null,
+            infoTimeout: null
+        })
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        let {hasShow} = nextProps;
+        if (hasShow) this.resetState()
+    }
+
     showPasswordHandler() {
-        this.setState(prevProps => {
+        this.setState(prevState => {
             return {
-                showPasswordFlag: !prevProps.showPasswordFlag
+                showPasswordFlag: !prevState.showPasswordFlag
             }
         });
     }
@@ -82,6 +101,7 @@ class LoginControl extends React.Component {
         let {nextLogin, password} = this.state;
         if (nextLogin.length === 0) {
             this.setMessage('Пустой логин недопустим', 'error');
+            return;
         }
 
         let token = localStorage.getItem('token');
@@ -94,18 +114,11 @@ class LoginControl extends React.Component {
                 login: nextLogin,
                 password: password
             }
-        }).then(data => {
-            clearInterval(this.state.errorTimeout);
-            this.setState({
-                error: null
-            });
+        }).then(() => {
+            this.resetState();
             this.setMessage('Логин успешно изменен', 'info');
-            this.props.refreshAccount(data);
         }).catch(data => {
-            clearInterval(this.state.infoTimeout);
-            this.setState({
-                info: null
-            });
+            this.resetState();
             this.setMessage(errorsCollector(data), 'error');
         });
 
