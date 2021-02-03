@@ -41,7 +41,7 @@ export function createPassword() {
     return result.join('');
 }
 
-function checkPassword(password) {
+export function checkPassword(password) {
     let errors = [];
 
     if (password.length < 8) errors.push('Длина пароля меньше 8 символов');

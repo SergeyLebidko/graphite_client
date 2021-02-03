@@ -29,3 +29,6 @@ export const ACCOUNT_DESCRIPTION_MAX_LEN = 1000;
 
 // Хук для смены логина
 export const CHANGE_LOGIN_URL = `${HOST}/api/change_login/`;
+
+// Хук для смены пароля
+export const CHANGE_PASSWORD_URL = `${HOST}/api/change_password/`;
