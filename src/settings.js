@@ -32,3 +32,6 @@ export const CHANGE_LOGIN_URL = `${HOST}/api/change_login/`;
 
 // Хук для смены пароля
 export const CHANGE_PASSWORD_URL = `${HOST}/api/change_password/`;
+
+//Хук для удаления аккаунта
+export const REMOVE_ACCOUNT_URL = `${HOST}/api/remove_account/`

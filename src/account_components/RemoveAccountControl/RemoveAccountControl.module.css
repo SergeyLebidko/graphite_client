@@ -1,0 +1,62 @@
+.remove_account_control_container {
+    margin-top: 25px;
+}
+
+.remove_account_control_container em {
+    font-size: 0.9em;
+}
+
+.remove_account_control_container strong {
+    color: red;
+}
+
+h3 {
+    font-weight: normal;
+    border-bottom: 1px dotted dimgray;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.remove_account_control_container input {
+    display: block;
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    background-color: snow;
+    box-sizing: border-box;
+}
+
+.remove_account_control_container p {
+    font-size: 0.9em;
+    width: 60%;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.show_password_btn {
+    color: gray;
+    cursor: pointer;
+    float: right;
+}
+
+.show_password_btn:hover {
+    text-decoration: underline;
+}
+
+.action_button {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, red, darkred);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    max-width: 8em;
+}
+
+.action_button:active {
+    background-image: linear-gradient(to right bottom, darkred, red);
+}

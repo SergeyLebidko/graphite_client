@@ -10,6 +10,7 @@ import SettingsButton from '../SettingsButton/SettingsButton';
 import LoginControl from '../LoginControl/LoginControl';
 import PasswordControl from '../PasswordControl/PasswordControl';
 import LogoutControl from '../LogoutControl/LogoutControl';
+import RemoveAccountControl from '../RemoveAccountControl/RemoveAccountControl';
 
 class Account extends React.Component {
     constructor(props) {
@@ -55,6 +56,7 @@ class Account extends React.Component {
                         <LoginControl hasShow={this.state.hasShowSettings}/>
                         <PasswordControl hasShow={this.state.hasShowSettings}/>
                         <LogoutControl logoutHandler={this.props.logoutHandler}/>
+                        <RemoveAccountControl logoutHandler={this.props.logoutHandler}/>
                     </div>
                 </div>
             </div>
