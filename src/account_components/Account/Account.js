@@ -54,7 +54,7 @@ class Account extends React.Component {
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
                         <LoginControl hasShow={this.state.hasShowSettings}/>
                         <PasswordControl hasShow={this.state.hasShowSettings}/>
-                        <LogoutControl/>
+                        <LogoutControl logoutHandler={this.props.logoutHandler}/>
                     </div>
                 </div>
             </div>
