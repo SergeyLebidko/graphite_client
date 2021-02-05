@@ -9,6 +9,7 @@ import DescriptionControl from '../DescriptionControl/DescriptionControl';
 import SettingsButton from '../SettingsButton/SettingsButton';
 import LoginControl from '../LoginControl/LoginControl';
 import PasswordControl from '../PasswordControl/PasswordControl';
+import LogoutControl from '../LogoutControl/LogoutControl';
 
 class Account extends React.Component {
     constructor(props) {
@@ -53,6 +54,7 @@ class Account extends React.Component {
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
                         <LoginControl hasShow={this.state.hasShowSettings}/>
                         <PasswordControl hasShow={this.state.hasShowSettings}/>
+                        <LogoutControl/>
                     </div>
                 </div>
             </div>

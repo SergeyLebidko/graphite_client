@@ -122,7 +122,9 @@ class App extends React.Component {
                         <Route path="/account">
                             {(this.state.account == null) ?
                                 <Redirect to="/login"/> :
-                                <Account account={this.state.account} refreshAccount={this.refreshAccount}/>
+                                <Account account={this.state.account}
+                                         refreshAccount={this.refreshAccount}
+                                         logoutHandler={this.accountLogoutHandler}/>
                             }
                         </Route>
                         <Route path="/content">
