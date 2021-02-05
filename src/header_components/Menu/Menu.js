@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './Menu.module.css';
+import {LOGOUT_URL} from '../../settings';
 
 class Menu extends React.Component {
     constructor(props) {
