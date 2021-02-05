@@ -1,8 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './Menu.module.css';
-import {LOGOUT_URL, LOGOUT_ALL_DEVICES_URL} from '../../settings';
-
 
 class Menu extends React.Component {
     constructor(props) {
@@ -10,7 +8,6 @@ class Menu extends React.Component {
 
         this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
         this.accountButtonHandler = this.accountButtonHandler.bind(this);
-        this.logoutAllDevicesButtonHandler = this.logoutAllDevicesButtonHandler.bind(this);
     }
 
     closeMenu(event) {
@@ -20,15 +17,6 @@ class Menu extends React.Component {
     logoutButtonHandler() {
         let token = localStorage.getItem('token');
         $.ajax(LOGOUT_URL, {
-            headers: {'Authorization': token}
-        }).always(() => {
-            this.props.accountLogoutHandler();
-        });
-    }
-
-    logoutAllDevicesButtonHandler() {
-        let token = localStorage.getItem('token');
-        $.ajax(LOGOUT_ALL_DEVICES_URL, {
             headers: {'Authorization': token}
         }).always(() => {
             this.props.accountLogoutHandler();
@@ -68,7 +56,6 @@ class Menu extends React.Component {
                             <li>Мои посты</li>
                             <li onClick={this.accountButtonHandler}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
-                            <li onClick={this.logoutAllDevicesButtonHandler}>Выход на всех устройствах</li>
                         </ul>
                     </div>
                 ) : null}
