@@ -13,11 +13,7 @@ class SettingsButton extends React.Component {
 
     clickHandler() {
         this.props.clickHandler();
-        this.setState(prevState => {
-            return {
-                hasActive: !prevState.hasActive
-            }
-        });
+        this.setState(prevState => ({hasActive: !prevState.hasActive}));
     }
 
     render() {

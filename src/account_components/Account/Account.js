@@ -21,9 +21,7 @@ class Account extends React.Component {
 
     settingsButtonClickHandler() {
         $('#settings_block').slideToggle('normal');
-        this.setState(prevState => {
-            return {hasShowSettings: !prevState.hasShowSettings}
-        });
+        this.setState(prevState => ({hasShowSettings: !prevState.hasShowSettings}));
     }
 
     render() {

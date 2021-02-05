@@ -26,9 +26,7 @@ class Header extends React.Component {
             topPosition = '50px';
         }
         $('#menu').animate({top: topPosition}, 'normal');
-        this.setState(prevState => {
-            return {hasOpenMenu: !prevState.hasOpenMenu}
-        });
+        this.setState(prevState => ({hasOpenMenu: !prevState.hasOpenMenu}));
     }
 
     render() {

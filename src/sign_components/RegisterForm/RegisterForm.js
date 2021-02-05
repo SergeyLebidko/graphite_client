@@ -135,9 +135,7 @@ class RegisterForm extends React.Component {
     }
 
     showPasswordButtonHandler() {
-        this.setState(prevState => {
-            return {showPasswordFlag: !prevState.showPasswordFlag}
-        })
+        this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
 
     createPasswordButtonHandler() {

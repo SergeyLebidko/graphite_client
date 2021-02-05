@@ -69,11 +69,7 @@ class LoginForm extends React.Component {
     }
 
     showPasswordHandler() {
-        this.setState(prevState => {
-            return {
-                showPasswordFlag: !prevState.showPasswordFlag
-            }
-        })
+        this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
 
     render() {

@@ -69,19 +69,11 @@ class PasswordControl extends React.Component {
     }
 
     showPasswordHandler() {
-        this.setState(prevState => {
-            return {
-                showPasswordFlag: !prevState.showPasswordFlag
-            }
-        });
+        this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
 
     showNextPasswordHandler() {
-        this.setState(prevState => {
-            return {
-                showNextPasswordFlag: !prevState.showNextPasswordFlag
-            }
-        });
+        this.setState(prevState => ({showNextPasswordFlag: !prevState.showNextPasswordFlag}));
     }
 
     generatePasswordHandler() {
