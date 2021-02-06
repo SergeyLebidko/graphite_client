@@ -44,6 +44,21 @@ h3 {
     text-decoration: underline;
 }
 
+.error_block {
+    margin-top: 10px;
+    width: 60%;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.error_block {
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, orangered, red);
+}
+
 .action_button {
     display: block;
     margin-top: 10px;
