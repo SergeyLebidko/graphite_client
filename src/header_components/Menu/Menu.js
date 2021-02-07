@@ -8,7 +8,6 @@ class Menu extends React.Component {
         super(props);
 
         this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
-        this.accountButtonHandler = this.accountButtonHandler.bind(this);
     }
 
     closeMenu(event) {
@@ -22,10 +21,6 @@ class Menu extends React.Component {
         }).always(() => {
             this.props.accountLogoutHandler();
         });
-    }
-
-    accountButtonHandler() {
-        this.props.history.push('/account');
     }
 
     render() {
@@ -53,9 +48,9 @@ class Menu extends React.Component {
                     <div>
                         <p>Мой Graphite</p>
                         <ul>
-                            <li>Добавить пост</li>
+                            <li onClick={() => this.props.history.push('/create_post')}>Добавить пост</li>
                             <li>Мои посты</li>
-                            <li onClick={this.accountButtonHandler}>Моя страница</li>
+                            <li onClick={() => this.props.history.push('/account')}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
                         </ul>
                     </div>

@@ -8,6 +8,7 @@ import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
+import PostCreator from './PostCreator/PostCreator';
 
 
 class App extends React.Component {
@@ -91,7 +92,7 @@ class App extends React.Component {
         this.props.history.push('/content');
     }
 
-    refreshAccount(account){
+    refreshAccount(account) {
         this.setState({
             account: account
         })
@@ -126,6 +127,9 @@ class App extends React.Component {
                                          refreshAccount={this.refreshAccount}
                                          logoutHandler={this.accountLogoutHandler}/>
                             }
+                        </Route>
+                        <Route path="/create_post">
+                            <PostCreator/>
                         </Route>
                         <Route path="/content">
                             <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
