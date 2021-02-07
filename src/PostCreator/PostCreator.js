@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './PostCreator.css';
+import style from './PostCreator.module.css';
 
 class PostCreator extends React.Component {
     constructor(props) {
@@ -8,7 +8,19 @@ class PostCreator extends React.Component {
 
     render() {
         return (
-            <div>Здесь будут элементы для создания поста</div>
+            <div className={style.post_container}>
+                <div className={style.title}>
+                    <p>Заголовок:</p>
+                    <input type="text"/>
+                </div>
+                <div className={style.text}>
+                    <textarea rows="20"/>
+                </div>
+                <div className={style.control_block}>
+                    <span className={style.cancel_button}>Отмена</span>
+                    <span className={style.save_button}>Сохранить</span>
+                </div>
+            </div>
         )
     }
 }
