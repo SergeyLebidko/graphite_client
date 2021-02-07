@@ -129,7 +129,7 @@ class App extends React.Component {
                             }
                         </Route>
                         <Route path="/create_post">
-                            <PostCreator/>
+                            <PostCreator account={this.state.account}/>
                         </Route>
                         <Route path="/content">
                             <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
