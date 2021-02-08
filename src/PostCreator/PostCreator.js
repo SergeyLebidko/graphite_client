@@ -4,6 +4,8 @@ import {withRouter} from 'react-router-dom';
 import style from './PostCreator.module.css';
 import {CREATE_POST_URL} from '../settings';
 
+import PopUpMessage from '../PopUpMessage/PopUpMessage';
+
 class PostCreator extends React.Component {
     constructor(props) {
         super(props);
@@ -64,6 +66,7 @@ class PostCreator extends React.Component {
                     <span className={style.cancel_button} onClick={this.cancelClickHandler}>Отмена</span>
                     <span className={style.save_button} onClick={this.saveClickHandler}>Сохранить</span>
                 </div>
+                <PopUpMessage msg="Просто ошибка" msgType="error"/>
             </div>
         )
     }

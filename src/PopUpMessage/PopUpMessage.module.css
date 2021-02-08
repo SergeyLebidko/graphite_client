@@ -1,0 +1,20 @@
+.msg_list {
+    list-style-type: none;
+    font-size: 1em;
+    padding-left: 0;
+    color: white;
+}
+
+.error {
+    padding: 5px;
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, orangered, red);
+    border-radius: 5px;
+}
+
+.info {
+    padding: 5px;
+    border: 1px solid greenyellow;
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
+    border-radius: 5px;
+}
