@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {REMOVE_ACCOUNT_URL} from '../../settings';
-import {errorsCollector} from '../../sign_components/errorsCollector';
 import style from './RemoveAccountControl.module.css';
 
 class RemoveAccountControl extends React.Component {
@@ -10,8 +10,7 @@ class RemoveAccountControl extends React.Component {
         this.state = {
             showPasswordFlag: false,
             password: '',
-            error: null,
-            errorTimeout: null
+            error: null
         }
 
         this.showPasswordHandler = this.showPasswordHandler.bind(this);
@@ -29,21 +28,9 @@ class RemoveAccountControl extends React.Component {
         });
     }
 
-    setError(error) {
-        clearTimeout(this.state.errorTimeout);
-        this.setState({
-            error: error,
-            errorTimeout: setTimeout(() => {
-                this.setState({
-                    error: null
-                });
-            }, 3000)
-        });
-    }
-
     removeButtonHandler() {
         if (this.state.password.length === 0) {
-            this.setError('Пароль пуст');
+            this.setState({error: 'Пароль пуст'});
             return
         }
 
@@ -57,17 +44,12 @@ class RemoveAccountControl extends React.Component {
         }).then(() => {
             this.props.logoutHandler();
         }).catch(data => {
-            let [error] = errorsCollector(data);
-            this.setError(error);
+            this.setState({error: data});
         });
-
     }
 
     render() {
-        let errorBlock = null;
-        if (this.state.error !== null) {
-            errorBlock = <div className={style.error_block}>{this.state.error}</div>
-        }
+        let {error} = this.state;
         return (
             <div className={style.remove_account_control_container}>
                 <h3>Удаление аккаунта</h3>
@@ -84,7 +66,7 @@ class RemoveAccountControl extends React.Component {
                 <input type={this.state.showPasswordFlag ? 'text' : 'password'}
                        value={this.state.password}
                        onChange={this.changePasswordHandler}/>
-                {errorBlock}
+                <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
                 <span className={style.action_button} onClick={this.removeButtonHandler}>Удалить аккаунт</span>
             </div>
         )
