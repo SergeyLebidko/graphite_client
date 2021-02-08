@@ -1,10 +1,10 @@
 import React from 'react';
 import $ from 'jquery';
-import style from './Avatar.module.css';
+import style from './AvatarControl.module.css';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {UPDATE_ACCOUNT_URL, HOST} from '../../settings';
 
-class Avatar extends React.Component {
+class AvatarControl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,4 +61,4 @@ class Avatar extends React.Component {
     }
 }
 
-export default Avatar;
+export default AvatarControl;
