@@ -1,0 +1,38 @@
+.action_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    max-width: 8em;
+}
+
+.green_button {
+    border: 1px solid greenyellow;
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
+}
+
+.green_button:active {
+    background-image: linear-gradient(to right bottom, forestgreen, limegreen);
+}
+
+.red_button {
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, red, darkred);
+}
+
+.red_button:active {
+    background-image: linear-gradient(to right bottom, darkred, red);
+}
+
+.blue_button {
+    border: 1px solid skyblue;
+    background-image: linear-gradient(to right bottom, deepskyblue, blue);
+}
+
+.blue_button:active {
+    background-image: linear-gradient(to right bottom, blue, deepskyblue);
+}

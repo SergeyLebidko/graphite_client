@@ -13,14 +13,21 @@ class DescriptionControl extends React.Component {
         }
 
         this.descriptionClickHandler = this.descriptionClickHandler.bind(this);
-        this.okClickHandler = this.cancelClickHandler.bind(this);
+        this.okClickHandler = this.okClickHandler.bind(this);
         this.cancelClickHandler = this.cancelClickHandler.bind(this);
         this.changeDescriptionHandler = this.changeDescriptionHandler.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            description: nextProps.account.description
+        });
+    }
+
     getDescriptionContent() {
-        let content = this.state.description.split('\n');
-        if (this.state.description === '') return
+        let {description} = this.props.account;
+        let content = description.split('\n');
+        if (description === '') return;
         return (<div className={style.description_container}>
             {content.map((value, index) => <p key={index}>{value}</p>)}
         </div>);
@@ -51,19 +58,19 @@ class DescriptionControl extends React.Component {
         if (value.length > ACCOUNT_DESCRIPTION_MAX_LEN) return;
         this.setState({
             description: value
-        })
+        });
     }
 
     okClickHandler() {
+        let {description} = this.state;
+        description = $.trim(description);
         let token = localStorage.getItem('token');
         $.ajax(UPDATE_ACCOUNT_URL, {
             method: 'PATCH',
             headers: {
                 'Authorization': token
             },
-            data: {
-                description: this.state.description
-            }
+            data: {description}
         }).then(data => {
             this.setState({
                 editMode: false
@@ -74,17 +81,19 @@ class DescriptionControl extends React.Component {
 
     cancelClickHandler() {
         this.setState({
-            editMode: false
+            editMode: false,
+            description: ''
         })
     }
 
     render() {
+        let {description} = this.props.account;
         return (
             <div className={style.control_container}>
-                <p style={this.state.description === '' ? {} : {borderBottom: '1px dotted dimgray'}}
+                <p style={description === '' ? {} : {borderBottom: '1px dotted dimgray'}}
                    onClick={this.descriptionClickHandler}>
                     Немного о себе:
-                    {this.state.editMode ? `(осталось ${ACCOUNT_DESCRIPTION_MAX_LEN - this.state.description.length})` : null}
+                    {this.state.editMode ? ` (осталось ${ACCOUNT_DESCRIPTION_MAX_LEN - this.state.description.length})` : null}
                 </p>
                 {(this.state.editMode) ? this.getEditorContent() : this.getDescriptionContent()}
             </div>

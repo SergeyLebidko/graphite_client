@@ -27,31 +27,6 @@
     justify-content: flex-end;
 }
 
-.save_button, .cancel_button {
-    display: block;
-    padding: 5px 15px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    max-width: 8em;
-}
-
-.save_button {
-    border: 1px solid greenyellow;
-    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
-}
-
-.save_button:active {
-    background-image: linear-gradient(to right bottom, forestgreen, limegreen);
-}
-
-.cancel_button {
-    margin-right: 10px;
-    border: 1px solid skyblue;
-    background-image: linear-gradient(to right bottom, deepskyblue, blue);
-}
-
-.cancel_button:active {
-    background-image: linear-gradient(to right bottom, blue, deepskyblue);
+.control_block span:first-child {
+    margin-right: 5px;
 }

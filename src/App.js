@@ -10,7 +10,6 @@ import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);

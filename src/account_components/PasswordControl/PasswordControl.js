@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 import style from './PasswordControl.module.css'
 import {CHANGE_PASSWORD_URL} from '../../settings';
 import {createPassword, checkPassword} from '../../sign_components/RegisterForm/RegisterForm';
@@ -152,7 +153,7 @@ class PasswordControl extends React.Component {
                        onChange={this.changeNextPassword2Handler}/>
                 <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
                 <PopUpMessage msg={info} msgType="info" endShow={() => this.setState({info: null})}/>
-                <span className={style.action_button} onClick={this.changePasswordButtonHandler}>Изменить пароль</span>
+                <SimpleButton title="Изменить пароль" actionHandler={this.changePasswordButtonHandler} />
             </div>
         )
     }

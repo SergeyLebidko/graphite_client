@@ -13,19 +13,6 @@ h3 {
     font-size: 0.9em;
 }
 
-.action_button {
-    display: block;
+.logout_control_container span {
     margin-top: 10px;
-    padding: 5px 15px;
-    border: 1px solid greenyellow;
-    border-radius: 5px;
-    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    max-width: 8em;
-}
-
-.action_button:active {
-    background-image: linear-gradient(to right bottom, forestgreen, limegreen);
 }

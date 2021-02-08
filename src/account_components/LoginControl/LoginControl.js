@@ -2,6 +2,7 @@ import React from 'react';
 import style from './LoginControl.module.css'
 import $ from 'jquery';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 import {CHANGE_LOGIN_URL} from '../../settings';
 import {loginLetters, passwordLetters} from '../../sign_components/RegisterForm/RegisterForm';
 
@@ -110,7 +111,7 @@ class LoginControl extends React.Component {
                        onChange={this.passwordChange}/>
                 <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
                 <PopUpMessage msg={info} msgType="info" endShow={() => this.setState({info: null})}/>
-                <span className={style.action_button} onClick={this.changeLoginButtonHandler}>Изменить логин</span>
+                <SimpleButton title="Изменить логин" actionHandler={this.changeLoginButtonHandler} />
             </div>
         )
     }

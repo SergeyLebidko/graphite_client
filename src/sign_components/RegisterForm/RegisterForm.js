@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../styles.module.css';
 import $ from 'jquery';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 import {REGISTER_ACCOUNT_URL, LOGIN_URL, USERNAME_MAX_LEN} from '../../settings';
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
@@ -233,9 +234,7 @@ class RegisterForm extends React.Component {
                         </div>
                     </form>
                     <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
-                    <span className={style.action_button} onClick={this.registerButtonHandler}>
-                        Зарегистрироваться
-                    </span>
+                    <SimpleButton title="Зарегистрироваться" actionHandler={this.registerButtonHandler} />
                 </div>
             </div>
         )

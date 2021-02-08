@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import {SimpleButton} from '../SimpleButton/SimpleButton';
 import {withRouter} from 'react-router-dom';
 import style from './PostCreator.module.css';
 import {CREATE_POST_URL} from '../settings';
@@ -63,8 +64,8 @@ class PostCreator extends React.Component {
                     <textarea rows="20" value={textValue} onChange={this.textChangeHandler}/>
                 </div>
                 <div className={style.control_block}>
-                    <span className={style.cancel_button} onClick={this.cancelClickHandler}>Отмена</span>
-                    <span className={style.save_button} onClick={this.saveClickHandler}>Сохранить</span>
+                    <SimpleButton title="Отмена" actionHandler={this.cancelClickHandler} stylePreset="blue"/>
+                    <SimpleButton title="Сохранить" actionHandler={this.saveClickHandler}/>
                 </div>
             </div>
         )

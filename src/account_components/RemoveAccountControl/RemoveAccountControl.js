@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 import {REMOVE_ACCOUNT_URL} from '../../settings';
 import style from './RemoveAccountControl.module.css';
 
@@ -76,7 +77,7 @@ class RemoveAccountControl extends React.Component {
                        value={this.state.password}
                        onChange={this.changePasswordHandler}/>
                 <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
-                <span className={style.action_button} onClick={this.removeButtonHandler}>Удалить аккаунт</span>
+                <SimpleButton title="Удалить аккаунт" actionHandler={this.removeButtonHandler} stylePreset="red"/>
             </div>
         )
     }

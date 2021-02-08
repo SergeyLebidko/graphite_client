@@ -1,5 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 import {LOGOUT_ALL_DEVICES_URL} from '../../settings';
 import style from './LogoutControl.module.css';
 
@@ -24,7 +25,7 @@ function LogoutControl(props) {
                 этого выполнили вход. Для использования всех возможностей сервиса вход необходимо будет выполнить
                 повторно. Убедитесь, что вы помните свои учетные данные - логин и пароль.
             </em>
-            <span className={style.action_button} onClick={logout}>Выход</span>
+            <SimpleButton title="Выход" actionHandler={logout} />
         </div>
     )
 }

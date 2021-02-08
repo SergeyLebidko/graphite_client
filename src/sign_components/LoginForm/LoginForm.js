@@ -3,6 +3,7 @@ import style from '../styles.module.css';
 import $ from 'jquery';
 import {LOGIN_URL, CHECK_ACCOUNT_URL} from '../../settings';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../SimpleButton/SimpleButton';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -99,7 +100,7 @@ class LoginForm extends React.Component {
                         </div>
                     </form>
                     <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
-                    <span className={style.action_button} onClick={this.loginButtonHandler}>Войти</span>
+                    <SimpleButton title="Войти" actionHandler={this.loginButtonHandler} />
                 </div>
             </div>
         )

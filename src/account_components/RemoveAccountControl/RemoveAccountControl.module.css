@@ -40,6 +40,10 @@ h3 {
     box-sizing: border-box;
 }
 
+.remove_account_control_container > span {
+    margin-top: 10px;
+}
+
 .show_password_btn {
     color: gray;
     cursor: pointer;
@@ -48,21 +52,4 @@ h3 {
 
 .show_password_btn:hover {
     text-decoration: underline;
-}
-
-.action_button {
-    display: block;
-    margin-top: 10px;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 1px solid tomato;
-    background-image: linear-gradient(to right bottom, red, darkred);
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    max-width: 8em;
-}
-
-.action_button:active {
-    background-image: linear-gradient(to right bottom, darkred, red);
 }
