@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './Avatar.module.css';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {UPDATE_ACCOUNT_URL, HOST} from '../../settings';
 
 class Avatar extends React.Component {
@@ -8,8 +9,7 @@ class Avatar extends React.Component {
         super(props);
         this.state = {
             avatar: this.props.account.avatar,
-            formatError: false,
-            errorTimer: null
+            error: null
         }
 
         this.fileChoiceHandler = this.fileChoiceHandler.bind(this);
@@ -23,21 +23,11 @@ class Avatar extends React.Component {
     fileChoiceHandler(event) {
         let filePath = event.target.value;
         if (!/(.jpg|.JPG|.jpeg|.JPEG)$/.test(filePath)) {
-            clearInterval(this.state.errorTimer);
-            this.setState({
-                formatError: true,
-                errorTimer: setTimeout(() => {
-                    this.setState({
-                        formatError: false
-                    })
-                }, 3000)
-            });
+            this.setState({error: 'Допустимы изображения только в формате jpg'});
             return;
         }
 
-        this.setState({
-            formatError: false
-        });
+        this.setState({error: null});
 
         let token = localStorage.getItem('token');
         let formData = new FormData();
@@ -59,15 +49,12 @@ class Avatar extends React.Component {
     }
 
     render() {
-        let avatar = this.state.avatar;
+        let {avatar, error} = this.state;
         return (
             <div className={style.avatar_container}>
                 <img src={(avatar === null) ? '/images/no_avatar.svg' : `${HOST}${avatar}`}
                      onClick={this.avatarClickHandler}/>
-                {(this.state.formatError) ?
-                    <div className={style.error_block}>
-                        <p>Допустимы только изображения в формате jpg</p>
-                    </div> : null}
+                <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
                 <input type="file" style={{display: 'none'}} onChange={this.fileChoiceHandler} id="avatar_chooser"/>
             </div>
         );

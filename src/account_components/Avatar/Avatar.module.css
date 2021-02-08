@@ -11,11 +11,6 @@
     object-fit: contain;
 }
 
-.error_block {
-    margin-top: 5px;
-    padding: 5px;
-    border: 1px solid tomato;
-    background-image: linear-gradient(to right bottom, orangered, red);
-    border-radius: 5px;
-    color: white;
+.avatar_container div {
+    margin-top: 10px;
 }
