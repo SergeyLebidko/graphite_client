@@ -56,7 +56,8 @@ class Account extends React.Component {
                         <LoginControl hasShow={this.state.hasShowSettings}/>
                         <PasswordControl hasShow={this.state.hasShowSettings}/>
                         <LogoutControl logoutHandler={this.props.logoutHandler}/>
-                        <RemoveAccountControl logoutHandler={this.props.logoutHandler}/>
+                        <RemoveAccountControl logoutHandler={this.props.logoutHandler}
+                                              hasShow={this.state.hasShowSettings}/>
                     </div>
                 </div>
             </div>

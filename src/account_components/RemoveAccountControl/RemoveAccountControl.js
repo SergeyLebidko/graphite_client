@@ -18,6 +18,15 @@ class RemoveAccountControl extends React.Component {
         this.removeButtonHandler = this.removeButtonHandler.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        let {hasShow} = nextProps;
+        if (hasShow) this.setState({
+            showPasswordFlag: false,
+            password: '',
+            error: null
+        });
+    }
+
     showPasswordHandler() {
         this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
