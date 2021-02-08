@@ -60,7 +60,7 @@ class PopUpMessage extends React.Component {
 
     render() {
         let {msgList} = this.state;
-        if (msgList.length === 0) return null;
+        if (msgList.length === 0) return '';
 
         return (
             <div className={`${style[this.props.msgType]} ` + this.props.outerClass}>
