@@ -1,9 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import style from './PasswordControl.module.css'
 import {CHANGE_PASSWORD_URL} from '../../settings';
 import {createPassword, checkPassword} from '../../sign_components/RegisterForm/RegisterForm';
-import {errorsCollector} from "../../sign_components/errorsCollector";
 
 class PasswordControl extends React.Component {
     constructor(props) {
@@ -15,9 +15,7 @@ class PasswordControl extends React.Component {
             nextPassword1: '',
             nextPassword2: '',
             errors: [],
-            errorsTimeout: null,
-            info: null,
-            infoTimeout: null
+            info: null
         }
 
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
@@ -30,8 +28,6 @@ class PasswordControl extends React.Component {
     }
 
     resetState() {
-        clearTimeout(this.state.errorsTimeout);
-        clearTimeout(this.state.infoTimeout);
         this.setState({
             showPasswordFlag: false,
             showNextPasswordFlag: false,
@@ -39,9 +35,7 @@ class PasswordControl extends React.Component {
             nextPassword1: '',
             nextPassword2: '',
             errors: [],
-            errorsTimeout: null,
-            info: null,
-            infoTimeout: null
+            info: null
         })
     }
 
@@ -85,36 +79,24 @@ class PasswordControl extends React.Component {
         })
     }
 
-    addError(error) {
-        clearTimeout(this.state.errorsTimeout);
-        this.setState(prevState => {
-            return {
-                errors: prevState.errors.concat(error),
-                errorsTimeout: setTimeout(() => {
-                    this.setState({
-                        errors: []
-                    })
-                }, 5000)
-            }
-        });
-    }
-
     changePasswordButtonHandler() {
         let {password, nextPassword1, nextPassword2} = this.state;
         if (password === '') {
-            this.addError('Введите текущий пароль');
+            this.setState({errors: 'Введите текущий пароль'});
             return;
         }
 
         if (nextPassword1 !== nextPassword2) {
-            this.addError('Новый пароль не совпадает с подтверждением');
+            this.setState({errors: 'Новый пароль не совпадает с подтверждением'});
             return;
         }
 
         let nextPassword = nextPassword1;
-        let checkNextPasswordResults = checkPassword(nextPassword)
+        let checkNextPasswordResults = checkPassword(nextPassword);
         if (checkNextPasswordResults.length > 0) {
-            checkNextPasswordResults.forEach(value => this.addError(value));
+            this.setState({
+                errors: checkNextPasswordResults
+            });
             return;
         }
 
@@ -127,39 +109,15 @@ class PasswordControl extends React.Component {
             data: {password, next_password: nextPassword}
         }).then(() => {
             this.resetState();
-            this.setState({
-                info: 'Пароль успешно изменен',
-                infoTimeout: setTimeout(() => {
-                    this.setState({
-                        info: null
-                    });
-                }, 3000)
-            });
+            this.setState({info: 'Пароль успешно изменен'});
         }).catch(data => {
             this.resetState();
-            let errors = errorsCollector(data);
-            errors.forEach(value => this.addError(value));
+            this.setState({errors: data});
         });
     }
 
     render() {
         let {errors, info} = this.state;
-        let errorsBlock = null;
-        if (errors.length > 0) {
-            errorsBlock = (
-                <div className={style.error_block}>
-                    <ul>
-                        {errors.map((value, index) => <li key={index}>{value}</li>)}
-                    </ul>
-                </div>
-            )
-        }
-
-        let infoBlock = null;
-        if (info !== null) {
-            infoBlock = <div className={style.info_block}>{info}</div>
-        }
-
         return (
             <div className={style.password_control_container}>
                 <h3>Изменение пароля <span className={style.help_text}>(?)</span></h3>
@@ -192,8 +150,8 @@ class PasswordControl extends React.Component {
                 <input type={this.state.showNextPasswordFlag ? 'text' : 'password'}
                        value={this.state.nextPassword2}
                        onChange={this.changeNextPassword2Handler}/>
-                {errorsBlock}
-                {infoBlock}
+                <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
+                <PopUpMessage msg={info} msgType="info" endShow={() => this.setState({info: null})}/>
                 <span className={style.action_button} onClick={this.changePasswordButtonHandler}>Изменить пароль</span>
             </div>
         )

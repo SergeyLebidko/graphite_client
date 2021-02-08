@@ -23,8 +23,6 @@ class LoginControl extends React.Component {
     }
 
     resetState() {
-        clearTimeout(this.state.errorTimeout);
-        clearTimeout(this.state.infoTimeout);
         this.setState({
             showPasswordFlag: false,
             nextLogin: '',
