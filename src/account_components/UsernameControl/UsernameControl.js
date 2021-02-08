@@ -1,8 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import style from '../UsernameControl/UsernameControl.module.css';
-import {errorsCollector} from '../../sign_components/errorsCollector';
-import additional_style from '../../sign_components/styles.module.css';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import style from './UsernameControl.module.css';
 import {USERNAME_MAX_LEN, UPDATE_ACCOUNT_URL} from '../../settings';
 
 import {MiniButton} from '../../MiniButton/MiniButton';
@@ -13,7 +12,7 @@ class UsernameControl extends React.Component {
         this.state = {
             editMode: false,
             username: this.props.account.username,
-            errors: []
+            errors: null
         }
 
         this.usernameClickHandler = this.usernameClickHandler.bind(this);
@@ -27,19 +26,19 @@ class UsernameControl extends React.Component {
         if (value.length > USERNAME_MAX_LEN) return;
         this.setState({
             username: value
-        })
+        });
     }
 
     usernameClickHandler() {
         this.setState({
             editMode: true
-        })
+        });
     }
 
     okClickHandler() {
         if (this.state.username.length === 0) {
             this.setState({
-                errors: ['Имя пользователя не может быть пустым']
+                errors: 'Имя пользователя не может быть пустым'
             });
             return;
         }
@@ -60,7 +59,7 @@ class UsernameControl extends React.Component {
             this.props.refreshAccount(data);
         }).catch(data => {
             this.setState({
-                errors: errorsCollector(data)
+                errors: data
             });
         });
     }
@@ -69,19 +68,12 @@ class UsernameControl extends React.Component {
         this.setState({
             editMode: false,
             username: this.props.account.username,
-            errors: []
+            errors: null
         })
     }
 
     render() {
-        let errorBlock = null;
-        if (this.state.errors.length !== 0) {
-            errorBlock = (
-                <div className={additional_style.error_block} style={{color: 'white', padding: '3px'}}>
-                    <ul>{this.state.errors.map((value, index) => <li key={index}>{value}</li>)}</ul>
-                </div>
-            );
-        }
+        let {errors} = this.state;
         return (
             <div className={style.control_container}>
                 {(this.state.editMode) ?
@@ -91,7 +83,7 @@ class UsernameControl extends React.Component {
                             <MiniButton buttonType="ok" clickHandler={this.okClickHandler}/>
                             <MiniButton buttonType="cancel" clickHandler={this.cancelClickHandler}/>
                         </div>
-                        {errorBlock}
+                        <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({error: null})}/>
                     </>
                     :
                     <span onClick={this.usernameClickHandler}>{this.props.account.username}</span>
