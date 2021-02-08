@@ -86,19 +86,6 @@
     margin-right: 1em;
 }
 
-.error_block {
-    padding: 10px;
-    border: 1px solid tomato;
-    background-image: linear-gradient(to right bottom, orangered, red);
-    border-radius: 5px;
-    color: white;
-}
-
-.error_block ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
 .login_help_text, .password_help_text {
     position: relative;
     color: gray;

@@ -19,7 +19,7 @@ function msgConverter(data) {
     }
 
     // Если объект - результат возврата ошибки из хука, то "распаковываем" его и добавляем строки в результат
-    data = data.responsJSON;
+    data = data.responseJSON;
     for (let fieldName of Object.keys(data)) {
         if (typeof data[fieldName] === 'string') {
             result.push(data[fieldName])
@@ -30,28 +30,32 @@ function msgConverter(data) {
     return result;
 }
 
+function initTimer(props) {
+    let {msg} = props;
+    let msgList = msgConverter(msg);
+    clearTimeout(this.state.timer);
+    this.setState({
+        msgList,
+        timer: (msgList.length > 0 ? setTimeout(() => {
+            this.setState({msgList: []});
+            props.endShow();
+        }, props.delay) : null)
+    });
+}
 
 class PopUpMessage extends React.Component {
     constructor(props) {
         super(props);
-        let msgList = msgConverter(props.msg);
         this.state = {
-            msgList,
-            timer: (msgList.length > 0 ? setTimeout(() => {
-                this.setState({msgList: []})
-            }, props.delay) : null)
+            msgList: [],
+            timer: null
         }
+        initTimer.call(this, props);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        clearTimeout(this.state.timer);
-        let msgList = msgConverter(nextProps.msg);
-        this.setState({
-            msgList,
-            timer: (msgList.length > 0 ? setTimeout(() => {
-                this.setState({msgList: []})
-            }, nextProps.delay) : null)
-        })
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.msg === this.props.msg) return;
+        initTimer.call(this, nextProps)
     }
 
     render() {

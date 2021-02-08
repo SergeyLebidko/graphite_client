@@ -5,16 +5,17 @@
     color: white;
 }
 
-.error {
+.info, .error {
     padding: 5px;
-    border: 1px solid tomato;
-    background-image: linear-gradient(to right bottom, orangered, red);
     border-radius: 5px;
 }
 
+.error {
+    border: 1px solid tomato;
+    background-image: linear-gradient(to right bottom, orangered, red);
+}
+
 .info {
-    padding: 5px;
-    border: 1px solid greenyellow;
-    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
-    border-radius: 5px;
+    border: 1px solid skyblue;
+    background-image: linear-gradient(to right bottom, deepskyblue, blue);
 }

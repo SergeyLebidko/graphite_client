@@ -1,9 +1,8 @@
 import React from 'react';
 import style from '../styles.module.css';
 import $ from 'jquery';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {REGISTER_ACCOUNT_URL, LOGIN_URL, USERNAME_MAX_LEN} from '../../settings';
-import {errorsCollector} from '../errorsCollector';
-
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const lowLetters = upLetters.toLowerCase();
@@ -76,11 +75,11 @@ class RegisterForm extends React.Component {
         this.registerButtonHandler = this.registerButtonHandler.bind(this);
         this.showPasswordButtonHandler = this.showPasswordButtonHandler.bind(this);
         this.createPasswordButtonHandler = this.createPasswordButtonHandler.bind(this);
-
         this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
         this.changePassword1Handler = this.changePassword1Handler.bind(this);
         this.changePassword2Handler = this.changePassword2Handler.bind(this);
         this.changeLoginHandler = this.changeLoginHandler.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     registerButtonHandler() {
@@ -129,7 +128,7 @@ class RegisterForm extends React.Component {
             this.props.accountRegisterHandler(account, token);
         }).catch(data => {
             this.setState({
-                errors: errorsCollector(data)
+                errors: data
             });
         });
     }
@@ -184,15 +183,13 @@ class RegisterForm extends React.Component {
         });
     }
 
+    clearErrors() {
+        this.setState({
+            errors: []
+        })
+    }
+
     render() {
-        let errorBlock = null;
-        if (this.state.errors.length !== 0) {
-            errorBlock = (
-                <div className={style.error_block}>
-                    <ul>{this.state.errors.map((value, index) => <li key={index}>{value}</li>)}</ul>
-                </div>
-            );
-        }
         return (
             <div className={style.form_container}>
                 <div className={style.sign_form}>
@@ -241,7 +238,7 @@ class RegisterForm extends React.Component {
                                    value={this.state.password2}/>
                         </div>
                     </form>
-                    {errorBlock}
+                    <PopUpMessage msg={this.state.errors} msgType="error"  endShow={this.clearErrors}/>
                     <span className={style.action_button} onClick={this.registerButtonHandler}>
                         Зарегистрироваться
                     </span>

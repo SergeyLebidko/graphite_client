@@ -66,7 +66,6 @@ class PostCreator extends React.Component {
                     <span className={style.cancel_button} onClick={this.cancelClickHandler}>Отмена</span>
                     <span className={style.save_button} onClick={this.saveClickHandler}>Сохранить</span>
                 </div>
-                <PopUpMessage msg="Просто ошибка" msgType="error"/>
             </div>
         )
     }
