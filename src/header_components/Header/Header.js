@@ -16,17 +16,30 @@ class Header extends React.Component {
         }
 
         this.menuButtonClickHandler = this.menuButtonClickHandler.bind(this);
+        this.showMenu = this.showMenu.bind(this);
+        this.hideMenu = this.hideMenu.bind(this);
     }
 
     menuButtonClickHandler() {
-        let topPosition;
         if (this.state.hasOpenMenu) {
-            topPosition = '-220px';
+            this.hideMenu();
         } else {
-            topPosition = '50px';
+            this.showMenu();
         }
-        $('#menu').animate({top: topPosition}, 'normal');
-        this.setState(prevState => ({hasOpenMenu: !prevState.hasOpenMenu}));
+    }
+
+    showMenu() {
+        $('#menu').animate({top: '50px'}, 'normal');
+        this.setState({
+            hasOpenMenu: true
+        });
+    }
+
+    hideMenu() {
+        $('#menu').animate({top: '-220px'}, 'normal');
+        this.setState({
+            hasOpenMenu: false
+        });
     }
 
     render() {
@@ -36,7 +49,9 @@ class Header extends React.Component {
                     <div className={style.header_content}>
                         <MenuButton clickHandler={this.menuButtonClickHandler} hasOpenMenu={this.state.hasOpenMenu}/>
                         <SearchField/>
-                        <SignBlock account={this.props.account} history={this.props.history}/>
+                        <SignBlock account={this.props.account}
+                                   history={this.props.history}
+                                   hideMenu={this.hideMenu}/>
                     </div>
                 </div>
                 <Menu accountLogoutHandler={this.props.accountLogoutHandler}

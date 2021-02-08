@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {useLocation} from 'react-router-dom';
 import style from './SignBlock.module.css';
 import {HOST} from '../../settings';
@@ -23,12 +24,14 @@ function SignBlock(props) {
     return (
         <div className={style.sign_block}>
             <span className={style.register_button} onClick={() => {
-                props.history.push('/register')
+                props.history.push('/register');
+                props.hideMenu();
             }}>
                 регистрация
             </span>
             <span className={style.login_button} onClick={() => {
-                props.history.push('/login')
+                props.history.push('/login');
+                props.hideMenu();
             }}>
                 Вход
             </span>
