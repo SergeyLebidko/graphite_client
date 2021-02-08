@@ -1,15 +1,15 @@
 import React from 'react';
-import $ from 'jquery';
 import {useLocation} from 'react-router-dom';
 import style from './SignBlock.module.css';
 import {HOST} from '../../settings';
 
 
-function SignBlock(props) {
+export function SignBlock(props) {
     let location = useLocation();
 
     function avatarClickHandler() {
         if (location.pathname !== '/account') props.history.push('/account');
+        props.hideMenu();
     }
 
     if (props.account !== null) {
@@ -38,5 +38,3 @@ function SignBlock(props) {
         </div>
     )
 }
-
-export default SignBlock;

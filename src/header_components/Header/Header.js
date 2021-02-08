@@ -4,7 +4,7 @@ import $ from 'jquery';
 import MenuButton from '../MenuButton/MenuButton';
 import Menu from '../Menu/Menu';
 import SearchField from '../SearchField/SearchField';
-import SignBlock from '../SignBlock/SignBlock';
+import {SignBlock} from '../SignBlock/SignBlock';
 import style from './Header.module.css';
 
 
