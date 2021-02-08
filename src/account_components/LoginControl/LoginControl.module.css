@@ -46,6 +46,12 @@ h3 {
     margin-top: 10px;
 }
 
+.login_control_container div {
+    margin-top: 10px;
+    width: 60%;
+    box-sizing: border-box;
+}
+
 .show_password_btn {
     float: right;
     color: gray;
@@ -71,24 +77,4 @@ h3 {
 
 .action_button:active {
     background-image: linear-gradient(to right bottom, forestgreen, limegreen);
-}
-
-.error_block, .info_block {
-    margin-top: 10px;
-    width: 60%;
-    font-size: 1em;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    box-sizing: border-box;
-}
-
-.error_block {
-    border: 1px solid tomato;
-    background-image: linear-gradient(to right bottom, orangered, red);
-}
-
-.info_block {
-    border: 1px solid skyblue;
-    background-image: linear-gradient(to right bottom, deepskyblue, blue);
 }

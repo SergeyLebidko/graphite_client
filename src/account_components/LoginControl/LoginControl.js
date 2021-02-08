@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './LoginControl.module.css'
 import $ from 'jquery';
-import {errorsCollector} from '../../sign_components/errorsCollector';
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {CHANGE_LOGIN_URL} from '../../settings';
 import {loginLetters, passwordLetters} from '../../sign_components/RegisterForm/RegisterForm';
 
@@ -13,16 +13,13 @@ class LoginControl extends React.Component {
             nextLogin: '',
             password: '',
             error: null,
-            errorTimeout: null,
-            info: null,
-            infoTimeout: null
+            info: null
         }
 
         this.changeLoginButtonHandler = this.changeLoginButtonHandler.bind(this);
         this.showPasswordHandler = this.showPasswordHandler.bind(this);
         this.loginChange = this.loginChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
-        this.setMessage = this.setMessage.bind(this);
     }
 
     resetState() {
@@ -33,9 +30,7 @@ class LoginControl extends React.Component {
             nextLogin: '',
             password: '',
             error: null,
-            errorTimeout: null,
             info: null,
-            infoTimeout: null
         })
     }
 
@@ -70,37 +65,12 @@ class LoginControl extends React.Component {
         })
     }
 
-    setMessage(msg, msgType) {
-        if (msgType === 'error') {
-            clearInterval(this.state.errorTimeout);
-            this.setState({
-                error: msg,
-                errorTimeout: setTimeout(() => {
-                    this.setState({
-                        error: null
-                    })
-                }, 3000)
-            });
-            return;
-        }
-
-        if (msgType === 'info') {
-            clearInterval(this.state.infoTimeout);
-            this.setState({
-                info: msg,
-                infoTimeout: setTimeout(() => {
-                    this.setState({
-                        info: null
-                    })
-                }, 3000)
-            });
-        }
-    }
-
     changeLoginButtonHandler() {
         let {nextLogin, password} = this.state;
         if (nextLogin.length === 0) {
-            this.setMessage('Пустой логин недопустим', 'error');
+            this.setState({
+                error: 'Пустой логин недопустим'
+            });
             return;
         }
 
@@ -116,23 +86,15 @@ class LoginControl extends React.Component {
             }
         }).then(() => {
             this.resetState();
-            this.setMessage('Логин успешно изменен', 'info');
+            this.setState({info: 'Логин успешно изменен'});
         }).catch(data => {
             this.resetState();
-            this.setMessage(errorsCollector(data), 'error');
+            this.setState({error: data});
         });
-
     }
 
     render() {
-        let errorBlock = null;
-        if (this.state.error !== null) {
-            errorBlock = <div className={style.error_block}>{this.state.error}</div>
-        }
-        let infoBlock = null;
-        if (this.state.info !== null) {
-            infoBlock = <div className={style.info_block}>{this.state.info}</div>
-        }
+        let {error, info} = this.state;
         return (
             <div className={style.login_control_container}>
                 <h3>Изменение логина <span className={style.help_text}>(?)</span></h3>
@@ -148,8 +110,8 @@ class LoginControl extends React.Component {
                 </p>
                 <input type={this.state.showPasswordFlag ? 'text' : 'password'} value={this.state.password}
                        onChange={this.passwordChange}/>
-                {errorBlock}
-                {infoBlock}
+                <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
+                <PopUpMessage msg={info} msgType="info" endShow={() => this.setState({info: null})}/>
                 <span className={style.action_button} onClick={this.changeLoginButtonHandler}>Изменить логин</span>
             </div>
         )

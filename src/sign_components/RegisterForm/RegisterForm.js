@@ -79,7 +79,6 @@ class RegisterForm extends React.Component {
         this.changePassword1Handler = this.changePassword1Handler.bind(this);
         this.changePassword2Handler = this.changePassword2Handler.bind(this);
         this.changeLoginHandler = this.changeLoginHandler.bind(this);
-        this.clearErrors = this.clearErrors.bind(this);
     }
 
     registerButtonHandler() {
@@ -183,13 +182,8 @@ class RegisterForm extends React.Component {
         });
     }
 
-    clearErrors() {
-        this.setState({
-            errors: []
-        })
-    }
-
     render() {
+        let {errors} = this.state;
         return (
             <div className={style.form_container}>
                 <div className={style.sign_form}>
@@ -238,7 +232,7 @@ class RegisterForm extends React.Component {
                                    value={this.state.password2}/>
                         </div>
                     </form>
-                    <PopUpMessage msg={this.state.errors} msgType="error"  endShow={this.clearErrors}/>
+                    <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
                     <span className={style.action_button} onClick={this.registerButtonHandler}>
                         Зарегистрироваться
                     </span>

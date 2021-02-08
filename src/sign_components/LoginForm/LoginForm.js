@@ -18,7 +18,6 @@ class LoginForm extends React.Component {
         this.loginChange = this.loginChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
         this.showPasswordHandler = this.showPasswordHandler.bind(this);
-        this.clearErrors = this.clearErrors.bind(this);
     }
 
     loginButtonHandler() {
@@ -72,13 +71,8 @@ class LoginForm extends React.Component {
         this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
 
-    clearErrors() {
-        this.setState({
-            errors: []
-        })
-    }
-
     render() {
+        let {errors} = this.state;
         return (
             <div className={style.form_container}>
                 <div className={style.sign_form}>
@@ -104,7 +98,7 @@ class LoginForm extends React.Component {
                                    onChange={this.passwordChange}/>
                         </div>
                     </form>
-                    <PopUpMessage msg={this.state.errors} msgType="error" endShow={this.clearErrors}/>
+                    <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: []})}/>
                     <span className={style.action_button} onClick={this.loginButtonHandler}>Войти</span>
                 </div>
             </div>
