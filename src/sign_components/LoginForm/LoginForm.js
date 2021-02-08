@@ -2,8 +2,7 @@ import React from 'react';
 import style from '../styles.module.css';
 import $ from 'jquery';
 import {LOGIN_URL, CHECK_ACCOUNT_URL} from '../../settings';
-import {errorsCollector} from '../errorsCollector';
-
+import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -19,6 +18,7 @@ class LoginForm extends React.Component {
         this.loginChange = this.loginChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
         this.showPasswordHandler = this.showPasswordHandler.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     loginButtonHandler() {
@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
             this.props.accountLoginHandler(account, token);
         }).catch(data => {
             this.setState({
-                errors: errorsCollector(data)
+                errors: data
             });
         });
     }
@@ -72,15 +72,13 @@ class LoginForm extends React.Component {
         this.setState(prevState => ({showPasswordFlag: !prevState.showPasswordFlag}));
     }
 
+    clearErrors() {
+        this.setState({
+            errors: []
+        })
+    }
+
     render() {
-        let errorBlock = null;
-        if (this.state.errors.length !== 0) {
-            errorBlock = (
-                <div className={style.error_block}>
-                    <ul>{this.state.errors.map((value, index) => <li key={index}>{value}</li>)}</ul>
-                </div>
-            );
-        }
         return (
             <div className={style.form_container}>
                 <div className={style.sign_form}>
@@ -106,7 +104,7 @@ class LoginForm extends React.Component {
                                    onChange={this.passwordChange}/>
                         </div>
                     </form>
-                    {errorBlock}
+                    <PopUpMessage msg={this.state.errors} msgType="error" endShow={this.clearErrors}/>
                     <span className={style.action_button} onClick={this.loginButtonHandler}>Войти</span>
                 </div>
             </div>
