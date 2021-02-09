@@ -84,7 +84,7 @@ class PostCreator extends React.Component {
                 <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: null})}/>
                 <div className={style.text}>
                     <p>
-                        Осталось {POST_TEXT_MAX_LEN - textValue.length}
+                        Осталось: {POST_TEXT_MAX_LEN - textValue.length}
                     </p>
                     <textarea rows="30" value={textValue} onChange={this.textChangeHandler}/>
                 </div>

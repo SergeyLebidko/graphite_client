@@ -9,6 +9,7 @@ import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
+import * as pages from './internal_pages';
 
 class App extends React.Component {
     constructor(props) {
@@ -98,39 +99,40 @@ class App extends React.Component {
     }
 
     render() {
+        let {hasInit, account} = this.state;
         return (
             <>
-                {(!this.state.hasInit) ? <Preloader/> : null}
-                <Header account={this.state.account} accountLogoutHandler={this.accountLogoutHandler}/>
+                {(!hasInit) ? <Preloader/> : null}
+                <Header account={account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
                     <Switch>
-                        <Route exact path="/">
-                            <Redirect to="/content"/>
+                        <Route exact path={pages.MAIN_PAGE}>
+                            <Redirect to={pages.CONTENT_PAGE}/>
                         </Route>
-                        <Route path="/register">
-                            {(this.state.account == null) ?
+                        <Route path={pages.REGISTER_PAGE}>
+                            {(account == null) ?
                                 <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/> :
-                                <Redirect to="/content"/>
+                                <Redirect to={pages.CONTENT_PAGE}/>
                             }
                         </Route>
-                        <Route path="/login">
-                            {(this.state.account == null) ?
+                        <Route path={pages.LOGIN_PAGE}>
+                            {(account == null) ?
                                 <LoginForm accountLoginHandler={this.accountLoginHandler}/> :
-                                <Redirect to="/content"/>
+                                <Redirect to={pages.CONTENT_PAGE}/>
                             }
                         </Route>
-                        <Route path="/account">
-                            {(this.state.account == null) ?
-                                <Redirect to="/login"/> :
-                                <Account account={this.state.account}
+                        <Route path={pages.ACCOUNT_PAGE}>
+                            {(account == null) ?
+                                <Redirect to={pages.LOGIN_PAGE}/> :
+                                <Account account={account}
                                          refreshAccount={this.refreshAccount}
                                          logoutHandler={this.accountLogoutHandler}/>
                             }
                         </Route>
-                        <Route path="/create_post">
-                            <PostCreator account={this.state.account}/>
+                        <Route path={pages.CREATE_POST_PAGE}>
+                            {account == null ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
-                        <Route path="/content">
+                        <Route path={pages.CONTENT_PAGE}>
                             <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
                         </Route>
                         <Route path="*">
