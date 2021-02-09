@@ -101,6 +101,7 @@ class App extends React.Component {
 
     render() {
         let {hasInit, account} = this.state;
+        let hasLogin = account == null;
         return (
             <>
                 {(!hasInit) ? <Preloader/> : null}
@@ -111,19 +112,19 @@ class App extends React.Component {
                             <Redirect to={pages.CONTENT_PAGE}/>
                         </Route>
                         <Route path={pages.REGISTER_PAGE}>
-                            {(account == null) ?
+                            {hasLogin ?
                                 <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/> :
                                 <Redirect to={pages.CONTENT_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.LOGIN_PAGE}>
-                            {(account == null) ?
+                            {hasLogin ?
                                 <LoginForm accountLoginHandler={this.accountLoginHandler}/> :
                                 <Redirect to={pages.CONTENT_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.ACCOUNT_PAGE}>
-                            {(account == null) ?
+                            {hasLogin ?
                                 <Redirect to={pages.LOGIN_PAGE}/> :
                                 <Account account={account}
                                          refreshAccount={this.refreshAccount}
@@ -131,10 +132,10 @@ class App extends React.Component {
                             }
                         </Route>
                         <Route path={pages.CREATE_POST_PAGE}>
-                            {account == null ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
+                            {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path={pages.MY_POSTS_PAGE}>
-                            {account == null ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
+                            {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
                         </Route>
 
                         <Route path={pages.CONTENT_PAGE}>
