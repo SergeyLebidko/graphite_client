@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import style from './Menu.module.css';
 import {LOGOUT_URL} from '../../settings';
+import * as pages from '../../internal_pages';
 
 class Menu extends React.Component {
     constructor(props) {
@@ -48,9 +49,9 @@ class Menu extends React.Component {
                     <div>
                         <p>Мой Graphite</p>
                         <ul>
-                            <li onClick={() => this.props.history.push('/create_post')}>Добавить пост</li>
+                            <li onClick={() => this.props.history.push(pages.CREATE_POST_PAGE)}>Добавить пост</li>
                             <li>Мои посты</li>
-                            <li onClick={() => this.props.history.push('/account')}>Моя страница</li>
+                            <li onClick={() => this.props.history.push(pages.ACCOUNT_PAGE)}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
                         </ul>
                     </div>
