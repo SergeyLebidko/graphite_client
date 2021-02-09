@@ -30,41 +30,33 @@ function msgConverter(data) {
     return result;
 }
 
-function initTimer(props, setStateEnable = true) {
-    let {msg} = props;
-    let msgList = msgConverter(msg);
-    clearTimeout(this.state.timer);
-
-    if (setStateEnable) {
-        this.setState({
+class PopUpMessage extends React.Component {
+    constructor(props) {
+        super(props);
+        let msgList = msgConverter(props.msg);
+        this.state = {
             msgList,
             timer: (msgList.length > 0 ? setTimeout(() => {
                 this.setState({msgList: []});
                 props.endShow();
             }, props.delay) : null)
-        });
-        return;
-    }
-
-    this.state = {
-        msgList: [],
-        timer: (msgList.length > 0 ? setTimeout(() => {
-            this.setState({msgList: []});
-            props.endShow();
-        }, props.delay) : null)
-    }
-}
-
-class PopUpMessage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-        initTimer.call(this, props, false);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.msg === this.props.msg) return;
-        initTimer.call(this, nextProps)
+
+        let {msg} = nextProps;
+        let msgList = msgConverter(msg);
+        clearTimeout(this.state.timer);
+
+        this.setState({
+            msgList,
+            timer: (msgList.length > 0 ? setTimeout(() => {
+                this.setState({msgList: []});
+                nextProps.endShow();
+            }, nextProps.delay) : null)
+        });
     }
 
     render() {
