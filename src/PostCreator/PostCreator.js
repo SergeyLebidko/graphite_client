@@ -46,7 +46,7 @@ class PostCreator extends React.Component {
         let {titleValue, textValue} = this.state;
         titleValue = $.trim(titleValue);
         textValue = $.trim(textValue);
-        if (titleValue.length === 0) errors.push('Загловок не должен быть пустым');
+        if (titleValue.length === 0) errors.push('Заголовок не должен быть пустым');
         if (textValue.length === 0) errors.push('Текст поста не должен быть пустым');
         if (errors.length > 0) {
             this.setState({errors: errors});
