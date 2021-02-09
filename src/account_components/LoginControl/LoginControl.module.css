@@ -42,8 +42,7 @@ h3 {
 .login_control_container p {
     font-size: 0.9em;
     width: 60%;
-    padding: 0;
-    margin-top: 10px;
+    padding: 10px 0 0 0;
 }
 
 .login_control_container div {
@@ -52,7 +51,7 @@ h3 {
     box-sizing: border-box;
 }
 
-.login_control_container span {
+.login_control_container > span {
     margin-top: 10px;
 }
 

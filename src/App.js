@@ -9,6 +9,7 @@ import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
+import MyPosts from './MyPosts/MyPosts';
 import * as pages from './internal_pages';
 
 class App extends React.Component {
@@ -132,9 +133,14 @@ class App extends React.Component {
                         <Route path={pages.CREATE_POST_PAGE}>
                             {account == null ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
+                        <Route path={pages.MY_POSTS_PAGE}>
+                            {account == null ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
+                        </Route>
+
                         <Route path={pages.CONTENT_PAGE}>
                             <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
                         </Route>
+
                         <Route path="*">
                             <NoMatch/>
                         </Route>

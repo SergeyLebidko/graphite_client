@@ -4,14 +4,14 @@ import {SimpleButton} from '../SimpleButton/SimpleButton';
 import PopUpMessage from '../PopUpMessage/PopUpMessage';
 import {withRouter} from 'react-router-dom';
 import style from './PostCreator.module.css';
-
-import {CREATE_POST_URL, POST_TITLE_MAX_LEN, POST_TEXT_MAX_LEN} from '../settings';
+import {POST_URL, POST_TITLE_MAX_LEN, POST_TEXT_MAX_LEN} from '../settings';
+import * as pages from '../internal_pages';
 
 class PostCreator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            headerValue: '',
+            titleValue: '',
             textValue: '',
             errors: null
         }
@@ -25,7 +25,7 @@ class PostCreator extends React.Component {
     headerChangeHandler(event) {
         let nextValue = event.target.value;
         if (nextValue.length > POST_TITLE_MAX_LEN) nextValue = nextValue.slice(0, POST_TITLE_MAX_LEN);
-        this.setState({headerValue: nextValue})
+        this.setState({titleValue: nextValue})
     }
 
     textChangeHandler(event) {
@@ -36,17 +36,17 @@ class PostCreator extends React.Component {
 
     clearClickHandler() {
         this.setState({
-            headerValue: '',
+            titleValue: '',
             textValue: ''
         });
     }
 
     saveClickHandler() {
         let errors = [];
-        let {headerValue, textValue} = this.state;
-        headerValue = $.trim(headerValue);
+        let {titleValue, textValue} = this.state;
+        titleValue = $.trim(titleValue);
         textValue = $.trim(textValue);
-        if (headerValue.length === 0) errors.push('Загловок не должен быть пустым');
+        if (titleValue.length === 0) errors.push('Загловок не должен быть пустым');
         if (textValue.length === 0) errors.push('Текст поста не должен быть пустым');
         if (errors.length > 0) {
             this.setState({errors: errors});
@@ -54,21 +54,21 @@ class PostCreator extends React.Component {
         }
 
         let token = localStorage.getItem('token');
-        $.ajax(CREATE_POST_URL, {
+        $.ajax(POST_URL, {
             method: 'POST',
             headers: {'Authorization': token},
             data: {
-                title: this.state.headerValue,
+                title: this.state.titleValue,
                 text: this.state.textValue,
                 account: this.props.account.id
             }
         }).then(() => {
-            console.log('Пост успешно сохранен');
+            this.props.history.push(pages.MY_POSTS_PAGE);
         })
     }
 
     render() {
-        let {headerValue, textValue, errors} = this.state;
+        let {titleValue, textValue, errors} = this.state;
         let wordCount = 0;
         let matches = textValue.match(/([А-Яа-яA-Za-zЁё]+)/g);
         if (matches !== null) wordCount = matches.length;
@@ -77,9 +77,9 @@ class PostCreator extends React.Component {
             <div className={style.post_container}>
                 <div className={style.title}>
                     <p>
-                        Заголовок (осталось {POST_TITLE_MAX_LEN - headerValue.length}):
+                        Заголовок (осталось {POST_TITLE_MAX_LEN - titleValue.length}):
                     </p>
-                    <input type="text" value={headerValue} onChange={this.headerChangeHandler}/>
+                    <input type="text" value={titleValue} onChange={this.headerChangeHandler}/>
                 </div>
                 <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({errors: null})}/>
                 <div className={style.text}>

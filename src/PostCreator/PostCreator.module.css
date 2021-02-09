@@ -10,6 +10,10 @@
     color: gray;
 }
 
+.text {
+    margin-top: 5px;
+}
+
 .title input, .text textarea {
     color: rgb(50, 50, 50);
     width: 100%;

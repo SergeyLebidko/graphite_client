@@ -36,8 +36,8 @@ export const CHANGE_PASSWORD_URL = `${HOST}/api/change_password/`;
 //Хук для удаления аккаунта
 export const REMOVE_ACCOUNT_URL = `${HOST}/api/remove_account/`
 
-// Хук для создания поста
-export const CREATE_POST_URL = `${HOST}/api/posts/`;
+// Хук для работы с постами
+export const POST_URL = `${HOST}/api/posts/`;
 
 // Максимальная длина заголовка поста
 export const POST_TITLE_MAX_LEN = 200;

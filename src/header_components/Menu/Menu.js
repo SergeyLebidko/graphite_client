@@ -25,6 +25,7 @@ class Menu extends React.Component {
     }
 
     render() {
+        let {history} = this.props;
         return (
             <div className={style.menu} id="menu" onClick={this.closeMenu}>
                 <div>
@@ -49,9 +50,9 @@ class Menu extends React.Component {
                     <div>
                         <p>Мой Graphite</p>
                         <ul>
-                            <li onClick={() => this.props.history.push(pages.CREATE_POST_PAGE)}>Добавить пост</li>
-                            <li>Мои посты</li>
-                            <li onClick={() => this.props.history.push(pages.ACCOUNT_PAGE)}>Моя страница</li>
+                            <li onClick={() => history.push(pages.CREATE_POST_PAGE)}>Добавить пост</li>
+                            <li onClick={()=> history.push(pages.MY_POSTS_PAGE)}>Мои посты</li>
+                            <li onClick={() => history.push(pages.ACCOUNT_PAGE)}>Моя страница</li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
                         </ul>
                     </div>

@@ -30,27 +30,36 @@ function msgConverter(data) {
     return result;
 }
 
-function initTimer(props) {
+function initTimer(props, setStateEnable = true) {
     let {msg} = props;
     let msgList = msgConverter(msg);
     clearTimeout(this.state.timer);
-    this.setState({
-        msgList,
+
+    if (setStateEnable) {
+        this.setState({
+            msgList,
+            timer: (msgList.length > 0 ? setTimeout(() => {
+                this.setState({msgList: []});
+                props.endShow();
+            }, props.delay) : null)
+        });
+        return;
+    }
+
+    this.state = {
+        msgList: [],
         timer: (msgList.length > 0 ? setTimeout(() => {
             this.setState({msgList: []});
             props.endShow();
         }, props.delay) : null)
-    });
+    }
 }
 
 class PopUpMessage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            msgList: [],
-            timer: null
-        }
-        initTimer.call(this, props);
+        this.state = {}
+        initTimer.call(this, props, false);
     }
 
     componentWillReceiveProps(nextProps) {

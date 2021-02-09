@@ -122,18 +122,18 @@ class PasswordControl extends React.Component {
         return (
             <div className={style.password_control_container}>
                 <h3>Изменение пароля <span className={style.help_text}>(?)</span></h3>
-                <p>
+                <div>
                     Старый пароль:
                     <div className={style.control_element}>
                         <span onClick={this.showPasswordHandler}>
                             {this.state.showPasswordFlag ? 'скрыть' : 'показать'}
                         </span>
                     </div>
-                </p>
+                </div>
                 <input type={this.state.showPasswordFlag ? 'text' : 'password'}
                        value={this.state.password}
                        onChange={this.changePasswordHandler}/>
-                <p>
+                <div>
                     Новый пароль:
                     <div className={style.control_element}>
                         <span onClick={this.generatePasswordHandler}>создать пароль</span>
@@ -141,13 +141,13 @@ class PasswordControl extends React.Component {
                             {this.state.showNextPasswordFlag ? 'скрыть' : 'показать'}
                         </span>
                     </div>
-                </p>
+                </div>
                 <input type={this.state.showNextPasswordFlag ? 'text' : 'password'}
                        value={this.state.nextPassword1}
                        onChange={this.changeNextPassword1Handler}/>
-                <p>
+                <div>
                     Новый пароль еще раз:
-                </p>
+                </div>
                 <input type={this.state.showNextPasswordFlag ? 'text' : 'password'}
                        value={this.state.nextPassword2}
                        onChange={this.changeNextPassword2Handler}/>
