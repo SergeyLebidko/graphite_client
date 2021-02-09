@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import $ from 'jquery';
 import style from './Menu.module.css';
 import {LOGOUT_URL} from '../../settings';
@@ -7,12 +8,7 @@ import * as pages from '../../internal_pages';
 class Menu extends React.Component {
     constructor(props) {
         super(props);
-
         this.logoutButtonHandler = this.logoutButtonHandler.bind(this);
-    }
-
-    closeMenu(event) {
-        if (event.target.tagName === 'LI') $('#menu_button').trigger('click');
     }
 
     logoutButtonHandler() {
@@ -25,9 +21,10 @@ class Menu extends React.Component {
     }
 
     render() {
-        let {history} = this.props;
+        let {hasOpenMenu} = this.props;
+        let targetClasses = `${style.menu} ${hasOpenMenu ? style.opened_menu : style.closed_menu}`;
         return (
-            <div className={style.menu} id="menu" onClick={this.closeMenu}>
+            <div className={targetClasses} onClick={this.props.hideMenuHandler}>
                 <div>
                     <p>Посты</p>
                     <ul>
@@ -50,9 +47,15 @@ class Menu extends React.Component {
                     <div>
                         <p>Мой Graphite</p>
                         <ul>
-                            <li onClick={() => history.push(pages.CREATE_POST_PAGE)}>Добавить пост</li>
-                            <li onClick={()=> history.push(pages.MY_POSTS_PAGE)}>Мои посты</li>
-                            <li onClick={() => history.push(pages.ACCOUNT_PAGE)}>Моя страница</li>
+                            <li>
+                                <Link to={pages.CREATE_POST_PAGE}>Добавить пост</Link>
+                            </li>
+                            <li>
+                                <Link to={pages.MY_POSTS_PAGE}>Мои посты</Link>
+                            </li>
+                            <li>
+                                <Link to={pages.ACCOUNT_PAGE}>Мой аккаунт</Link>
+                            </li>
                             <li onClick={this.logoutButtonHandler}>Выход</li>
                         </ul>
                     </div>

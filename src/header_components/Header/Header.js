@@ -21,22 +21,16 @@ class Header extends React.Component {
     }
 
     menuButtonClickHandler() {
-        if (this.state.hasOpenMenu) {
-            this.hideMenu();
-        } else {
-            this.showMenu();
-        }
+        this.setState(prevState => ({hasOpenMenu: !prevState.hasOpenMenu}));
     }
 
     showMenu() {
-        $('#menu').animate({top: '50px'}, 'normal');
         this.setState({
             hasOpenMenu: true
         });
     }
 
     hideMenu() {
-        $('#menu').animate({top: '-220px'}, 'normal');
         this.setState({
             hasOpenMenu: false
         });
@@ -56,7 +50,8 @@ class Header extends React.Component {
                 </div>
                 <Menu accountLogoutHandler={this.props.accountLogoutHandler}
                       hasLogin={this.props.account !== null}
-                      history={this.props.history}/>
+                      hasOpenMenu={this.state.hasOpenMenu}
+                      hideMenuHandler={this.hideMenu}/>
             </>
         )
     }
