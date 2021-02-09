@@ -16,7 +16,6 @@
 /* Стили для кнопки Ok */
 
 .ok_mini_button {
-    border: 1px solid greenyellow;
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 
@@ -27,7 +26,6 @@
 /* Стили для кнопки Cancel */
 
 .cancel_mini_button {
-    border: 1px solid tomato;
     background-image: linear-gradient(to right bottom, salmon, red);
 }
 

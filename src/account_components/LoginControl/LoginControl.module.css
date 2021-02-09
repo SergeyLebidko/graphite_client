@@ -14,9 +14,9 @@ h3 {
 .help_text:after {
     content: 'Для изменения логина введите новый логин, текущий пароль и нажмите кнопку "Изменить логин"';
     position: absolute;
-    width: 250px;
     left: 150%;
     top: 0;
+    width: 200px;
     color: black;
     background-color: beige;
     border: 1px solid black;
