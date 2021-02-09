@@ -3,15 +3,9 @@ import style from './MenuButton.module.css';
 
 
 function MenuButton(props) {
-    let inlineStyle = {};
-    if (props.hasOpenMenu) {
-        inlineStyle = {
-            backgroundImage: 'linear-gradient(to right bottom, limegreen, forestgreen)',
-            color: 'white'
-        }
-    }
+    let targetClasses = `${style.menu_button} ${props.hasOpenMenu ? style.opened_menu : style.closed_menu}`;
     return (
-        <div className={style.menu_button} style={inlineStyle} onClick={props.clickHandler} id="menu_button">G</div>
+        <div className={targetClasses} onClick={props.clickHandler} id="menu_button">G</div>
     );
 }
 
