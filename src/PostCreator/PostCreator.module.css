@@ -5,7 +5,8 @@
     border-radius: 5px;
 }
 
-.title p {
+.post_container p {
+    font-size: 0.7em;
     color: gray;
 }
 
@@ -14,15 +15,16 @@
     width: 100%;
     margin: 0 0 10px 0;
     padding: 10px;
-    font-size: 1.2em;
     border: 1px solid lightgray;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: snow;
+    font-size: 0.9em;
 }
 
 .text textarea {
-    font-size: 1em;
+    margin-bottom: 0;
+    font-size: 0.8em;
 }
 
 .control_block {

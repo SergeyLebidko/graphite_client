@@ -38,3 +38,9 @@ export const REMOVE_ACCOUNT_URL = `${HOST}/api/remove_account/`
 
 // Хук для создания поста
 export const CREATE_POST_URL = `${HOST}/api/posts/`;
+
+// Максимальная длина заголовка поста
+export const POST_TITLE_MAX_LEN = 200;
+
+// Максимальная длина текста поста
+export const POST_TEXT_MAX_LEN = 10000;

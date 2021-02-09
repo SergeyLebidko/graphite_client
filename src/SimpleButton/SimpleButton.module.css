@@ -11,7 +11,6 @@
 }
 
 .green_button {
-    border: 1px solid greenyellow;
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 
@@ -20,7 +19,6 @@
 }
 
 .red_button {
-    border: 1px solid tomato;
     background-image: linear-gradient(to right bottom, red, darkred);
 }
 
@@ -29,7 +27,6 @@
 }
 
 .blue_button {
-    border: 1px solid skyblue;
     background-image: linear-gradient(to right bottom, deepskyblue, blue);
 }
 
