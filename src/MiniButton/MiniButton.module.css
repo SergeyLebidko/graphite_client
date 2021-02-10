@@ -4,31 +4,34 @@
     align-items: center;
     margin: 3px;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50%;
+    overflow: hidden;
 }
 
 .mini_button_container img {
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 5px;
+    display: block;
+    width: 17px;
+    height: 17px;
 }
 
 /* Стили для кнопки Ok */
 
-.ok_mini_button {
+.ok {
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 
-.ok_mini_button:active {
+.ok:active {
     background-image: linear-gradient(to right bottom, forestgreen, limegreen);
 }
 
 /* Стили для кнопки Cancel */
 
-.cancel_mini_button {
-    background-image: linear-gradient(to right bottom, salmon, red);
+.cancel {
+    background-image: linear-gradient(to right bottom, red, darkred);
 }
 
-.cancel_mini_button:active {
-    background-image: linear-gradient(to right bottom, red, salmon);
+.cancel:active {
+    background-image: linear-gradient(to right bottom, darkred, red);
 }
