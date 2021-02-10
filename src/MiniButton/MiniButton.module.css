@@ -8,6 +8,11 @@
     height: 30px;
     border-radius: 50% 50%;
     overflow: hidden;
+    filter: grayscale(1);
+}
+
+.mini_button_container:hover {
+    filter: grayscale(0);
 }
 
 .mini_button_container img {
