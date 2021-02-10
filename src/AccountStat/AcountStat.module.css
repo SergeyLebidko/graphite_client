@@ -1,0 +1,27 @@
+.account_stat_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 600px;
+    height: 40px;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 20px;
+    background-color: whitesmoke;
+}
+
+.account_stat_container span {
+    color: lightgray;
+}
+
+.account_stat_container ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.account_stat_container li {
+    display: inline-block;
+}

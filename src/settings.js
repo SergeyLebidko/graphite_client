@@ -44,3 +44,6 @@ export const POST_TITLE_MAX_LEN = 200;
 
 // Максимальная длина текста поста
 export const POST_TEXT_MAX_LEN = 10000;
+
+// Хук для получения статистики аккаунта
+export const ACCOUNT_STAT_URL = `${HOST}/api/account_stat/`;

@@ -1,0 +1,13 @@
+.my_posts_container {
+    margin-top: 20px;
+}
+
+.header_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_block > div:first-child {
+    margin-right: 5px;
+}

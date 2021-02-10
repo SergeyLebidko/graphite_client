@@ -6,7 +6,6 @@
     display: block;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid rgb(210, 210, 210);
     cursor: pointer;
     object-fit: contain;
 }
