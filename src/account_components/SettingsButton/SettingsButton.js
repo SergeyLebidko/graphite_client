@@ -17,20 +17,12 @@ class SettingsButton extends React.Component {
     }
 
     render() {
-        let inlineStyle = this.state.hasActive ? {
-            backgroundImage: 'linear-gradient(to right bottom, limegreen, forestgreen)',
-            color: 'white'
-        } : {
-            backgroundImage: 'linear-gradient(to right bottom, lightgray, silver)',
-            color: 'white'
-        };
-
+        let {hasActive} = this.state;
+        let targetClasses = `${style.settings_button_container} ${hasActive ? style.sittings_show : style.settings_hide}`;
         return (
-            <img className={style.button}
-                 style={inlineStyle}
-                 src={this.state.hasActive ? '/images/settings_white.svg' : '/images/settings_gray.svg'}
-                 onClick={this.clickHandler}
-            />
+            <div className={targetClasses} onClick={this.clickHandler}>
+                <img src={this.state.hasActive ? '/images/settings_white.svg' : '/images/settings_gray.svg'}/>
+            </div>
         );
     }
 }

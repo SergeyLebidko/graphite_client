@@ -1,9 +1,26 @@
-.button {
-    display: block;
+.settings_button_container {
     margin-top: 10px;
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
-    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50% 50%;
+    width: 45px;
+    height: 45px;
     cursor: pointer;
+}
+
+.settings_button_container img {
+    width: 30px;
+    height: 30px;
+}
+
+.sittings_show {
+    background-image: linear-gradient(to right bottom, limegreen, forestgreen);
+    color: white;
+}
+
+.settings_hide {
+    background-image: linear-gradient(to right bottom, lightgray, silver);
+    color: white;
 }
