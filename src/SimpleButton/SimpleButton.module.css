@@ -8,11 +8,6 @@
     text-align: center;
     cursor: pointer;
     max-width: 8em;
-    filter: grayscale(1);
-}
-
-.action_button:hover {
-    filter: grayscale(0);
 }
 
 .green_button {
