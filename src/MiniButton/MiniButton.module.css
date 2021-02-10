@@ -16,13 +16,13 @@
     height: 17px;
 }
 
-/* Стили для кнопки Ok */
+/* Стили для кнопок Ok и Add */
 
-.ok {
+.ok, .add {
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 
-.ok:active {
+.ok:active, .add:active {
     background-image: linear-gradient(to right bottom, forestgreen, limegreen);
 }
 

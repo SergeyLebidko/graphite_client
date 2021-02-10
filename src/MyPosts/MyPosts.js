@@ -1,5 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
+import {MiniButton} from '../MiniButton/MiniButton';
+import * as pages from '../internal_pages';
+import style from './MyPosts.module.css';
 
 class MyPosts extends React.Component {
     constructor(props) {
@@ -12,7 +15,13 @@ class MyPosts extends React.Component {
 
     render() {
         return (
-            <div>Список постов</div>
+            <div>
+                <div>
+                    <MiniButton buttonType="add" clickHandler={() => this.props.history.push(pages.CREATE_POST_PAGE)}/>
+                    <span>Статистика аккаунта</span>
+                </div>
+                <div>Список постов</div>
+            </div>
         )
     }
 }

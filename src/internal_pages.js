@@ -1,5 +1,4 @@
 export const MAIN_PAGE = '/';
-export const CONTENT_PAGE = '/content';
 export const REGISTER_PAGE = '/register';
 export const LOGIN_PAGE = '/login';
 export const ACCOUNT_PAGE = '/account';

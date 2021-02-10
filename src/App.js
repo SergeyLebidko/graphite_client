@@ -82,7 +82,7 @@ class App extends React.Component {
 
     accountLoginHandler(account, token) {
         this.setAccountData(account, token);
-        this.props.history.push(pages.CONTENT_PAGE);
+        this.props.history.push(pages.MAIN_PAGE);
     }
 
     accountLogoutHandler() {
@@ -90,7 +90,7 @@ class App extends React.Component {
         this.setState({
             account: null
         });
-        this.props.history.push(pages.CONTENT_PAGE);
+        this.props.history.push(pages.MAIN_PAGE);
     }
 
     refreshAccount(account) {
@@ -109,18 +109,18 @@ class App extends React.Component {
                 <div className={style.content}>
                     <Switch>
                         <Route exact path={pages.MAIN_PAGE}>
-                            <Redirect to={pages.CONTENT_PAGE}/>
+                            <div style={{textAlign: 'center'}}>Заглушка для главной страницы</div>
                         </Route>
                         <Route path={pages.REGISTER_PAGE}>
                             {hasLogin ?
                                 <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/> :
-                                <Redirect to={pages.CONTENT_PAGE}/>
+                                <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.LOGIN_PAGE}>
                             {hasLogin ?
                                 <LoginForm accountLoginHandler={this.accountLoginHandler}/> :
-                                <Redirect to={pages.CONTENT_PAGE}/>
+                                <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.ACCOUNT_PAGE}>
@@ -137,11 +137,6 @@ class App extends React.Component {
                         <Route path={pages.MY_POSTS_PAGE}>
                             {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
                         </Route>
-
-                        <Route path={pages.CONTENT_PAGE}>
-                            <div style={{textAlign: 'center', margin: '50px'}}>Здесь будет контент</div>
-                        </Route>
-
                         <Route path="*">
                             <NoMatch/>
                         </Route>
