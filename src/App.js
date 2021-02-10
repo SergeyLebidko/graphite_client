@@ -52,7 +52,7 @@ class App extends React.Component {
                     account: null
                 });
                 localStorage.removeItem('token');
-                this.props.history.push('/login');
+                this.props.history.push(pages.LOGIN_PAGE);
             }
         });
 
@@ -77,12 +77,12 @@ class App extends React.Component {
 
     accountRegisterHandler(account, token) {
         this.setAccountData(account, token);
-        this.props.history.push('/account');
+        this.props.history.push(pages.ACCOUNT_PAGE);
     }
 
     accountLoginHandler(account, token) {
         this.setAccountData(account, token);
-        this.props.history.push('/content');
+        this.props.history.push(pages.CONTENT_PAGE);
     }
 
     accountLogoutHandler() {
@@ -90,7 +90,7 @@ class App extends React.Component {
         this.setState({
             account: null
         });
-        this.props.history.push('/content');
+        this.props.history.push(pages.CONTENT_PAGE);
     }
 
     refreshAccount(account) {
