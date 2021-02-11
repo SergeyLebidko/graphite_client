@@ -29,7 +29,7 @@
     margin-top: 10px;
 }
 
-.posts_block div {
+.posts_block > div {
     margin: 10px;
 }
 

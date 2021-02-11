@@ -28,6 +28,7 @@ class MyPosts extends React.Component {
             headers: {'Authorization': token},
             data: {account: account.id}
         }).then(data => {
+            console.log(data);
             setTimeout(() => this.setState(prevState => ({
                 hasLoad: true,
                 posts: [...prevState.posts, ...data.results],
@@ -57,14 +58,14 @@ class MyPosts extends React.Component {
                     <AccountStat account={account}/>
                 </div>
                 <div className={style.posts_block}>
-                    {posts.map((post, index) => <PostCard key={index} post={post}/>)}
+                    {posts.map((post, index) => <PostCard key={index} post={post} account={account}/>)}
                     {hasLoad ? '' : <div className={style.preloader_block}><Preloader modal={false}/></div>}
                 </div>
-                {nextPage === null ?
-                    '' :
-                    <div className={style.next_button_block}>
+                {hasLoad && nextPage !== null ?
+                    (<div className={style.next_button_block}>
                         <MiniButton buttonType="download" clickHandler={this.nextButtonHandler}/>
-                    </div>
+                    </div>)
+                    : ''
                 }
             </div>
         )
