@@ -10,6 +10,20 @@
     cursor: pointer;
 }
 
+.card_container:hover {
+    box-shadow: 0 5px 10px 10px lightgray;
+}
+
+.cape {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 30px;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, transparent 80%, whitesmoke 95%);
+
+}
+
 /* Блок-заголовок с датой и названием поста */
 
 .header_block {
@@ -39,21 +53,6 @@
 
 /* Блок с превью текста */
 
-.text_wrapper {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
-
-.text_wrapper div:first-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, transparent 80%, whitesmoke 95%);
-}
-
 .text_block {
     color: gray;
     padding-top: 10px;
@@ -64,6 +63,7 @@
 .stat_block {
     position: absolute;
     width: 100%;
+    height: 30px;
     bottom: 0;
     background-color: whitesmoke;
     z-index: 1;

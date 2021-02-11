@@ -11,6 +11,7 @@ export function PostCard({account, post}) {
     }
     return (
         <div className={style.card_container}>
+            <div className={style.cape}></div>
             <div className={style.header_block}>
                 <div>
                     <img src={avatar === null ? '/images/no_avatar.svg' : `${HOST}${avatar}`}/>
@@ -24,11 +25,8 @@ export function PostCard({account, post}) {
                     </p>
                 </div>
             </div>
-            <div className={style.text_wrapper}>
-                <div></div>
-                <div className={style.text_block}>
-                    {textForShow}
-                </div>
+            <div className={style.text_block}>
+                {textForShow}
             </div>
             <div className={style.stat_block}>
                 <ul>
