@@ -90,7 +90,7 @@ class App extends React.Component {
         this.setState({
             account: null
         });
-        this.props.history.push(pages.MAIN_PAGE);
+        if (this.props.location.pathname !== pages.MAIN_PAGE) this.props.history.push(pages.MAIN_PAGE);
     }
 
     refreshAccount(account) {

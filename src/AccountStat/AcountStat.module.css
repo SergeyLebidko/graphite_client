@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 600px;
+    min-width: 350px;
     height: 40px;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 20px;
@@ -23,5 +23,13 @@
 }
 
 .account_stat_container li {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account_stat_container img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }

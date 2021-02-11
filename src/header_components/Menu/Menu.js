@@ -27,21 +27,9 @@ class Menu extends React.Component {
             <div className={targetClasses} onClick={this.props.hideMenuHandler}>
                 <div>
                     <p>Посты</p>
-                    <ul>
-                        <li>Пункт 1</li>
-                        <li>Пункт 2</li>
-                        <li>Пункт 3</li>
-                        <li>Пункт 4</li>
-                    </ul>
                 </div>
                 <div>
                     <p>Авторы</p>
-                    <ul>
-                        <li>Пункт 1</li>
-                        <li>Пункт 2</li>
-                        <li>Пункт 3</li>
-                        <li>Пункт 4</li>
-                    </ul>
                 </div>
                 {(this.props.hasLogin) ? (
                     <div>
@@ -56,7 +44,9 @@ class Menu extends React.Component {
                             <li>
                                 <Link to={pages.ACCOUNT_PAGE}>Мой аккаунт</Link>
                             </li>
-                            <li onClick={this.logoutButtonHandler}>Выход</li>
+                            <li onClick={this.logoutButtonHandler}>
+                                <Link to={pages.MAIN_PAGE}>Выход</Link>
+                            </li>
                         </ul>
                     </div>
                 ) : null}

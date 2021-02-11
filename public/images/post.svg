@@ -1,0 +1,12 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="17.384604" height="17.384604" id="canvas_background" fill="none"/>
+ </g>
+
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#00cbff" stroke-width="0" stroke-opacity="null" x="-16" y="27" width="99" height="98" id="svg_6" rx="9" stroke="#696969" transform="matrix(1.0075121188185694,0,0,1.0164313828194935,16.261519170696758,-27.312970795282265) "/>
+  <text fill="#ffffff" stroke-width="0" stroke-opacity="null" x="40.704421" y="84.527186" id="svg_8" font-size="52" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" transform="matrix(1.7377369491418972,0,0,1.4782124472204792,-48.426508203342195,-46.11845982813645) " stroke="#000">T</text>
+ </g>
+</svg>

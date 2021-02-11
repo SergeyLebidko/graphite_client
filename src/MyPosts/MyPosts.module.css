@@ -11,3 +11,14 @@
 .header_block > div:first-child {
     margin-right: 5px;
 }
+
+.posts_block {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.posts_block div {
+    margin: 10px;
+}
