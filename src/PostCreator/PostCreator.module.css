@@ -37,6 +37,6 @@
     justify-content: flex-end;
 }
 
-.control_block span:first-child {
+.control_block span:not(:last-child) {
     margin-right: 5px;
 }

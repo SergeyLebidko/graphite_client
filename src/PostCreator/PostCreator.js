@@ -69,6 +69,7 @@ class PostCreator extends React.Component {
 
     render() {
         let {titleValue, textValue, errors} = this.state;
+        let {history} = this.props;
         let wordCount = 0;
         let matches = textValue.match(/([А-Яа-яA-Za-zЁё]+)/g);
         if (matches !== null) wordCount = matches.length;
@@ -92,6 +93,7 @@ class PostCreator extends React.Component {
                     Всего слов: {wordCount}
                 </p>
                 <div className={style.control_block}>
+                    <SimpleButton title="Отмена" actionHandler={() => history.goBack()} stylePreset="blue"/>
                     <SimpleButton title="Очистить" actionHandler={this.clearClickHandler} stylePreset="blue"/>
                     <SimpleButton title="Сохранить" actionHandler={this.saveClickHandler}/>
                 </div>
