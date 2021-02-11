@@ -16,9 +16,9 @@
     height: 17px;
 }
 
-/* Стили для кнопок Ok и Add */
+/* Стили для кнопок Ok, Add и Download */
 
-.ok, .add {
+.ok, .add, .download {
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 

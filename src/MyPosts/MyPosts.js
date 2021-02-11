@@ -15,14 +15,16 @@ class MyPosts extends React.Component {
         this.state = {
             hasLoad: false,
             posts: [],
-            nextPage: null
+            nextPage: POST_URL
         }
+        this.nextButtonHandler = this.nextButtonHandler.bind(this);
     }
 
     downloadPosts() {
         let {account} = this.props;
+        let {nextPage} = this.state;
         let token = localStorage.getItem('token');
-        $.ajax(POST_URL, {
+        $.ajax(nextPage, {
             headers: {'Authorization': token},
             data: {account: account.id}
         }).then(data => {
@@ -38,19 +40,32 @@ class MyPosts extends React.Component {
         this.downloadPosts();
     }
 
+    nextButtonHandler() {
+        this.setState({
+            hasLoad: false
+        })
+        this.downloadPosts();
+    }
+
     render() {
-        let {account} = this.props;
-        let {hasLoad, posts} = this.state;
+        let {account, history} = this.props;
+        let {hasLoad, posts, nextPage} = this.state;
         return (
             <div className={style.my_posts_container}>
                 <div className={style.header_block}>
-                    <MiniButton buttonType="add" clickHandler={() => this.props.history.push(pages.CREATE_POST_PAGE)}/>
+                    <MiniButton buttonType="add" clickHandler={() => history.push(pages.CREATE_POST_PAGE)}/>
                     <AccountStat account={account}/>
                 </div>
                 <div className={style.posts_block}>
                     {posts.map((post, index) => <PostCard key={index} post={post}/>)}
                     {hasLoad ? '' : <div className={style.preloader_block}><Preloader modal={false}/></div>}
                 </div>
+                {nextPage === null ?
+                    '' :
+                    <div className={style.next_button_block}>
+                        <MiniButton buttonType="download" clickHandler={this.nextButtonHandler}/>
+                    </div>
+                }
             </div>
         )
     }

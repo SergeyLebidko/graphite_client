@@ -13,7 +13,8 @@
 }
 
 .preloader_block {
-    padding-top: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     width: 100%;
 }
 
@@ -26,4 +27,10 @@
 
 .posts_block div {
     margin: 10px;
+}
+
+.next_button_block {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
 }
