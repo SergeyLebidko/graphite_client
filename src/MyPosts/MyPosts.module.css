@@ -2,6 +2,10 @@
     margin-top: 20px;
 }
 
+.my_posts_container > div:last-child {
+    padding-bottom: 20px;
+}
+
 .header_block {
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@
 }
 
 .header_block > div:first-child {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .preloader_block {
@@ -32,5 +36,4 @@
 .next_button_block {
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
 }
