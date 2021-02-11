@@ -2,26 +2,49 @@ import React from 'react';
 import $ from 'jquery';
 import {withRouter} from 'react-router-dom';
 import {MiniButton} from '../MiniButton/MiniButton';
-import {PostCard} from '../account_components/PostCard/PostCard';
+import {PostCard} from '../PostCard/PostCard';
 import AccountStat from '../AccountStat/AccountStat';
+import Preloader from '../Preloader/Preloader';
 import * as pages from '../internal_pages';
 import style from './MyPosts.module.css';
+import {POST_URL} from '../settings';
 
 class MyPosts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: new Array(10).fill(0)
+            hasLoad: false,
+            posts: null
         }
     }
 
     componentWillMount() {
-        console.log('Мои посты');
+        let {account} = this.props;
+        let token = localStorage.getItem('token');
+        $.ajax(POST_URL, {
+            headers: {'Authorization': token},
+            data: {account: account.id}
+        }).then(data => {
+            setTimeout(() => this.setState({
+                hasLoad: true,
+                posts: data.results
+            }), 2500);
+        })
+    }
+
+    getContent() {
+        let {hasLoad, posts} = this.state;
+        if (!hasLoad) return <div className={style.preloader_block}><Preloader modal={false}/></div>;
+
+        return (
+            <>
+                {posts.map((post, index) => <PostCard key={index} post={post}/>)}
+            </>
+        )
     }
 
     render() {
         let {account} = this.props;
-        let {posts} = this.state;
         return (
             <div className={style.my_posts_container}>
                 <div className={style.header_block}>
@@ -29,7 +52,7 @@ class MyPosts extends React.Component {
                     <AccountStat account={account}/>
                 </div>
                 <div className={style.posts_block}>
-                    {posts.map((post, index) => <PostCard/>)}
+                    {this.getContent()}
                 </div>
             </div>
         )

@@ -12,6 +12,11 @@
     margin-right: 5px;
 }
 
+.preloader_block {
+    padding-top: 150px;
+    width: 100%;
+}
+
 .posts_block {
     display: flex;
     flex-flow: row wrap;
