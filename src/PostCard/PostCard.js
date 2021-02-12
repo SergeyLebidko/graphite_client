@@ -1,7 +1,9 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import style from './PostCard.module.css';
 import {HOST} from '../settings';
 import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
+import * as pages from '../internal_pages';
 
 class PostCard extends React.Component {
     constructor(props) {
@@ -36,14 +38,14 @@ class PostCard extends React.Component {
     }
 
     render() {
-        let {post, account} = this.props;
+        let {post, account, history} = this.props;
         let {avatar, username} = account;
         let textForShow = post.text.split('\n').map((fragment, index) => <p key={index}>{fragment}</p>);
         let {usernameShowFlag, usernameTop, usernameLeft} = this.state;
-
         let usernameBlockStyle = {top: usernameTop, left: usernameLeft, display: (usernameShowFlag ? 'block' : 'none')};
+
         return (
-            <div className={style.card_container}>
+            <div className={style.card_container} onClick={() => history.push(pages.MY_POST_PAGE + `/${post.id}`)}>
                 <div className={style.username_block} style={usernameBlockStyle}>{username}</div>
                 <div className={style.cape}></div>
                 <div className={style.header_block}>
@@ -78,4 +80,4 @@ class PostCard extends React.Component {
 
 }
 
-export default PostCard;
+export default withRouter(PostCard);
