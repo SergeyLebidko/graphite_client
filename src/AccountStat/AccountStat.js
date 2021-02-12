@@ -39,7 +39,7 @@ class AccountStat extends React.Component {
         return (
             <ul>
                 <li><img src="/images/post.svg"/> {postCount}</li>
-                <li><img src="/images/like.svg"/> {likeCount}</li>
+                <li><img src="/images/like_blue.svg"/> {likeCount}</li>
                 <li><img src="/images/comment.svg"/> {commentCount}</li>
             </ul>
         )

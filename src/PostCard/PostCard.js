@@ -30,7 +30,7 @@ export function PostCard({account, post}) {
             </div>
             <div className={style.stat_block}>
                 <ul>
-                    <li><img src="/images/like.svg"/> {post.like_count}</li>
+                    <li><img src="/images/like_blue.svg"/> {post.like_count}</li>
                     <li><img src="/images/comment.svg"/> {post.comment_count}</li>
                 </ul>
             </div>
