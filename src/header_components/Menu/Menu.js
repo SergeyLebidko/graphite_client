@@ -21,7 +21,7 @@ class Menu extends React.Component {
     }
 
     render() {
-        let {hasOpenMenu} = this.props;
+        let {hasOpenMenu, account} = this.props;
         let targetClasses = `${style.menu} ${hasOpenMenu ? style.opened_menu : style.closed_menu}`;
         return (
             <div className={targetClasses} onClick={this.props.hideMenuHandler}>
@@ -31,7 +31,7 @@ class Menu extends React.Component {
                 <div>
                     <p>Авторы</p>
                 </div>
-                {(this.props.hasLogin) ? (
+                {(account !== null) ? (
                     <div>
                         <p>Мой Graphite</p>
                         <ul>

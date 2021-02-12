@@ -12,19 +12,8 @@ class MyPost extends React.Component {
         }
     }
 
-    downloadData(postId){
-
-    }
-
-    componentWillReceiveProps(nextProps, nextContext) {
-        console.log('Получаю пропсы');
-    }
-
-    componentWillMount() {
-        let {match} = this.props;
-        let postId = match.params.id;
+    downloadData(postId) {
         let token = localStorage.getItem('token');
-
         $.ajax(POST_URL + postId + '/', {
             headers: {'Authorization': token}
         }).then(data => {
@@ -32,6 +21,18 @@ class MyPost extends React.Component {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let {match} = nextProps;
+        let postId = match.params.id;
+        this.downloadData(postId);
+    }
+
+    componentWillMount() {
+        let {match} = this.props;
+        let postId = match.params.id;
+        this.downloadData(postId);
     }
 
     render() {

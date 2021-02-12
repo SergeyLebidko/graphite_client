@@ -37,6 +37,8 @@ class Header extends React.Component {
     }
 
     render() {
+        let {account} = this.props;
+        let {hasOpenMenu} = this.state;
         return (
             <>
                 <div className={style.header}>
@@ -48,9 +50,9 @@ class Header extends React.Component {
                                    hideMenu={this.hideMenu}/>
                     </div>
                 </div>
-                <Menu accountLogoutHandler={this.props.accountLogoutHandler}
-                      hasLogin={this.props.account !== null}
-                      hasOpenMenu={this.state.hasOpenMenu}
+                <Menu account={account}
+                      hasOpenMenu={hasOpenMenu}
+                      accountLogoutHandler={this.props.accountLogoutHandler}
                       hideMenuHandler={this.hideMenu}/>
             </>
         )

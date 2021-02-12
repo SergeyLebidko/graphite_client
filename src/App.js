@@ -103,7 +103,7 @@ class App extends React.Component {
 
     render() {
         let {hasInit, account} = this.state;
-        let hasLogin = account == null;
+        let hasNoLogin = account == null;
         return (
             <>
                 {(!hasInit) ? <Preloader/> : null}
@@ -114,19 +114,19 @@ class App extends React.Component {
                             <div style={{textAlign: 'center'}}>Заглушка для главной страницы</div>
                         </Route>
                         <Route path={pages.REGISTER_PAGE}>
-                            {hasLogin ?
+                            {hasNoLogin ?
                                 <RegisterForm accountRegisterHandler={this.accountRegisterHandler}/> :
                                 <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.LOGIN_PAGE}>
-                            {hasLogin ?
+                            {hasNoLogin ?
                                 <LoginForm accountLoginHandler={this.accountLoginHandler}/> :
                                 <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
                         <Route path={pages.ACCOUNT_PAGE}>
-                            {hasLogin ?
+                            {hasNoLogin ?
                                 <Redirect to={pages.LOGIN_PAGE}/> :
                                 <Account account={account}
                                          refreshAccount={this.refreshAccount}
@@ -134,13 +134,13 @@ class App extends React.Component {
                             }
                         </Route>
                         <Route path={pages.CREATE_POST_PAGE}>
-                            {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
+                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path={pages.MY_POSTS_PAGE}>
-                            {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
+                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
                         </Route>
                         <Route path={pages.MY_POST_PAGE + '/:id'}>
-                            {hasLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPost/>}
+                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPost/>}
                         </Route>
                         <Route path="*">
                             <NoMatch/>
