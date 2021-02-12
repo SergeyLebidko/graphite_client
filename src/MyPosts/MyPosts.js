@@ -28,7 +28,6 @@ class MyPosts extends React.Component {
             headers: {'Authorization': token},
             data: {account: account.id}
         }).then(data => {
-            console.log(data);
             setTimeout(() => this.setState(prevState => ({
                 hasLoad: true,
                 posts: [...prevState.posts, ...data.results],
