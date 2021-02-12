@@ -12,12 +12,20 @@ class MyPost extends React.Component {
         }
     }
 
+    downloadData(postId){
+
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        console.log('Получаю пропсы');
+    }
+
     componentWillMount() {
         let {match} = this.props;
         let postId = match.params.id;
         let token = localStorage.getItem('token');
 
-        $.ajax(POST_URL + postId, {
+        $.ajax(POST_URL + postId + '/', {
             headers: {'Authorization': token}
         }).then(data => {
             console.log(data);
