@@ -17,10 +17,10 @@
 .cape {
     position: absolute;
     width: 100%;
-    top: 0;
+    top: 50%;
     bottom: 30px;
     z-index: 1;
-    background-image: linear-gradient(to bottom, transparent 80%, whitesmoke 95%);
+    background-image: linear-gradient(to bottom, transparent 70%, whitesmoke 95%);
 
 }
 
@@ -86,4 +86,15 @@
     width: 20px;
     height: 20px;
     margin-right: 5px;
+}
+
+/* Стили для блока с именем пользователя */
+
+.username_block {
+    position: fixed;
+    color: black;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import {withRouter} from 'react-router-dom';
 import {MiniButton} from '../MiniButton/MiniButton';
-import {PostCard} from '../PostCard/PostCard';
+import PostCard from '../PostCard/PostCard';
 import AccountStat from '../AccountStat/AccountStat';
 import Preloader from '../Preloader/Preloader';
 import * as pages from '../internal_pages';
