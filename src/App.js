@@ -1,8 +1,9 @@
 import React from 'react';
-import {Switch, Route, Redirect, withRouter, useLocation} from 'react-router-dom';
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
+import NoMatch from './NoMatch/NoMatch';
 import Preloader from './Preloader/Preloader';
 import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
@@ -149,14 +150,6 @@ class App extends React.Component {
             </>
         );
     }
-}
-
-function NoMatch() {
-    let location = useLocation();
-    return (
-        <div style={{textAlign: 'center', margin: '50px'}}>HTTP: 404. Страница с адресом {location.pathname} не
-            найдена...</div>
-    )
 }
 
 export default withRouter(App);
