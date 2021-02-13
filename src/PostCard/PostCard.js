@@ -38,19 +38,19 @@ class PostCard extends React.Component {
     }
 
     render() {
-        let {post, account, history} = this.props;
-        let {avatar, username} = account;
+        let {post, history} = this.props;
+        let {account_username, account_avatar} = post;
         let textForShow = post.text.split('\n').map((fragment, index) => <p key={index}>{fragment}</p>);
         let {usernameShowFlag, usernameTop, usernameLeft} = this.state;
         let usernameBlockStyle = {top: usernameTop, left: usernameLeft, display: (usernameShowFlag ? 'block' : 'none')};
 
         return (
             <div className={style.card_container} onClick={() => history.push(pages.POST_PAGE + `/${post.id}`)}>
-                <div className={style.username_block} style={usernameBlockStyle}>{username}</div>
+                <div className={style.username_block} style={usernameBlockStyle}>{account_username}</div>
                 <div className={style.cape}></div>
                 <div className={style.header_block}>
                     <div onClick={this.avatarClickHandler}>
-                        <img src={avatar === null ? '/images/no_avatar.svg' : `${HOST}${avatar}`}
+                        <img src={account_avatar === null ? '/images/no_avatar.svg' : `${HOST}${account_avatar}`}
                              onMouseEnter={this.avatarMouseEnterHandler}
                              onMouseLeave={this.avatarMouseLeaveHandler}
                              onMouseMove={this.avatarMouseMoveHandler}

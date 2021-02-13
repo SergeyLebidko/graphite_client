@@ -10,8 +10,8 @@ import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
-import MyPosts from './Posts/Posts';
-import MyPost from './Post/Post';
+import Posts from './Posts/Posts';
+import Post from './Post/Post';
 import * as pages from './internal_pages';
 
 class App extends React.Component {
@@ -137,10 +137,10 @@ class App extends React.Component {
                             {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path={pages.POSTS_PAGE}>
-                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPosts account={account}/>}
+                            <Posts account={account}/>
                         </Route>
                         <Route path={pages.POST_PAGE + '/:id'}>
-                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <MyPost/>}
+                            <Post account={account}/>
                         </Route>
                         <Route path="*">
                             <NoMatch/>

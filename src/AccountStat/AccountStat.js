@@ -14,7 +14,7 @@ class AccountStat extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let token = localStorage.getItem('token');
         $.ajax(ACCOUNT_STAT_URL, {
             headers: {'Authorization': token}

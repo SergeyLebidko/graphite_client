@@ -9,34 +9,41 @@ import * as pages from '../internal_pages';
 import style from './Posts.module.css';
 import {POST_URL} from '../settings';
 
+export function parseLocation(location) {
+    let params = new URLSearchParams(location.search);
+    return {
+        account: params.get('account'),
+        search: params.get('search'),
+        order: params.get('order')
+    }
+}
+
 class Posts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             hasLoad: false,
             posts: [],
-            nextPage: POST_URL
+            nextPage: POST_URL + props.location.search
         }
         this.nextButtonHandler = this.nextButtonHandler.bind(this);
     }
 
     downloadPosts() {
-        let {account} = this.props;
         let {nextPage} = this.state;
         let token = localStorage.getItem('token');
         $.ajax(nextPage, {
             headers: {'Authorization': token},
-            data: {account: account.id}
         }).then(data => {
             setTimeout(() => this.setState(prevState => ({
                 hasLoad: true,
                 posts: [...prevState.posts, ...data.results],
                 nextPage: data.next
-            })), 2500);
+            })), 2000);
         })
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.downloadPosts();
     }
 
@@ -47,15 +54,25 @@ class Posts extends React.Component {
         this.downloadPosts();
     }
 
+    getHeaderBlock() {
+        let {account, location, history} = this.props;
+        if (account === null) return '';
+
+        let locationParams = parseLocation(location);
+        return (
+            <div className={style.header_block}>
+                <MiniButton buttonType="add" clickHandler={() => history.push(pages.CREATE_POST_PAGE)}/>
+                {account.id == locationParams.account ? <AccountStat/> : ''}
+            </div>
+        );
+    }
+
     render() {
-        let {account, history} = this.props;
+        let {account} = this.props;
         let {hasLoad, posts, nextPage} = this.state;
         return (
             <div className={style.my_posts_container}>
-                <div className={style.header_block}>
-                    <MiniButton buttonType="add" clickHandler={() => history.push(pages.CREATE_POST_PAGE)}/>
-                    <AccountStat account={account}/>
-                </div>
+                {this.getHeaderBlock()}
                 <div className={style.posts_block}>
                     {posts.map((post, index) => <PostCard key={index} post={post} account={account}/>)}
                     {hasLoad ? '' : <div className={style.preloader_block}><Preloader modal={false}/></div>}
