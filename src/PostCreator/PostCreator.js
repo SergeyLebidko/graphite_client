@@ -43,6 +43,7 @@ class PostCreator extends React.Component {
 
     saveClickHandler() {
         let errors = [];
+        let {account} = this.props;
         let {titleValue, textValue} = this.state;
         titleValue = $.trim(titleValue);
         textValue = $.trim(textValue);
@@ -58,12 +59,12 @@ class PostCreator extends React.Component {
             method: 'POST',
             headers: {'Authorization': token},
             data: {
-                title: this.state.titleValue,
-                text: this.state.textValue,
-                account: this.props.account.id
+                title: titleValue,
+                text: textValue,
+                account: account.id
             }
         }).then(() => {
-            this.props.history.push(pages.POSTS_PAGE);
+            this.props.history.push(pages.POSTS_PAGE + `/?account=${account.id}`);
         })
     }
 
