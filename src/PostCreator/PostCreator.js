@@ -63,7 +63,7 @@ class PostCreator extends React.Component {
                 account: this.props.account.id
             }
         }).then(() => {
-            this.props.history.push(pages.MY_POSTS_PAGE);
+            this.props.history.push(pages.POSTS_PAGE);
         })
     }
 

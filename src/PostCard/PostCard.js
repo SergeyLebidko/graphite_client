@@ -45,7 +45,7 @@ class PostCard extends React.Component {
         let usernameBlockStyle = {top: usernameTop, left: usernameLeft, display: (usernameShowFlag ? 'block' : 'none')};
 
         return (
-            <div className={style.card_container} onClick={() => history.push(pages.MY_POST_PAGE + `/${post.id}`)}>
+            <div className={style.card_container} onClick={() => history.push(pages.POST_PAGE + `/${post.id}`)}>
                 <div className={style.username_block} style={usernameBlockStyle}>{username}</div>
                 <div className={style.cape}></div>
                 <div className={style.header_block}>

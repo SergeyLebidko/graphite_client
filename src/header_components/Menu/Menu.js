@@ -39,7 +39,7 @@ class Menu extends React.Component {
                                 <Link to={pages.CREATE_POST_PAGE}>Добавить пост</Link>
                             </li>
                             <li>
-                                <Link to={pages.MY_POSTS_PAGE}>Мои посты</Link>
+                                <Link to={pages.POSTS_PAGE}>Мои посты</Link>
                             </li>
                             <li>
                                 <Link to={pages.ACCOUNT_PAGE}>Мой аккаунт</Link>
