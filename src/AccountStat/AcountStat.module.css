@@ -24,15 +24,52 @@
 }
 
 .account_stat_container li {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 20px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .account_stat_container img {
     width: 20px;
     height: 20px;
     margin-right: 5px;
+}
+
+/* Стили для всплывающих подсказок */
+
+ul li:after {
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    color: black;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+    z-index: 1;
+}
+
+ul li:nth-child(1):hover:after {
+    content: 'Количество постов';
+    display: block;
+}
+
+ul li:nth-child(2):hover:after {
+    content: 'Количество лайков';
+    display: block;
+}
+
+ul li:nth-child(3):hover:after {
+    content: 'Количество комментариев';
+    display: block;
+}
+
+ul li:nth-child(4):hover:after {
+    content: 'Общее количество просмотров';
+    display: block;
 }
