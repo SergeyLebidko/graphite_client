@@ -10,8 +10,8 @@ import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
 import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
-import MyPosts from './MyPosts/MyPosts';
-import MyPost from './MyPost/MyPost';
+import MyPosts from './Posts/Posts';
+import MyPost from './Post/Post';
 import * as pages from './internal_pages';
 
 class App extends React.Component {

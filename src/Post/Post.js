@@ -1,10 +1,10 @@
 import React from 'react';
 import $ from 'jquery';
 import {withRouter} from 'react-router-dom';
-import style from './MyPost.module.css'
+import style from './Post.module.css'
 import {POST_URL} from '../settings';
 
-class MyPost extends React.Component {
+class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,4 +42,4 @@ class MyPost extends React.Component {
     }
 }
 
-export default withRouter(MyPost);
+export default withRouter(Post);

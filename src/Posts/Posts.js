@@ -6,10 +6,10 @@ import PostCard from '../PostCard/PostCard';
 import AccountStat from '../AccountStat/AccountStat';
 import Preloader from '../Preloader/Preloader';
 import * as pages from '../internal_pages';
-import style from './MyPosts.module.css';
+import style from './Posts.module.css';
 import {POST_URL} from '../settings';
 
-class MyPosts extends React.Component {
+class Posts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,4 +71,4 @@ class MyPosts extends React.Component {
     }
 }
 
-export default withRouter(MyPosts);
+export default withRouter(Posts);
