@@ -40,7 +40,9 @@ class PostCard extends React.Component {
     render() {
         let {post, history} = this.props;
         let {account_username, account_avatar} = post;
-        let textForShow = post.text.split('\n').map((fragment, index) => <p key={index}>{fragment}</p>);
+        let textForShow = post.text.split('\n').map((fragment, index) =>
+            fragment.length === 0 ? <br/> : <p key={index}>{fragment}</p>
+        );
         let {usernameShowFlag, usernameTop, usernameLeft} = this.state;
         let usernameBlockStyle = {top: usernameTop, left: usernameLeft, display: (usernameShowFlag ? 'block' : 'none')};
 
