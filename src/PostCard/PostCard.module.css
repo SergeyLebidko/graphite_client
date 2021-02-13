@@ -20,7 +20,7 @@
     top: 50%;
     bottom: 30px;
     z-index: 1;
-    background-image: linear-gradient(to bottom, transparent 70%, whitesmoke 95%);
+    background-image: linear-gradient(to bottom, transparent 70%, whitesmoke 90%);
 
 }
 
@@ -62,30 +62,14 @@
 
 .stat_block {
     position: absolute;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 33px;
     bottom: 0;
     background-color: whitesmoke;
     z-index: 1;
     border-top: 1px dotted dimgray;
-}
-
-.stat_block ul {
-    display: flex;
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.stat_block li {
-    display: flex;
-    margin: 5px 10px;
-    align-items: center;
-}
-
-.stat_block img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
 }
 
 /* Стили для блока с именем пользователя */

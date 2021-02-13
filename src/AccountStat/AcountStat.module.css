@@ -41,7 +41,7 @@
 
 /* Стили для всплывающих подсказок */
 
-ul li:after {
+.stat_items_block li:after {
     position: absolute;
     left: 110%;
     top: 50%;
@@ -55,22 +55,22 @@ ul li:after {
     z-index: 1;
 }
 
-ul li:nth-child(1):hover:after {
+.stat_items_block li:nth-child(1):hover:after {
     content: 'Количество постов';
     display: block;
 }
 
-ul li:nth-child(2):hover:after {
+.stat_items_block li:nth-child(2):hover:after {
     content: 'Количество лайков под постами';
     display: block;
 }
 
-ul li:nth-child(3):hover:after {
+.stat_items_block li:nth-child(3):hover:after {
     content: 'Количество комментариев под постами';
     display: block;
 }
 
-ul li:nth-child(4):hover:after {
+.stat_items_block li:nth-child(4):hover:after {
     content: 'Общее количество просмотров постов';
     display: block;
 }
