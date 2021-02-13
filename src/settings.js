@@ -47,3 +47,6 @@ export const POST_TEXT_MAX_LEN = 10000;
 
 // Хук для получения статистики аккаунта
 export const ACCOUNT_STAT_URL = `${HOST}/api/account_stat/`;
+
+// Хук для получения статистики отдельного поста
+export const POST_STAT_URL = `${HOST}/api/post_stat/`;

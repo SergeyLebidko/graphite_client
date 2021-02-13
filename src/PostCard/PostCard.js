@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import PostStat from '../PostStat/PostStat';
 import style from './PostCard.module.css';
 import {HOST} from '../settings';
 import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
@@ -71,10 +72,7 @@ class PostCard extends React.Component {
                     {textForShow}
                 </div>
                 <div className={style.stat_block}>
-                    <ul>
-                        <li><img src="/images/like_blue.svg"/> {post.like_count}</li>
-                        <li><img src="/images/comment.svg"/> {post.comment_count}</li>
-                    </ul>
+                    <PostStat postId={post.id}/>
                 </div>
             </div>
         )
