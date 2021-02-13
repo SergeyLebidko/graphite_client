@@ -10,21 +10,21 @@ class AccountStat extends React.Component {
             hasLoad: false,
             postCount: null,
             likeCount: null,
-            commentCount: null
+            commentCount: null,
+            totalViewsCount: null
         }
     }
 
     componentDidMount() {
-        let token = localStorage.getItem('token');
-        $.ajax(ACCOUNT_STAT_URL, {
-            headers: {'Authorization': token}
-        }).then(data => {
+        let {accountId} = this.props;
+        $.ajax(ACCOUNT_STAT_URL + `?account=${accountId}`).then(data => {
             setTimeout(() => {
                 this.setState({
                     hasLoad: true,
                     postCount: data['post_count'],
                     likeCount: data['like_count'],
-                    commentCount: data['comment_count']
+                    commentCount: data['comment_count'],
+                    totalViewsCount: data['total_views_count']
                 })
             }, 1000);
         });
@@ -35,12 +35,13 @@ class AccountStat extends React.Component {
     }
 
     getStatContent() {
-        let {postCount, likeCount, commentCount} = this.state;
+        let {postCount, likeCount, commentCount, totalViewsCount} = this.state;
         return (
             <ul>
                 <li><img src="/images/post.svg"/> {postCount}</li>
                 <li><img src="/images/like_blue.svg"/> {likeCount}</li>
                 <li><img src="/images/comment.svg"/> {commentCount}</li>
+                <li><img src="/images/view.svg"/> {totalViewsCount}</li>
             </ul>
         )
     }
