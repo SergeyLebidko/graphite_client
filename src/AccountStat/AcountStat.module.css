@@ -4,7 +4,7 @@
     align-items: center;
     height: 40px;
     border: 1px solid rgb(210, 210, 210);
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: whitesmoke;
 }
 
@@ -45,6 +45,7 @@ ul li:after {
     position: absolute;
     left: 110%;
     top: 50%;
+    width: 170px;
     color: black;
     background-color: beige;
     border: 1px solid black;
@@ -60,16 +61,16 @@ ul li:nth-child(1):hover:after {
 }
 
 ul li:nth-child(2):hover:after {
-    content: 'Количество лайков';
+    content: 'Количество лайков под постами';
     display: block;
 }
 
 ul li:nth-child(3):hover:after {
-    content: 'Количество комментариев';
+    content: 'Количество комментариев под постами';
     display: block;
 }
 
 ul li:nth-child(4):hover:after {
-    content: 'Общее количество просмотров';
+    content: 'Общее количество просмотров постов';
     display: block;
 }

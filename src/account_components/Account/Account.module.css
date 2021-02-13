@@ -1,15 +1,22 @@
 .account_container {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    max-width: 950px;
+    justify-content: center;
     margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.control_container {
-    width: 630px;
+.left_container {
+    width: 400px;
+    margin-right: 15px;
+}
+
+.left_container > div:last-child {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.right_container {
+    width: 600px;
 }
 
 .basic_data_container, .settings_container {

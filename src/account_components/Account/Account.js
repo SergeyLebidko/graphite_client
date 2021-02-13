@@ -11,6 +11,7 @@ import LoginControl from '../LoginControl/LoginControl';
 import PasswordControl from '../PasswordControl/PasswordControl';
 import LogoutControl from '../LogoutControl/LogoutControl';
 import RemoveAccountControl from '../RemoveAccountControl/RemoveAccountControl';
+import AccountStat from '../../AccountStat/AccountStat';
 
 class Account extends React.Component {
     constructor(props) {
@@ -29,8 +30,11 @@ class Account extends React.Component {
     render() {
         return (
             <div className={style.account_container}>
-                <AvatarControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
-                <div className={style.control_container}>
+                <div className={style.left_container}>
+                    <AvatarControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
+                    <AccountStat accountId={this.props.account.id}/>
+                </div>
+                <div className={style.right_container}>
                     <div className={style.basic_data_container}>
                         <UsernameControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
                         <table>
