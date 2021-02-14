@@ -43,6 +43,10 @@ class Posts extends React.Component {
         })
     }
 
+    componentWillReceiveProps() {
+        this.downloadPosts();
+    }
+
     componentDidMount() {
         this.downloadPosts();
     }

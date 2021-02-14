@@ -39,8 +39,8 @@ class PostStat extends React.Component {
         this.setState({
             showHelpTextFlag: true,
             helpText: text,
-            hpTop: event.clientY + 15,
-            hpLeft: event.clientX + 15
+            hpTop: event.clientY + 30,
+            hpLeft: event.clientX - 15
         });
     }
 
@@ -52,8 +52,8 @@ class PostStat extends React.Component {
 
     elementMoveHandler(event) {
         this.setState({
-            hpTop: event.clientY + 15,
-            hpLeft: event.clientX + 15
+            hpTop: event.clientY + 30,
+            hpLeft: event.clientX - 15
         });
     }
 
@@ -62,7 +62,12 @@ class PostStat extends React.Component {
         if (!hasLoad) return ''
 
         let {showHelpTextFlag, helpText, hpTop, hpLeft} = this.state;
-        let helpBlockStyle = {top: hpTop, left: hpLeft, display: (showHelpTextFlag ? 'block' : 'none')}
+        let helpBlockStyle = {
+            top: hpTop,
+            left: hpLeft,
+            display: (showHelpTextFlag ? 'block' : 'none'),
+            zIndex: (showHelpTextFlag ? 10 : 0)
+        }
         return (
             <>
                 <div className={style.help_text_block} style={helpBlockStyle}>{helpText}</div>

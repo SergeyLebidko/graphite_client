@@ -137,7 +137,7 @@ class App extends React.Component {
                             {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path={pages.POSTS_PAGE}>
-                            <Posts account={account}/>
+                            <Posts key={Math.random()} account={account}/>
                         </Route>
                         <Route path={pages.POST_PAGE + '/:id'}>
                             <Post account={account}/>
