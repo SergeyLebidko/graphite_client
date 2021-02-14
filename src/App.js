@@ -111,7 +111,7 @@ class App extends React.Component {
                 <div className={style.content}>
                     <Switch>
                         <Route exact path={pages.MAIN_PAGE}>
-                            <div style={{textAlign: 'center'}}>Заглушка для главной страницы</div>
+                            <Redirect to={pages.POSTS_PAGE}/>
                         </Route>
                         <Route path={pages.REGISTER_PAGE}>
                             {hasNoLogin ?
@@ -140,7 +140,7 @@ class App extends React.Component {
                             <Posts key={Math.random()} account={account}/>
                         </Route>
                         <Route path={pages.POST_PAGE + '/:id'}>
-                            <Post account={account}/>
+                            <Post key={Math.random()} account={account}/>
                         </Route>
                         <Route path="*">
                             <NoMatch/>

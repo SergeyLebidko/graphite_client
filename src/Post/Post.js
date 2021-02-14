@@ -23,12 +23,6 @@ class Post extends React.Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
-        let {match} = nextProps;
-        let postId = match.params.id;
-        this.downloadData(postId);
-    }
-
     componentWillMount() {
         let {match} = this.props;
         let postId = match.params.id;
