@@ -26,11 +26,7 @@
     font-size: 1.4em;
 }
 
-.text_container {
-
-}
-
-.text_container > p {
+.text_header_container {
     font-size: 1.2em;
     border-top: 1px dotted dimgray;
     border-bottom: 1px dotted dimgray;
@@ -41,15 +37,23 @@
     color: white;
 }
 
-.text_container > p > span {
+.text_header_container > span {
     display: block;
     font-size: small;
 }
 
-.text_container > div {
+.post_control_container {
+    background-image: linear-gradient(to right bottom, gainsboro, silver);
+    border-bottom: 1px dotted dimgray;
+    padding: 5px 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.text_body_container {
     margin-top: 10px;
 }
 
-.text_container > div > p {
+.text_body_container > p {
     margin-bottom: 5px;
 }

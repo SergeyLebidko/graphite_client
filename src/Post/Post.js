@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import NoMatch from '../NoMatch/NoMatch';
+import PostRemover from '../PostRemover/PostRemover';
 import {withRouter} from 'react-router-dom';
 import {prepareTextForShow} from '../PostCard/PostCard';
 import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
@@ -63,12 +64,18 @@ class Post extends React.Component {
                     : ''
                 }
                 {hasPostLoad ?
-                    <div className={style.text_container}>
-                        <p>
+                    <div>
+                        <p className={style.text_header_container}>
                             {post.title}
                             <span>{dateStringForDisplay(post.dt_created)}</span>
                         </p>
-                        <div>
+                        {hasPostAccountLoad && this.props.account !== null && postAccount.id === this.props.account.id ?
+                            <div className={style.post_control_container}>
+                                <PostRemover post={post}/>
+                            </div>
+                            : ''
+                        }
+                        <div className={style.text_body_container}>
                             {prepareTextForShow(post.text)}
                         </div>
                     </div>

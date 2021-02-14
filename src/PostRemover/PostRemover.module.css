@@ -1,0 +1,18 @@
+.question_container span{
+    color: dimgray;
+    cursor: pointer;
+}
+
+.question_container span:hover{
+    text-decoration: underline;
+}
+
+.confirm_container {
+    display: flex;
+    align-items: center;
+}
+
+.confirm_container span{
+    color: dimgray;
+    margin-right: 20px;
+}
