@@ -58,6 +58,10 @@
     padding-top: 10px;
 }
 
+.text_block p {
+    margin-bottom: 5px;
+}
+
 /* Блок со статистикой лайков и комментариев */
 
 .stat_block {

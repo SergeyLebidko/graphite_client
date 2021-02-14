@@ -50,3 +50,6 @@ export const ACCOUNT_STAT_URL = `${HOST}/api/account_stat/`;
 
 // Хук для получения статистики отдельного поста
 export const POST_STAT_URL = `${HOST}/api/post_stat/`;
+
+// Хук для получения списка аккаунтов или аккаунта по его id
+export const ACCOUNT_URL = `${HOST}/api/accounts/`;
