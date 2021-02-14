@@ -28,40 +28,37 @@ class Account extends React.Component {
     }
 
     render() {
+        let {account, refreshAccount, logoutHandler} = this.props;
+        let {hasShowSettings} = this.state;
         return (
             <div className={style.account_container}>
                 <div className={style.left_container}>
-                    <AvatarControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
-                    <AccountStat accountId={this.props.account.id}/>
+                    <AvatarControl account={account} refreshAccount={refreshAccount}/>
+                    <AccountStat accountId={account.id}/>
                 </div>
                 <div className={style.right_container}>
                     <div className={style.basic_data_container}>
-                        <UsernameControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
+                        <UsernameControl account={account} refreshAccount={refreshAccount}/>
                         <table>
                             <tbody>
                             <tr>
                                 <td>Пол:</td>
-                                <td><GenderControl account={this.props.account}
-                                                   refreshAccount={this.props.refreshAccount}/>
-                                </td>
+                                <td><GenderControl account={account} refreshAccount={refreshAccount}/></td>
                             </tr>
                             <tr>
                                 <td>Дата рождения:</td>
-                                <td><BirthDateControl account={this.props.account}
-                                                      refreshAccount={this.props.refreshAccount}/>
-                                </td>
+                                <td><BirthDateControl account={account} refreshAccount={refreshAccount}/></td>
                             </tr>
                             </tbody>
                         </table>
-                        <DescriptionControl account={this.props.account} refreshAccount={this.props.refreshAccount}/>
+                        <DescriptionControl account={account} refreshAccount={refreshAccount}/>
                     </div>
                     <SettingsButton clickHandler={this.settingsButtonClickHandler}/>
                     <div className={style.settings_container} style={{display: 'none'}} id="settings_block">
-                        <LoginControl hasShow={this.state.hasShowSettings}/>
-                        <PasswordControl hasShow={this.state.hasShowSettings}/>
-                        <LogoutControl logoutHandler={this.props.logoutHandler}/>
-                        <RemoveAccountControl logoutHandler={this.props.logoutHandler}
-                                              hasShow={this.state.hasShowSettings}/>
+                        <LoginControl hasShow={hasShowSettings}/>
+                        <PasswordControl hasShow={hasShowSettings}/>
+                        <LogoutControl logoutHandler={logoutHandler}/>
+                        <RemoveAccountControl logoutHandler={logoutHandler} hasShow={hasShowSettings}/>
                     </div>
                 </div>
             </div>
