@@ -27,6 +27,11 @@ class Menu extends React.Component {
             <div className={targetClasses} onClick={this.props.hideMenuHandler}>
                 <div>
                     <p>Посты</p>
+                    <ul>
+                        <li>
+                            <Link to={pages.POSTS_PAGE}>Последние обновления</Link>
+                        </li>
+                    </ul>
                 </div>
                 <div>
                     <p>Авторы</p>
