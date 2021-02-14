@@ -22,3 +22,16 @@
     height: 20px;
     margin-right: 5px;
 }
+
+/* Стиль для всплывающей подсказки */
+
+.help_text_block {
+    position: fixed;
+    color: black;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+    z-index: 1;
+}
