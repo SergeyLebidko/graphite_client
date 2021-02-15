@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import NoMatch from '../NoMatch/NoMatch';
 import PostRemover from '../PostRemover/PostRemover';
+import PostStat from '../PostStat/PostStat';
 import {withRouter} from 'react-router-dom';
 import {prepareTextForShow} from '../PostCard/PostCard';
 import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
@@ -77,6 +78,9 @@ class Post extends React.Component {
                         }
                         <div className={style.text_body_container}>
                             {prepareTextForShow(post.text)}
+                        </div>
+                        <div className={style.stat_container}>
+                            <PostStat postId={post.id}/>
                         </div>
                     </div>
                     : ''
