@@ -23,6 +23,7 @@ class PostCard extends React.Component {
         this.avatarMouseEnterHandler = this.avatarMouseEnterHandler.bind(this);
         this.avatarMouseLeaveHandler = this.avatarMouseLeaveHandler.bind(this);
         this.avatarMouseMoveHandler = this.avatarMouseMoveHandler.bind(this);
+        this.avatarClickHandler = this.avatarClickHandler.bind(this);
     }
 
     avatarMouseEnterHandler() {
@@ -42,6 +43,12 @@ class PostCard extends React.Component {
             usernameTop: event.clientY + 15,
             usernameLeft: event.clientX + 15
         });
+    }
+
+    avatarClickHandler(event){
+        event.stopPropagation();
+        let {history, post} = this.props;
+        history.push(pages.ACCOUNT_PAGE + `/${post.account}`);
     }
 
     render() {
