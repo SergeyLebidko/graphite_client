@@ -13,3 +13,7 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+.not_specified_element {
+    color: darkgray;
+}

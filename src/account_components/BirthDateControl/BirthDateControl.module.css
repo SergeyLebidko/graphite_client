@@ -17,3 +17,7 @@
     border: 1px dotted gray;
     border-radius: 5px;
 }
+
+.not_specified_element {
+    color: darkgray;
+}

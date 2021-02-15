@@ -31,7 +31,7 @@ class BirthDateControl extends React.Component {
             if (enableEditor) {
                 return <span onClick={this.birthDateClickHandler} style={{cursor: 'pointer'}}>указать</span>;
             }
-            return <span>не указан</span>
+            return <span className={style.not_specified_element}><em>не указана...</em></span>
         }
         return (
             <span onClick={this.birthDateClickHandler} style={enableEditor ? {cursor: 'pointer'}: {}}>

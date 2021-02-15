@@ -40,3 +40,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+.not_specified_element {
+    color: darkgray;
+}

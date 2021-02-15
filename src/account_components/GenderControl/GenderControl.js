@@ -92,7 +92,7 @@ class GenderControl extends React.Component {
         let {account, enableEditor} = this.props;
         if (account.gender === null) {
             if (enableEditor) return <span onClick={this.genderClickHandler} style={{cursor: 'pointer'}}>указать</span>;
-            return <span>не указан</span>
+            return <span className={style.not_specified_element}><em>не указан...</em></span>
         }
         return (
             <span onClick={this.genderClickHandler} style={enableEditor ? {cursor: 'pointer'} : {}}>

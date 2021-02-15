@@ -30,7 +30,7 @@ class DescriptionControl extends React.Component {
         let content = description.split('\n');
         if (description === '') {
             if (enableEditor) return null;
-            return <span>'автор ничего не написал о себе...'</span>;
+            return <span className={style.not_specified_element}><em>автор ничего не написал о себе...</em></span>;
         };
         return (<div className={style.description_container}>
             {content.map((value, index) => <p key={index}>{value}</p>)}
