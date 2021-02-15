@@ -3,11 +3,12 @@ import $ from 'jquery';
 import NoMatch from '../NoMatch/NoMatch';
 import PostRemover from '../PostRemover/PostRemover';
 import PostStat from '../PostStat/PostStat';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {prepareTextForShow} from '../PostCard/PostCard';
 import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
 import style from './Post.module.css'
-import {POST_URL, ACCOUNT_URL, HOST} from '../settings';
+import * as pages from '../internal_pages';
+import {POST_URL, ACCOUNT_URL} from '../settings';
 
 class Post extends React.Component {
     constructor(props) {
@@ -60,6 +61,7 @@ class Post extends React.Component {
                         <img src={postAccount.avatar === null ? '/images/no_avatar.svg' : postAccount.avatar}/>
                         <p>
                             {postAccount.username}
+                            <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
                         </p>
                     </div>
                     : ''

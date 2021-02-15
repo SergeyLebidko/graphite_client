@@ -26,6 +26,17 @@
     font-size: 1.4em;
 }
 
+.account_container a {
+    display: block;
+    font-size: 0.6em;
+    color: dimgray;
+    text-decoration: none;
+}
+
+.account_container a:hover {
+    text-decoration: underline;
+}
+
 .text_header_container, .post_control_container, .stat_container {
     margin-left: -10px;
     margin-right: -10px;
