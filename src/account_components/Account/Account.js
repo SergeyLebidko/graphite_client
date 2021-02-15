@@ -59,13 +59,13 @@ class Account extends React.Component {
     }
 
     render() {
-        let {refreshAccount, logoutHandler} = this.props;
         let {hasShowSettings, hasEditorsEnabled, account, hasNotFoundAccount} = this.state;
         if (hasNotFoundAccount) return <NoMatch/>;
 
         let hasAccountReady = account !== null;
         if (!hasAccountReady) return <Preloader/>;
 
+        let {refreshAccount, logoutHandler} = this.props;
         return (
             <div className={style.account_container}>
                 <div className={style.left_container}>
