@@ -47,7 +47,7 @@ class Menu extends React.Component {
                                 <Link to={pages.POSTS_PAGE + `/?account=${account.id}`}>Мои посты</Link>
                             </li>
                             <li>
-                                <Link to={pages.ACCOUNT_PAGE}>Мой аккаунт</Link>
+                                <Link to={pages.ACCOUNT_PAGE + `/${account.id}`}>Мой аккаунт</Link>
                             </li>
                             <li onClick={this.logoutButtonHandler}>
                                 <Link to={pages.MAIN_PAGE}>Выход</Link>

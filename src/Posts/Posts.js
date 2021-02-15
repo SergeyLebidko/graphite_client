@@ -39,7 +39,7 @@ class Posts extends React.Component {
                 hasLoad: true,
                 posts: [...prevState.posts, ...data.results],
                 nextPage: data.next
-            })), 2000);
+            })), 1000);
         })
     }
 

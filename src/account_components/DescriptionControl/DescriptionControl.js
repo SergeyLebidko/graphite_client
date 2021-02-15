@@ -25,9 +25,13 @@ class DescriptionControl extends React.Component {
     }
 
     getDescriptionContent() {
+        let {enableEditor} = this.props;
         let {description} = this.props.account;
         let content = description.split('\n');
-        if (description === '') return;
+        if (description === '') {
+            if (enableEditor) return null;
+            return 'автор ничего не написал о себе...'
+        };
         return (<div className={style.description_container}>
             {content.map((value, index) => <p key={index}>{value}</p>)}
         </div>);
@@ -48,6 +52,8 @@ class DescriptionControl extends React.Component {
     }
 
     descriptionClickHandler() {
+        let {enableEditor} = this.props;
+        if (!enableEditor) return;
         this.setState({
             editMode: true
         })
@@ -87,11 +93,12 @@ class DescriptionControl extends React.Component {
     }
 
     render() {
+        let {enableEditor} = this.props;
         let {description} = this.props.account;
         return (
             <div className={style.control_container}>
                 <p style={description === '' ? {} : {borderBottom: '1px dotted dimgray'}}
-                   onClick={this.descriptionClickHandler}>
+                   onClick={this.descriptionClickHandler} style={enableEditor ? {cursor: 'pointer'} : {}}>
                     Немного о себе:
                     {this.state.editMode ? ` (осталось ${ACCOUNT_DESCRIPTION_MAX_LEN - this.state.description.length})` : null}
                 </p>

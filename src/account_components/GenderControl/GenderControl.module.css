@@ -1,7 +1,3 @@
-.control_container span {
-    cursor: pointer;
-}
-
 .control_container span:hover {
     text-decoration: underline;
 }

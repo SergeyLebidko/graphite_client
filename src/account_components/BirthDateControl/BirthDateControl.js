@@ -25,10 +25,19 @@ class BirthDateControl extends React.Component {
     }
 
     getBirthDateContent() {
-        if (this.state.birthDate === null) {
-            return <span onClick={this.birthDateClickHandler}>указать</span>
+        let {birthDate} = this.state;
+        let {enableEditor} = this.props;
+        if (birthDate === null) {
+            if (enableEditor) {
+                return <span onClick={this.birthDateClickHandler} style={{cursor: 'pointer'}}>указать</span>;
+            }
+            return <span>не указан</span>
         }
-        return <span onClick={this.birthDateClickHandler}>{dateStringForDisplay(this.state.birthDate)}</span>
+        return (
+            <span onClick={this.birthDateClickHandler} style={enableEditor ? {cursor: 'pointer'}: {}}>
+                {dateStringForDisplay(birthDate)}
+            </span>
+        );
     }
 
     getEditorContent() {
@@ -42,6 +51,8 @@ class BirthDateControl extends React.Component {
     }
 
     birthDateClickHandler() {
+        let {enableEditor} = this.props;
+        if (!enableEditor) return;
         this.setState({
             editMode: true
         })
@@ -85,9 +96,10 @@ class BirthDateControl extends React.Component {
     }
 
     render() {
+        let {editMode} = this.state;
         return (
             <div className={style.control_container}>
-                {(this.state.editMode) ? this.getEditorContent() : this.getBirthDateContent()}
+                {editMode ? this.getEditorContent() : this.getBirthDateContent()}
             </div>
         )
     }

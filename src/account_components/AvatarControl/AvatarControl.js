@@ -8,7 +8,6 @@ class AvatarControl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            avatar: this.props.account.avatar,
             error: null
         }
 
@@ -17,6 +16,8 @@ class AvatarControl extends React.Component {
     }
 
     avatarClickHandler() {
+        let {enableEditor} = this.props;
+        if (!enableEditor) return;
         $('#avatar_chooser').trigger('click');
     }
 
@@ -49,11 +50,23 @@ class AvatarControl extends React.Component {
     }
 
     render() {
-        let {avatar, error} = this.state;
+        let {error} = this.state;
+        let {avatar} = this.props.account;
+        let {enableEditor} = this.props;
+        let editorStyle = enableEditor ? {cursor: 'pointer'} : {}
+
+        let avatarURL;
+        if (avatar === null){
+            avatarURL = '/images/no_avatar.svg';
+        } else {
+            avatarURL = avatar[0] === '/' ? HOST + avatar : avatar;
+        }
+
         return (
             <div className={style.avatar_container}>
-                <img src={(avatar === null) ? '/images/no_avatar.svg' : `${HOST}${avatar}`}
-                     onClick={this.avatarClickHandler}/>
+                <img src={avatarURL}
+                     onClick={this.avatarClickHandler}
+                     style={editorStyle}/>
                 <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
                 <input type="file" style={{display: 'none'}} onChange={this.fileChoiceHandler} id="avatar_chooser"/>
             </div>

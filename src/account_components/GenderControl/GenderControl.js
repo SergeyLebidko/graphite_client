@@ -86,12 +86,23 @@ class GenderControl extends React.Component {
     }
 
     getGenderContent() {
-        if (this.state.genderList === null) return null;
-        if (this.props.account.gender === null) return <span onClick={this.genderClickHandler}>указать</span>
-        return <span onClick={this.genderClickHandler}>{this.state.genderList[this.props.account.gender]}</span>
+        let {genderList} = this.state;
+        let {account, enableEditor} = this.props;
+        if (genderList === null) return null;
+        if (account.gender === null) {
+            if (enableEditor) return <span onClick={this.genderClickHandler} style={{cursor: 'pointer'}}>указать</span>;
+            return <span>не указан</span>
+        }
+        return (
+            <span onClick={this.genderClickHandler} style={enableEditor ? {cursor: 'pointer'} : {}}>
+                {this.state.genderList[this.props.account.gender]}
+            </span>
+        );
     }
 
     genderClickHandler() {
+        let {enableEditor} = this.props;
+        if (!enableEditor) return;
         this.setState({
             editMode: true
         })

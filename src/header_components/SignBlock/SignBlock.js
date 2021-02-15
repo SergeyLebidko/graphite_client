@@ -1,15 +1,13 @@
 import React from 'react';
-import {useLocation} from 'react-router-dom';
 import style from './SignBlock.module.css';
 import {HOST} from '../../settings';
 import * as pages from '../../internal_pages';
 
 
 export function SignBlock(props) {
-    let location = useLocation();
 
     function avatarClickHandler() {
-        if (location.pathname !== pages.ACCOUNT_PAGE) props.history.push(pages.ACCOUNT_PAGE);
+        if (props.account !== null) props.history.push(pages.ACCOUNT_PAGE + `/${props.account.id}`);
         props.hideMenu();
     }
 

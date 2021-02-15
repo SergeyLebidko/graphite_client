@@ -15,7 +15,6 @@
 }
 
 .control_container span:hover {
-    cursor: pointer;
     text-decoration: underline;
 }
 

@@ -30,6 +30,8 @@ class UsernameControl extends React.Component {
     }
 
     usernameClickHandler() {
+        let {enableEditor} = this.props;
+        if (!enableEditor) return;
         this.setState({
             editMode: true
         });
@@ -74,6 +76,8 @@ class UsernameControl extends React.Component {
 
     render() {
         let {errors} = this.state;
+        let {enableEditor} = this.props;
+        let editorStyle = enableEditor ? {cursor: 'pointer'} : {};
         return (
             <div className={style.control_container}>
                 {(this.state.editMode) ?
@@ -86,7 +90,9 @@ class UsernameControl extends React.Component {
                         <PopUpMessage msg={errors} msgType="error" endShow={() => this.setState({error: null})}/>
                     </>
                     :
-                    <span onClick={this.usernameClickHandler}>{this.props.account.username}</span>
+                    <span onClick={this.usernameClickHandler} style={editorStyle}>
+                        {this.props.account.username}
+                    </span>
                 }
             </div>
         )

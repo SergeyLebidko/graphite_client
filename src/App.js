@@ -79,7 +79,7 @@ class App extends React.Component {
 
     accountRegisterHandler(account, token) {
         this.setAccountData(account, token);
-        this.props.history.push(pages.ACCOUNT_PAGE);
+        this.props.history.push(pages.ACCOUNT_PAGE + `/${account.id}`);
     }
 
     accountLoginHandler(account, token) {
@@ -125,13 +125,11 @@ class App extends React.Component {
                                 <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
-                        <Route path={pages.ACCOUNT_PAGE}>
-                            {hasNoLogin ?
-                                <Redirect to={pages.LOGIN_PAGE}/> :
-                                <Account account={account}
-                                         refreshAccount={this.refreshAccount}
-                                         logoutHandler={this.accountLogoutHandler}/>
-                            }
+                        <Route path={pages.ACCOUNT_PAGE + '/:id'}>
+                            <Account key={Math.random()}
+                                     account={account}
+                                     refreshAccount={this.refreshAccount}
+                                     logoutHandler={this.accountLogoutHandler}/>
                         </Route>
                         <Route path={pages.CREATE_POST_PAGE}>
                             {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
