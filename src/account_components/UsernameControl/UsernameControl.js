@@ -95,7 +95,7 @@ class UsernameControl extends React.Component {
                     </>
                     :
                     <span onClick={this.usernameClickHandler} style={{cursor: 'pointer'}}>
-                        {this.username}
+                        {username}
                     </span>
                 }
             </div>
