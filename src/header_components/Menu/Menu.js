@@ -35,6 +35,11 @@ class Menu extends React.Component {
                 </div>
                 <div>
                     <p>Авторы</p>
+                    <ul>
+                        <li>
+                            <Link to={pages.ACCOUNTS_PAGE}>Вновь прибывшие</Link>
+                        </li>
+                    </ul>
                 </div>
                 {(account !== null) ? (
                     <div>

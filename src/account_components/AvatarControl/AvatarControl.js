@@ -4,6 +4,16 @@ import style from './AvatarControl.module.css';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import {UPDATE_ACCOUNT_URL, HOST} from '../../settings';
 
+export function createAvatarURL(avatar) {
+    let avatarURL;
+    if (avatar === null) {
+        avatarURL = '/images/no_avatar.svg';
+    } else {
+        avatarURL = avatar[0] === '/' ? HOST + avatar : avatar;
+    }
+    return avatarURL;
+}
+
 class AvatarControl extends React.Component {
     constructor(props) {
         super(props);
@@ -55,13 +65,7 @@ class AvatarControl extends React.Component {
         let {enableEditor} = this.props;
         let editorStyle = enableEditor ? {cursor: 'pointer'} : {}
 
-        let avatarURL;
-        if (avatar === null){
-            avatarURL = '/images/no_avatar.svg';
-        } else {
-            avatarURL = avatar[0] === '/' ? HOST + avatar : avatar;
-        }
-
+        let avatarURL = createAvatarURL(avatar);
         return (
             <div className={style.avatar_container}>
                 <img src={avatarURL}

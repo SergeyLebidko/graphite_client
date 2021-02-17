@@ -1,16 +1,58 @@
 import React from 'react';
 import $ from 'jquery';
+import Preloader from '../Preloader/Preloader';
+import {AccountCard} from '../AccountCard/AccountCard';
+import {MiniButton} from '../MiniButton/MiniButton';
 import {withRouter} from 'react-router-dom';
+import {ACCOUNT_URL} from '../settings';
 import style from './Accounts.module.css';
 
 class Accounts extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            hasLoad: false,
+            accounts: [],
+            nextPage: ACCOUNT_URL
+        }
     }
 
-    render(){
+    downloadAccounts() {
+        let {nextPage} = this.state;
+        this.setState({
+            hasLoad: false
+        });
+        $.ajax(nextPage).then(data => {
+            setTimeout(() => {
+                this.setState(prevState => ({
+                    hasLoad: true,
+                    accounts: [...prevState.accounts, ...data.results],
+                    nextPage: data.next
+                }));
+            }, 1000);
+        });
+    }
+
+    componentDidMount() {
+        this.downloadAccounts();
+    }
+
+    render() {
+        let {hasLoad, accounts, nextPage} = this.state;
+        if (!hasLoad) return <Preloader/>;
+
         return (
-            <div>Здесь бедут список аккаунтов</div>
+            <div className={style.component_container}>
+                <div className={style.accounts_container}>
+                    {accounts.map((account, index) => <AccountCard key={index} account={account}/>)}
+                </div>
+                {nextPage !== null ?
+                    <div>
+                        <MiniButton buttonType="download" clickHandler={() => this.downloadAccounts()}/>
+                    </div>
+                    : ''
+                }
+            </div>
         )
     }
 }

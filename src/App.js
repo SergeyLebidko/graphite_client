@@ -126,7 +126,9 @@ class App extends React.Component {
                                 <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
-                        <Route path={pages.ACC}
+                        <Route path={pages.ACCOUNTS_PAGE}>
+                            <Accounts key={Math.random()}/>
+                        </Route>
                         <Route path={pages.ACCOUNT_PAGE + '/:id'}>
                             <Account key={Math.random()}
                                      account={account}
