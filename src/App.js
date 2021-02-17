@@ -12,6 +12,7 @@ import Account from './account_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
 import Posts from './Posts/Posts';
 import Post from './Post/Post';
+import Accounts from './Accounts/Accounts';
 import * as pages from './internal_pages';
 
 class App extends React.Component {
@@ -125,6 +126,7 @@ class App extends React.Component {
                                 <Redirect to={pages.MAIN_PAGE}/>
                             }
                         </Route>
+                        <Route path={pages.ACC}
                         <Route path={pages.ACCOUNT_PAGE + '/:id'}>
                             <Account key={Math.random()}
                                      account={account}
