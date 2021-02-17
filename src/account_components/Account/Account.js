@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import style from './Account.module.css';
 import {ACCOUNT_URL} from '../../settings';
@@ -16,6 +16,7 @@ import RemoveAccountControl from '../RemoveAccountControl/RemoveAccountControl';
 import AccountStat from '../../AccountStat/AccountStat';
 import Preloader from '../../Preloader/Preloader';
 import NoMatch from '../../NoMatch/NoMatch';
+import * as pages from '../../internal_pages';
 
 class Account extends React.Component {
     constructor(props) {
@@ -71,6 +72,11 @@ class Account extends React.Component {
                 <div className={style.left_container}>
                     <AvatarControl account={account} refreshAccount={refreshAccount} enableEditor={hasEditorsEnabled}/>
                     <AccountStat accountId={account.id}/>
+                    <div className={style.posts_link_container}>
+                        <Link to={pages.POSTS_PAGE + `/?account=${account.id}`}>
+                            перейти к постам
+                        </Link>
+                    </div>
                 </div>
                 <div className={style.right_container}>
                     <div className={style.basic_data_container}>
