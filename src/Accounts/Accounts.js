@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import Preloader from '../Preloader/Preloader';
-import {AccountCard} from '../AccountCard/AccountCard';
+import AccountCard from '../AccountCard/AccountCard';
 import {MiniButton} from '../MiniButton/MiniButton';
 import {withRouter} from 'react-router-dom';
 import {ACCOUNT_URL} from '../settings';
@@ -39,15 +39,18 @@ class Accounts extends React.Component {
 
     render() {
         let {hasLoad, accounts, nextPage} = this.state;
-        if (!hasLoad) return <Preloader/>;
 
         return (
             <div className={style.component_container}>
-                <div className={style.accounts_container}>
-                    {accounts.map((account, index) => <AccountCard key={index} account={account}/>)}
-                </div>
-                {nextPage !== null ?
-                    <div>
+                {accounts.length > 0 ?
+                    <div className={style.accounts_container}>
+                        {accounts.map((account, index) => <AccountCard key={index} account={account}/>)}
+                    </div>
+                    : ''
+                }
+                {!hasLoad ? <div className={style.modal_container}><Preloader modal={false}/></div> : ''}
+                {nextPage !== null && hasLoad ?
+                    <div className={style.control_container}>
                         <MiniButton buttonType="download" clickHandler={() => this.downloadAccounts()}/>
                     </div>
                     : ''
