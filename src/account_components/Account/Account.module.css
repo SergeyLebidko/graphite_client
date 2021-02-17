@@ -16,22 +16,7 @@
 }
 
 .posts_link_container {
-    text-align: center;
-    padding: 10px;
-    background-color: whitesmoke;
-    border: 1px solid rgb(210, 210, 210);
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.posts_link_container a {
-    color: dimgray;
-    text-decoration: none;
-}
-
-.posts_link_container a:hover {
-    text-decoration: underline;
+    margin-top: 10px;
 }
 
 .right_container {
