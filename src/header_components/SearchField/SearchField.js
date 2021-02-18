@@ -31,8 +31,13 @@ class SearchField extends React.Component {
     }
 
     searchButtonClickHandler() {
-        let {location, history} = this.props;
         let {searchText} = this.state;
+
+        // Отсекаем заведомо бессмысленные строки поиска - пустую строку и строку из одних пробелов
+        if (searchText.length === 0) return;
+        if (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*') return;
+
+        let {location, history} = this.props;
         let urlParams = parseLocation(location);
         urlParams.q = searchText;
         urlParams = $.param(urlParams);
