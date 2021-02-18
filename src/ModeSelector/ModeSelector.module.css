@@ -1,0 +1,9 @@
+.selector_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selector_container span:first-child {
+    margin-right: 10px;
+}

@@ -146,7 +146,7 @@ class App extends React.Component {
                             {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path={pages.SEARCH_RESULT}>
-                            <SearchResult/>
+                            <SearchResult key={Math.random()}/>
                         </Route>
                         <Route path="*">
                             <NoMatch/>

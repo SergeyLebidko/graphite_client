@@ -1,0 +1,8 @@
+.result_container {
+    margin-top: 20px;
+}
+
+.selector_container {
+    display: flex;
+    justify-content: center;
+}

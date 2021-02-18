@@ -35,7 +35,7 @@ class SearchField extends React.Component {
         if (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*') return;
 
         let {history} = this.props;
-        history.push(pages.SEARCH_RESULT + `/?q=${searchText}`);
+        history.push(pages.SEARCH_RESULT + `/?q=${encodeURI(searchText)}`);
     }
 
     render() {
