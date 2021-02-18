@@ -13,8 +13,7 @@ export function parseLocation(location) {
     let params = new URLSearchParams(location.search);
     return {
         account: params.get('account'),
-        search: params.get('search'),
-        order: params.get('order')
+        q: params.get('q'),
     }
 }
 
