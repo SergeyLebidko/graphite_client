@@ -1,10 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {parseLocation} from '../../Posts/Posts';
 import style from './SearchField.module.css';
-import * as pages from '../../internal_pages';
-
-import $ from 'jquery';
 
 class SearchField extends React.Component {
     constructor(props) {
@@ -37,16 +33,7 @@ class SearchField extends React.Component {
         if (searchText.length === 0) return;
         if (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*') return;
 
-        let {location, history} = this.props;
-        let urlParams = parseLocation(location);
-        urlParams.q = searchText;
-        urlParams = $.param(urlParams);
-
-        if (location.pathname.indexOf(pages.ACCOUNTS_PAGE) === 0) {
-            history.push(pages.ACCOUNTS_PAGE + `/?${urlParams}`);
-            return;
-        }
-        history.push(pages.POSTS_PAGE + `/?${urlParams}`);
+        // TODO Вставит редирект на страницу с результатами поиска
     }
 
     render() {

@@ -9,14 +9,6 @@ import * as pages from '../internal_pages';
 import style from './Posts.module.css';
 import {POST_URL} from '../settings';
 
-export function parseLocation(location) {
-    let params = new URLSearchParams(location.search);
-    return {
-        account: params.get('account'),
-        q: params.get('q'),
-    }
-}
-
 class Posts extends React.Component {
     constructor(props) {
         super(props);
@@ -57,11 +49,11 @@ class Posts extends React.Component {
         let {account, location, history} = this.props;
         if (account === null) return '';
 
-        let locationParams = parseLocation(location);
+        let accountInURL = new URLSearchParams(location.search).get('account');
         return (
             <div className={style.header_block}>
                 <MiniButton buttonType="add" clickHandler={() => history.push(pages.CREATE_POST_PAGE)}/>
-                {account.id == locationParams.account ? <AccountStat accountId={account.id}/> : ''}
+                {account.id == accountInURL ? <AccountStat accountId={account.id}/> : ''}
             </div>
         );
     }

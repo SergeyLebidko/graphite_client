@@ -135,14 +135,14 @@ class App extends React.Component {
                                      refreshAccount={this.refreshAccount}
                                      logoutHandler={this.accountLogoutHandler}/>
                         </Route>
-                        <Route path={pages.CREATE_POST_PAGE}>
-                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
-                        </Route>
                         <Route path={pages.POSTS_PAGE}>
                             <Posts key={Math.random()} account={account}/>
                         </Route>
                         <Route path={pages.POST_PAGE + '/:id'}>
                             <Post key={Math.random()} account={account}/>
+                        </Route>
+                        <Route path={pages.CREATE_POST_PAGE}>
+                            {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
                         </Route>
                         <Route path="*">
                             <NoMatch/>

@@ -13,7 +13,7 @@ class Accounts extends React.Component {
         this.state = {
             hasLoad: false,
             accounts: [],
-            nextPage: ACCOUNT_URL + this.props.location.search
+            nextPage: ACCOUNT_URL
         }
     }
 
