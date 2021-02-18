@@ -6,3 +6,4 @@ export const ACCOUNT_PAGE = '/account';
 export const CREATE_POST_PAGE = '/create_post';
 export const POSTS_PAGE = '/posts';
 export const POST_PAGE = '/post';
+export const SEARCH_RESULT = '/search_result';

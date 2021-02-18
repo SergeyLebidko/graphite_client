@@ -14,6 +14,7 @@ import Posts from './Posts/Posts';
 import Post from './Post/Post';
 import Accounts from './Accounts/Accounts';
 import * as pages from './internal_pages';
+import SearchResult from "./SearchResult/SearchResult";
 
 class App extends React.Component {
     constructor(props) {
@@ -143,6 +144,9 @@ class App extends React.Component {
                         </Route>
                         <Route path={pages.CREATE_POST_PAGE}>
                             {hasNoLogin ? <Redirect to={pages.LOGIN_PAGE}/> : <PostCreator account={account}/>}
+                        </Route>
+                        <Route path={pages.SEARCH_RESULT}>
+                            <SearchResult/>
                         </Route>
                         <Route path="*">
                             <NoMatch/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import style from './SearchField.module.css';
+import * as pages from '../../internal_pages';
 
 class SearchField extends React.Component {
     constructor(props) {
@@ -33,7 +34,8 @@ class SearchField extends React.Component {
         if (searchText.length === 0) return;
         if (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*') return;
 
-        // TODO Вставит редирект на страницу с результатами поиска
+        let {history} = this.props;
+        history.push(pages.SEARCH_RESULT + `/?q=${searchText}`);
     }
 
     render() {
