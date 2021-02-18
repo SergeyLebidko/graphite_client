@@ -37,7 +37,7 @@ class SearchField extends React.Component {
         urlParams.q = searchText;
         urlParams = $.param(urlParams);
 
-        if (location.pathname === pages.ACCOUNTS_PAGE) {
+        if (location.pathname.indexOf(pages.ACCOUNTS_PAGE) === 0) {
             history.push(pages.ACCOUNTS_PAGE + `/?${urlParams}`);
             return;
         }
