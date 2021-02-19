@@ -3,39 +3,28 @@ import $ from 'jquery';
 import NoMatch from '../NoMatch/NoMatch';
 import PostRemover from '../PostRemover/PostRemover';
 import PostStat from '../PostStat/PostStat';
+import Preloader from '../Preloader/Preloader';
 import {withRouter, Link} from 'react-router-dom';
-import {prepareTextForShow} from '../PostCard/PostCard';
 import style from './Post.module.css'
 import * as pages from '../internal_pages';
-import {POST_URL, ACCOUNT_URL} from '../settings';
-import {dateStringForDisplay} from "../utils";
+import {POST_URL} from '../settings';
+import {dateStringForDisplay, prepareTextForShow, createAvatarURL} from '../utils';
 
 class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             hasPostLoad: false,
-            hasPostAccountLoad: false,
             post: null,
-            postAccount: null,
             notFoundFlag: false
         }
     }
 
     downloadData(postId) {
-        let token = localStorage.getItem('token');
-        $.ajax(POST_URL + postId + '/', {
-            headers: {'Authorization': token}
-        }).then(data => {
+        $.ajax(POST_URL + postId + '/').then(data => {
             this.setState({
                 hasPostLoad: true,
                 post: data
-            });
-            return $.ajax(ACCOUNT_URL + data.account + '/');
-        }).then(data => {
-            this.setState({
-                hasPostAccountLoad: true,
-                postAccount: data
             });
         }).catch(() => {
             this.setState({
@@ -51,41 +40,42 @@ class Post extends React.Component {
     }
 
     render() {
-        let {notFoundFlag, hasPostLoad, hasPostAccountLoad, post, postAccount} = this.state;
+        let {account} = this.props;
+        let {notFoundFlag, hasPostLoad, post} = this.state;
         if (notFoundFlag) return <NoMatch/>;
 
         return (
             <div className={style.post_container}>
-                {hasPostAccountLoad ?
-                    <div className={style.account_container}>
-                        <img src={postAccount.avatar === null ? '/images/no_avatar.svg' : postAccount.avatar}/>
-                        <p>
-                            {postAccount.username}
-                            <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
-                        </p>
-                    </div>
-                    : ''
-                }
                 {hasPostLoad ?
-                    <div>
-                        <p className={style.text_header_container}>
-                            {post.title}
-                            <span>{dateStringForDisplay(post.dt_created)}</span>
-                        </p>
-                        {hasPostAccountLoad && this.props.account !== null && postAccount.id === this.props.account.id ?
-                            <div className={style.post_control_container}>
-                                <PostRemover post={post}/>
+                    <>
+                        <div className={style.account_container}>
+                            <img
+                                src={createAvatarURL(post['account_avatar'])}/>
+                            <p>
+                                {post['account_username']}
+                                <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
+                            </p>
+                        </div>
+                        <div>
+                            <p className={style.text_header_container}>
+                                {post.title}
+                                <span>{dateStringForDisplay(post['dt_created'])}</span>
+                            </p>
+                            {account !== null && account.id === post.account ?
+                                <div className={style.post_control_container}>
+                                    <PostRemover post={post}/>
+                                </div>
+                                : ''
+                            }
+                            <div className={style.text_body_container}>
+                                {prepareTextForShow(post.text)}
                             </div>
-                            : ''
-                        }
-                        <div className={style.text_body_container}>
-                            {prepareTextForShow(post.text)}
+                            <div className={style.stat_container}>
+                                <PostStat postId={post.id}/>
+                            </div>
                         </div>
-                        <div className={style.stat_container}>
-                            <PostStat postId={post.id}/>
-                        </div>
-                    </div>
-                    : ''
+                    </>
+                    : <Preloader modal={false}/>
                 }
             </div>
         )

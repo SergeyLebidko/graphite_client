@@ -4,13 +4,7 @@ import PostStat from '../PostStat/PostStat';
 import style from './PostCard.module.css';
 import {HOST} from '../settings';
 import * as pages from '../internal_pages';
-import {dateStringForDisplay} from "../utils";
-
-export function prepareTextForShow(text) {
-    return text.split('\n').map((fragment, index) =>
-        fragment.length === 0 ? <br key={index}/> : <p key={index}>{fragment}</p>
-    );
-}
+import {dateStringForDisplay, prepareTextForShow} from '../utils';
 
 class PostCard extends React.Component {
     constructor(props) {
@@ -72,7 +66,7 @@ class PostCard extends React.Component {
                     </div>
                     <div>
                         <p>
-                            {dateStringForDisplay(post.dt_created)}
+                            {dateStringForDisplay(post['dt_created'])}
                         </p>
                         <p>
                             {post.title}

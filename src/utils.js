@@ -1,4 +1,5 @@
 import {HOST} from "./settings";
+import React from "react";
 
 export function dateStringForDisplay(dateString, withTime = true) {
     let monthList = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
@@ -18,4 +19,10 @@ export function createAvatarURL(avatar) {
         avatarURL = avatar[0] === '/' ? HOST + avatar : avatar;
     }
     return avatarURL;
+}
+
+export function prepareTextForShow(text) {
+    return text.split('\n').map((fragment, index) =>
+        fragment.length === 0 ? <br key={index}/> : <p key={index}>{fragment}</p>
+    );
 }
