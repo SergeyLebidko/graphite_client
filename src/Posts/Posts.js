@@ -65,7 +65,7 @@ class Posts extends React.Component {
             <div className={style.my_posts_container}>
                 {this.getHeaderBlock()}
                 <div className={style.posts_block}>
-                    {posts.map((post, index) => <PostCard key={index} post={post} account={account}/>)}
+                    {posts.map(post => <PostCard key={post.id} post={post} account={account}/>)}
                     {hasLoad ? '' : <div className={style.preloader_block}><Preloader modal={false}/></div>}
                 </div>
                 {hasLoad && nextPage !== null ?

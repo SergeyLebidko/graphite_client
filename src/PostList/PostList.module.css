@@ -1,0 +1,17 @@
+.post_list_container {
+    margin-top: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.post_list_container > div {
+    margin: 10px;
+}
+
+.control_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

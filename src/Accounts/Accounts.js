@@ -44,7 +44,7 @@ class Accounts extends React.Component {
             <div className={style.component_container}>
                 {accounts.length > 0 ?
                     <div className={style.accounts_container}>
-                        {accounts.map((account, index) => <AccountCard key={index} account={account}/>)}
+                        {accounts.map(account => <AccountCard key={account.id} account={account}/>)}
                     </div>
                     : ''
                 }

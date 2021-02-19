@@ -31,8 +31,12 @@ class SearchField extends React.Component {
         let {searchText} = this.state;
 
         // Отсекаем заведомо бессмысленные строки поиска - пустую строку и строку из одних пробелов
-        if (searchText.length === 0) return;
-        if (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*') return;
+        if ((searchText.length === 0) || (searchText !== '*' && searchText.replace(/\s+/g, '*') === '*')) {
+            this.setState({
+                searchText: ''
+            });
+            return;
+        }
 
         let {history} = this.props;
         history.push(pages.SEARCH_RESULT + `/?q=${encodeURI(searchText)}`);
