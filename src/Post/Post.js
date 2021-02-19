@@ -5,10 +5,10 @@ import PostRemover from '../PostRemover/PostRemover';
 import PostStat from '../PostStat/PostStat';
 import {withRouter, Link} from 'react-router-dom';
 import {prepareTextForShow} from '../PostCard/PostCard';
-import {dateStringForDisplay} from '../account_components/BirthDateControl/BirthDateControl';
 import style from './Post.module.css'
 import * as pages from '../internal_pages';
 import {POST_URL, ACCOUNT_URL} from '../settings';
+import {dateStringForDisplay} from "../utils";
 
 class Post extends React.Component {
     constructor(props) {
