@@ -2,17 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 import style from './AvatarControl.module.css';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
-import {UPDATE_ACCOUNT_URL, HOST} from '../../settings';
-
-export function createAvatarURL(avatar) {
-    let avatarURL;
-    if (avatar === null) {
-        avatarURL = '/images/no_avatar.svg';
-    } else {
-        avatarURL = avatar[0] === '/' ? HOST + avatar : avatar;
-    }
-    return avatarURL;
-}
+import {UPDATE_ACCOUNT_URL} from '../../settings';
+import {createAvatarURL} from '../../utils';
 
 class AvatarControl extends React.Component {
     constructor(props) {
