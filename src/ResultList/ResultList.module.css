@@ -1,10 +1,10 @@
-.post_list_container {
+.result_list_container {
     margin-top: 10px;
     display: flex;
     flex-flow: row wrap;
 }
 
-.post_list_container > div {
+.result_list_container > div {
     margin: 10px;
 }
 

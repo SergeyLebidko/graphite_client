@@ -3,10 +3,10 @@ import {withRouter} from 'react-router-dom';
 import NoMatch from '../NoMatch/NoMatch';
 import ModeSelector from '../ModeSelector/ModeSelector';
 import style from './SearchResult.module.css';
-import PostList from '../PostList/PostList';
+import ResultList from '../ResultList/ResultList';
 
-const POSTS = 'posts';
-const ACCOUNTS = 'accounts'
+export const POSTS = 'posts';
+export const ACCOUNTS = 'accounts'
 
 class SearchResult extends React.Component {
     constructor(props) {
@@ -34,10 +34,10 @@ class SearchResult extends React.Component {
                 <div className={style.selector_container}>
                     <ModeSelector leftTitle="Посты" left={POSTS}
                                   rightTitle="Авторы" right={ACCOUNTS}
-                                  start="left"
                                   actionHandler={this.modeSelectorHandler}/>
                 </div>
-                <PostList q={q} account={account} visible={mode === POSTS}/>
+                <ResultList q={q} account={account} visible={mode === POSTS} listType={POSTS}/>
+                <ResultList q={q} account={account} visible={mode === ACCOUNTS} listType={ACCOUNTS}/>
             </div>
         )
     }

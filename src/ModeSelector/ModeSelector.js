@@ -6,7 +6,7 @@ class ModeSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: this.props.start
+            current: 'left'
         }
         this.toLeft = this.toLeft.bind(this);
         this.toRight = this.toRight.bind(this);

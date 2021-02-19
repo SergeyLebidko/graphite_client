@@ -1,18 +1,26 @@
 import React from 'react';
 import $ from 'jquery';
-import style from './PostList.module.css';
-import {POST_URL} from '../settings';
+import style from './ResultList.module.css';
+import {POST_URL, ACCOUNT_URL} from '../settings';
+import {POSTS, ACCOUNTS} from '../SearchResult/SearchResult';
 import Preloader from '../Preloader/Preloader';
 import PostCard from '../PostCard/PostCard';
-import {MiniButton} from "../MiniButton/MiniButton";
+import {MiniButton} from '../MiniButton/MiniButton';
+import AccountCard from '../AccountCard/AccountCard';
 
-class PostList extends React.Component {
+class ResultList extends React.Component {
     constructor(props) {
         super(props);
+
+        let url;
+        let {listType} = props;
+        if (listType === POSTS) url = POST_URL + `?q=${props.q}`;
+        if (listType === ACCOUNTS) url = ACCOUNT_URL + `?q=${props.q}`;
+
         this.state = {
             hasLoad: false,
             posts: [],
-            nextPage: POST_URL + `?q=${props.q}`,
+            nextPage: url,
             visible: props.visible
         }
     }
@@ -44,13 +52,16 @@ class PostList extends React.Component {
     }
 
     render() {
-        let {account} = this.props;
+        let {account, listType} = this.props;
         let {hasLoad, posts, nextPage, visible} = this.state;
         return (
             <div style={visible ? {marginBottom: '70px'} : {marginBottom: '70px', display: 'none'}}>
-                <div className={style.post_list_container}>
+                <div className={style.result_list_container}>
                     {posts.length > 0 ?
-                        posts.map(post => <PostCard key={post.id} post={post} account={account}/>)
+                        posts.map(value => {
+                            if (listType === POSTS) return <PostCard key={value.id} post={value} account={account}/>;
+                            if (listType === ACCOUNTS) return <AccountCard key={value.id} account={value}/>;
+                        })
                         : ''
                     }
                 </div>
@@ -69,4 +80,4 @@ class PostList extends React.Component {
     }
 }
 
-export default PostList;
+export default ResultList;
