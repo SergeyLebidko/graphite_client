@@ -79,7 +79,7 @@ class Post extends React.Component {
                         </div>
                     </div>
                 </div>
-                <CommentsContainer post={post} account={account}/>
+                <CommentsContainer postId={post.id} account={account}/>
             </>
         );
     }
