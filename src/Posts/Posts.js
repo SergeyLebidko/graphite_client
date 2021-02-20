@@ -26,11 +26,11 @@ class Posts extends React.Component {
         $.ajax(nextPage, {
             headers: {'Authorization': token},
         }).then(data => {
-            setTimeout(() => this.setState(prevState => ({
+            this.setState(prevState => ({
                 hasLoad: true,
                 posts: [...prevState.posts, ...data.results],
                 nextPage: data.next
-            })), 1000);
+            }));
         })
     }
 

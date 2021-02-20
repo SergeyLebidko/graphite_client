@@ -9,6 +9,7 @@ import style from './Post.module.css'
 import * as pages from '../internal_pages';
 import {POST_URL} from '../settings';
 import {dateStringForDisplay, prepareTextForShow, createAvatarURL} from '../utils';
+import CommentsContainer from "../CommentsContainer/CommentsContainer";
 
 class Post extends React.Component {
     constructor(props) {
@@ -22,13 +23,10 @@ class Post extends React.Component {
 
     downloadData(postId) {
         $.ajax(POST_URL + postId + '/').then(data => {
-            setTimeout(() => {
-                    this.setState({
-                        hasPostLoad: true,
-                        post: data
-                    });
-                }, 1000
-            );
+            this.setState({
+                hasPostLoad: true,
+                post: data
+            });
         }).catch(() => {
             this.setState({
                 notFoundFlag: true
@@ -53,33 +51,36 @@ class Post extends React.Component {
         );
 
         return (
-            <div className={style.post_container}>
-                <div className={style.account_container}>
-                    <img src={createAvatarURL(post['account_avatar'])}/>
-                    <p>
-                        <Link to={pages.ACCOUNT_PAGE + `/${post.account}`}> {post['account_username']}</Link>
-                        <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
-                    </p>
-                </div>
-                <div>
-                    <p className={style.text_header_container}>
-                        {post.title}
-                        <span>{dateStringForDisplay(post['dt_created'])}</span>
-                    </p>
-                    {account !== null && account.id === post.account ?
-                        <div className={style.post_control_container}>
-                            <PostRemover post={post}/>
+            <>
+                <div className={style.post_container}>
+                    <div className={style.account_container}>
+                        <img src={createAvatarURL(post['account_avatar'])}/>
+                        <p>
+                            <Link to={pages.ACCOUNT_PAGE + `/${post.account}`}> {post['account_username']}</Link>
+                            <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
+                        </p>
+                    </div>
+                    <div>
+                        <p className={style.text_header_container}>
+                            {post.title}
+                            <span>{dateStringForDisplay(post['dt_created'])}</span>
+                        </p>
+                        {account !== null && account.id === post.account ?
+                            <div className={style.post_control_container}>
+                                <PostRemover post={post}/>
+                            </div>
+                            : ''
+                        }
+                        <div className={style.text_body_container}>
+                            {prepareTextForShow(post.text)}
                         </div>
-                        : ''
-                    }
-                    <div className={style.text_body_container}>
-                        {prepareTextForShow(post.text)}
-                    </div>
-                    <div className={style.stat_container}>
-                        <PostStat postId={post.id}/>
+                        <div className={style.stat_container}>
+                            <PostStat postId={post.id}/>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <CommentsContainer post={post} account={account}/>
+            </>
         );
     }
 }

@@ -37,13 +37,11 @@ class ResultList extends React.Component {
         });
         let {nextPage} = this.state;
         $.ajax(nextPage).then(data => {
-            setTimeout(() => {
-                this.setState(prevState => ({
-                    hasLoad: true,
-                    posts: [...prevState.posts, ...data.results],
-                    nextPage: data.next
-                }))
-            }, 1000);
+            this.setState(prevState => ({
+                hasLoad: true,
+                posts: [...prevState.posts, ...data.results],
+                nextPage: data.next
+            }));
         });
     }
 

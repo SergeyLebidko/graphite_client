@@ -43,11 +43,9 @@ class Account extends React.Component {
         }
 
         $.ajax(ACCOUNT_URL + `${accountIdInURL}/`).then(data => {
-            setTimeout(() => {
-                this.setState({
-                    account: data
-                });
-            }, 1000);
+            this.setState({
+                account: data
+            });
         }).catch(() => {
             this.setState({
                 hasNotFoundAccount: true

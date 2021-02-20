@@ -23,13 +23,11 @@ class Accounts extends React.Component {
             hasLoad: false
         });
         $.ajax(nextPage).then(data => {
-            setTimeout(() => {
-                this.setState(prevState => ({
-                    hasLoad: true,
-                    accounts: [...prevState.accounts, ...data.results],
-                    nextPage: data.next
-                }));
-            }, 1000);
+            this.setState(prevState => ({
+                hasLoad: true,
+                accounts: [...prevState.accounts, ...data.results],
+                nextPage: data.next
+            }));
         });
     }
 

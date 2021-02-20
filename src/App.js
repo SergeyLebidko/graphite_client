@@ -24,11 +24,23 @@ class App extends React.Component {
             account: null
         }
 
-        this.accountLoginHandler = this.accountLoginHandler.bind(this);
         this.accountLogoutHandler = this.accountLogoutHandler.bind(this);
         this.refreshAccount = this.refreshAccount.bind(this);
         this.accountRegisterHandler = this.accountRegisterHandler.bind(this);
         this.accountLoginHandler = this.accountLoginHandler.bind(this);
+    }
+
+    setForbiddenErrorHandler() {
+        // При получении запроса со статусом 403 (Forbidden) переводим пользователя на страницу логина
+        $(document).on("ajaxError", (_, jqXHR) => {
+            if (jqXHR.status === 403) {
+                this.setState({
+                    account: null
+                });
+                localStorage.removeItem('token');
+                this.props.history.push(pages.LOGIN_PAGE);
+            }
+        });
     }
 
     checkAccount() {
@@ -49,26 +61,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // При получении запроса со статусом 403 (Forbidden) переводим пользователя на страницу логина
-        $(document).on("ajaxError", (_, jqXHR) => {
-            if (jqXHR.status === 403) {
-                this.setState({
-                    account: null
-                });
-                localStorage.removeItem('token');
-                this.props.history.push(pages.LOGIN_PAGE);
-            }
-        });
-
-        // Промисы для действий, выполняемых при загрузке приложения
-        let checkAccountPromise = this.checkAccount();
-
-        $.when(checkAccountPromise).then(() => {
-            setTimeout(() => {
-                this.setState({
-                    hasInit: true
-                });
-            }, 2000);
+        this.setForbiddenErrorHandler();
+        this.checkAccount();
+        this.setState({
+            hasInit: true
         });
     }
 

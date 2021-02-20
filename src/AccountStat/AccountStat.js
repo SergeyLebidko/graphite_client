@@ -18,15 +18,13 @@ class AccountStat extends React.Component {
     componentDidMount() {
         let {accountId} = this.props;
         $.ajax(ACCOUNT_STAT_URL + `?account=${accountId}`).then(data => {
-            setTimeout(() => {
-                this.setState({
-                    hasLoad: true,
-                    postCount: data['post_count'],
-                    likeCount: data['like_count'],
-                    commentCount: data['comment_count'],
-                    totalViewsCount: data['total_views_count']
-                })
-            }, 1000);
+            this.setState({
+                hasLoad: true,
+                postCount: data['post_count'],
+                likeCount: data['like_count'],
+                commentCount: data['comment_count'],
+                totalViewsCount: data['total_views_count']
+            })
         });
     }
 
