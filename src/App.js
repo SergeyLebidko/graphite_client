@@ -52,10 +52,14 @@ class App extends React.Component {
                 headers: {'Authorization': token}
             }).then(data => {
                 self.setState({
-                    account: data
+                    account: data,
+                    hasInit: true
                 });
             }).catch(() => {
-                localStorage.removeItem('token')
+                localStorage.removeItem('token');
+                this.setState({
+                    hasInit: true
+                });
             });
         }
     }
@@ -63,9 +67,6 @@ class App extends React.Component {
     componentDidMount() {
         this.setForbiddenErrorHandler();
         this.checkAccount();
-        this.setState({
-            hasInit: true
-        });
     }
 
     setAccountData(account, token) {
