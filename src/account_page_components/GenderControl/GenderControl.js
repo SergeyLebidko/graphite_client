@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './GenderControl.module.css';
-import {MiniButton} from '../../MiniButton/MiniButton';
+import {MiniButton} from '../../common_components/MiniButton/MiniButton';
 import {GENDER_LIST_URL, UPDATE_ACCOUNT_URL} from '../../settings';
 
 class GenderControl extends React.Component {

@@ -1,10 +1,10 @@
 import React from 'react';
 import $ from 'jquery';
-import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import PopUpMessage from '../../common_components/PopUpMessage/PopUpMessage';
 import style from './UsernameControl.module.css';
 import {USERNAME_MAX_LEN, UPDATE_ACCOUNT_URL} from '../../settings';
 
-import {MiniButton} from '../../MiniButton/MiniButton';
+import {MiniButton} from '../../common_components/MiniButton/MiniButton';
 
 class UsernameControl extends React.Component {
     constructor(props) {

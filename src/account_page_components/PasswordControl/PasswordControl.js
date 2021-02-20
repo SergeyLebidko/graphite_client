@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import PopUpMessage from '../../PopUpMessage/PopUpMessage';
-import {SimpleButton} from '../../SimpleButton/SimpleButton';
+import PopUpMessage from '../../common_components/PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../common_components/SimpleButton/SimpleButton';
 import style from './PasswordControl.module.css'
 import {CHANGE_PASSWORD_URL} from '../../settings';
 import {createPassword, checkPassword} from '../../sign_components/RegisterForm/RegisterForm';

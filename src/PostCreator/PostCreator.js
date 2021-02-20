@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import {SimpleButton} from '../SimpleButton/SimpleButton';
-import PopUpMessage from '../PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../common_components/SimpleButton/SimpleButton';
+import PopUpMessage from '../common_components/PopUpMessage/PopUpMessage';
 import {withRouter} from 'react-router-dom';
 import style from './PostCreator.module.css';
 import {POST_URL, POST_TITLE_MAX_LEN, POST_TEXT_MAX_LEN} from '../settings';

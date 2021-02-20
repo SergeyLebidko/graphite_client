@@ -1,6 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
-import {SimpleButton} from '../../SimpleButton/SimpleButton';
+import {SimpleButton} from '../../common_components/SimpleButton/SimpleButton';
 import {LOGOUT_ALL_DEVICES_URL} from '../../settings';
 import style from './LogoutControl.module.css';
 

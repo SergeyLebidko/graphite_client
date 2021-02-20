@@ -3,8 +3,8 @@ import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import style from './App.module.css';
 import {CHECK_ACCOUNT_URL} from './settings';
-import NoMatch from './NoMatch/NoMatch';
-import Preloader from './Preloader/Preloader';
+import NoMatch from './common_components/NoMatch/NoMatch';
+import Preloader from './common_components/Preloader/Preloader';
 import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';

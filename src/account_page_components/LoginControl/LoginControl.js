@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './LoginControl.module.css'
 import $ from 'jquery';
-import PopUpMessage from '../../PopUpMessage/PopUpMessage';
-import {SimpleButton} from '../../SimpleButton/SimpleButton';
+import PopUpMessage from '../../common_components/PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../common_components/SimpleButton/SimpleButton';
 import {CHANGE_LOGIN_URL} from '../../settings';
 import {loginLetters, passwordLetters} from '../../sign_components/RegisterForm/RegisterForm';
 

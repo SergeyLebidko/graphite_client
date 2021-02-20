@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import $ from 'jquery';
-import {MiniButton} from '../MiniButton/MiniButton';
+import {MiniButton} from '../common_components/MiniButton/MiniButton';
 import style from './PostRemover.module.css'
 import {POST_URL} from '../settings';
 

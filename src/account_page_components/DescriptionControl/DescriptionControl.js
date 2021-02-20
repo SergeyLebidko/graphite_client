@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './DescriptionControl.module.css';
-import {MiniButton} from '../../MiniButton/MiniButton';
+import {MiniButton} from '../../common_components/MiniButton/MiniButton';
 import {UPDATE_ACCOUNT_URL, ACCOUNT_DESCRIPTION_MAX_LEN} from '../../settings';
 
 class DescriptionControl extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './ModeSelector.module.css';
-import {SimpleButton} from "../../SimpleButton/SimpleButton";
+import {SimpleButton} from "../../common_components/SimpleButton/SimpleButton";
 
 class ModeSelector extends React.Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import style from '../styles.module.css';
 import $ from 'jquery';
-import PopUpMessage from '../../PopUpMessage/PopUpMessage';
-import {SimpleButton} from '../../SimpleButton/SimpleButton';
+import PopUpMessage from '../../common_components/PopUpMessage/PopUpMessage';
+import {SimpleButton} from '../../common_components/SimpleButton/SimpleButton';
 import {REGISTER_ACCOUNT_URL, LOGIN_URL, USERNAME_MAX_LEN} from '../../settings';
 
 const upLetters = 'QWERTYUIOPASDFGHJKLZXCVBNM';

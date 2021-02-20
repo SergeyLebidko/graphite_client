@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import {UPDATE_ACCOUNT_URL} from '../../settings';
-import {MiniButton} from '../../MiniButton/MiniButton';
+import {MiniButton} from '../../common_components/MiniButton/MiniButton';
 import style from './BirthDateControl.module.css';
 import {dateStringForDisplay} from '../../utils';
 

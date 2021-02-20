@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './AvatarControl.module.css';
-import PopUpMessage from '../../PopUpMessage/PopUpMessage';
+import PopUpMessage from '../../common_components/PopUpMessage/PopUpMessage';
 import {UPDATE_ACCOUNT_URL} from '../../settings';
 import {createAvatarURL} from '../../utils';
 
