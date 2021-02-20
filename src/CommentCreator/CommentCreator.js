@@ -50,8 +50,10 @@ class CommentCreator extends React.Component {
                 text: text
             }
         }).then(data => {
-            // TODO Вставить код очистки поля ввода и передачи данных вышестоящему компоненту
-            console.log(data);
+            this.setState({
+                text: ''
+            });
+            // TODO Вставить код передачи данных вышестоящему компоненту
         })
     }
 

@@ -18,7 +18,7 @@
 
 /* Стили для кнопок Ok, Add и Download */
 
-.ok, .add, .download {
+.ok, .add, .download, .download_up {
     background-image: linear-gradient(to right bottom, limegreen, forestgreen);
 }
 
