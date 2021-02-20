@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import NoMatch from '../NoMatch/NoMatch';
+import NoMatch from '../../NoMatch/NoMatch';
 import ModeSelector from '../ModeSelector/ModeSelector';
 import style from './SearchResult.module.css';
 import ResultList from '../ResultList/ResultList';

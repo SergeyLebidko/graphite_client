@@ -49,10 +49,9 @@ class Post extends React.Component {
                 {hasPostLoad ?
                     <>
                         <div className={style.account_container}>
-                            <img
-                                src={createAvatarURL(post['account_avatar'])}/>
+                            <img src={createAvatarURL(post['account_avatar'])}/>
                             <p>
-                                {post['account_username']}
+                                <Link to={pages.ACCOUNT_PAGE + `/${post.account}`}> {post['account_username']}</Link>
                                 <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>
                             </p>
                         </div>

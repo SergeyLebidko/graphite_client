@@ -1,12 +1,12 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './ResultList.module.css';
-import {POST_URL, ACCOUNT_URL} from '../settings';
+import {POST_URL, ACCOUNT_URL} from '../../settings';
 import {POSTS, ACCOUNTS} from '../SearchResult/SearchResult';
-import Preloader from '../Preloader/Preloader';
-import PostCard from '../PostCard/PostCard';
-import {MiniButton} from '../MiniButton/MiniButton';
-import AccountCard from '../AccountCard/AccountCard';
+import Preloader from '../../Preloader/Preloader';
+import PostCard from '../../PostCard/PostCard';
+import {MiniButton} from '../../MiniButton/MiniButton';
+import AccountCard from '../../AccountCard/AccountCard';
 
 class ResultList extends React.Component {
     constructor(props) {

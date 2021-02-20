@@ -8,13 +8,13 @@ import Preloader from './Preloader/Preloader';
 import Header from './header_components/Header/Header';
 import LoginForm from './sign_components/LoginForm/LoginForm'
 import RegisterForm from './sign_components/RegisterForm/RegisterForm';
-import Account from './account_components/Account/Account';
+import Account from './account_page_components/Account/Account';
 import PostCreator from './PostCreator/PostCreator';
 import Posts from './Posts/Posts';
 import Post from './Post/Post';
 import Accounts from './Accounts/Accounts';
 import * as pages from './internal_pages';
-import SearchResult from "./SearchResult/SearchResult";
+import SearchResult from "./search_result_page_components/SearchResult/SearchResult";
 
 class App extends React.Component {
     constructor(props) {
@@ -105,10 +105,11 @@ class App extends React.Component {
 
     render() {
         let {hasInit, account} = this.state;
+        if (!hasInit) return <Preloader/>;
+
         let hasNoLogin = account == null;
         return (
             <>
-                {(!hasInit) ? <Preloader/> : null}
                 <Header account={account} accountLogoutHandler={this.accountLogoutHandler}/>
                 <div className={style.content}>
                     <Switch>

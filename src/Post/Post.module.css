@@ -22,11 +22,13 @@
     margin-right: 10px;
 }
 
-.account_container p {
+.account_container a:first-child {
     font-size: 1.4em;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
 }
 
-.account_container a {
+.account_container a:last-child {
     display: block;
     font-size: 0.6em;
     color: dimgray;
