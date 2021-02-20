@@ -15,6 +15,7 @@ class CommentsContainer extends React.Component {
             comments: [],
             nextPage: COMMENTS_URL + `?post=${props.postId}`
         }
+        this.addCommentHandler = this.addCommentHandler.bind(this);
     }
 
     downloadData() {
@@ -33,6 +34,12 @@ class CommentsContainer extends React.Component {
 
     componentDidMount() {
         this.downloadData();
+    }
+
+    addCommentHandler(comment) {
+        this.setState(prevState => ({
+            comments: [...prevState.comments, comment]
+        }));
     }
 
     getDownloadButtonBlock() {
@@ -64,7 +71,7 @@ class CommentsContainer extends React.Component {
             <div className={style.comments_container}>
                 {hasLoad ? this.getCommentsList() : <Preloader modal={false}/>}
                 {account !== null ?
-                    <CommentCreator account={account} postId={postId}/>
+                    <CommentCreator account={account} postId={postId} addCommentHandler={this.addCommentHandler}/>
                     : ''
                 }
             </div>

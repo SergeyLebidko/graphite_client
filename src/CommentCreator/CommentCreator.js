@@ -39,7 +39,7 @@ class CommentCreator extends React.Component {
         text = $.trim(text);
         if (!text) return;
 
-        let {account, postId} = this.props;
+        let {account, postId, addCommentHandler} = this.props;
         let token = localStorage.getItem('token');
         $.ajax(COMMENTS_URL, {
             method: 'post',
@@ -53,8 +53,8 @@ class CommentCreator extends React.Component {
             this.setState({
                 text: ''
             });
-            // TODO Вставить код передачи данных вышестоящему компоненту
-        })
+            addCommentHandler(data);
+        });
     }
 
 
