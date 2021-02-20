@@ -56,3 +56,6 @@ export const ACCOUNT_URL = `${HOST}/api/accounts/`;
 
 // Хук для работы с комментариями
 export const COMMENTS_URL = `${HOST}/api/comments/`;
+
+// Максимальная длина комментария
+export const COMMENT_MAX_LEN = 500;

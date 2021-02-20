@@ -4,7 +4,8 @@ import style from './CommentsContainer.module.css';
 import {COMMENTS_URL} from '../settings';
 import Preloader from '../common_components/Preloader/Preloader';
 import {MiniButton} from '../common_components/MiniButton/MiniButton';
-import Comment from "../Comment/Comment";
+import Comment from '../Comment/Comment';
+import CommentCreator from '../CommentCreator/CommentCreator';
 
 class CommentsContainer extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class CommentsContainer extends React.Component {
         $.ajax(nextPage).then(data => {
             this.setState(prevState => ({
                 hasLoad: true,
-                comments: [...prevState, ...data.results.reverse()],
+                comments: [...prevState.comments, ...data.results.reverse()],
                 nextPage: prevState.next
             }));
         });
@@ -57,15 +58,13 @@ class CommentsContainer extends React.Component {
     }
 
     render() {
-        let {account} = this.props;
+        let {account, postId} = this.props;
         let {hasLoad} = this.state;
         return (
             <div className={style.comments_container}>
                 {hasLoad ? this.getCommentsList() : <Preloader modal={false}/>}
                 {account !== null ?
-                    <div>
-                        Здесь будет компонент для создания комментария
-                    </div>
+                    <CommentCreator account={account} postId={postId}/>
                     : ''
                 }
             </div>

@@ -2,3 +2,7 @@
     margin-top: 20px;
     margin-bottom: 100px;
 }
+
+.comments_container > div:not(:first-child) {
+    margin-top: 5px;
+}
