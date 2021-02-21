@@ -17,8 +17,16 @@ class Post extends React.Component {
         this.state = {
             hasPostLoad: false,
             post: null,
-            notFoundFlag: false
+            notFoundFlag: false,
+            statKey: Math.random()
         }
+        this.refreshStat = this.refreshStat.bind(this);
+    }
+
+    refreshStat() {
+        this.setState({
+            statKey: Math.random
+        });
     }
 
     downloadData(postId) {
@@ -42,7 +50,7 @@ class Post extends React.Component {
 
     render() {
         let {account} = this.props;
-        let {notFoundFlag, hasPostLoad, post} = this.state;
+        let {notFoundFlag, hasPostLoad, post, statKey} = this.state;
         if (notFoundFlag) return <NoMatch/>;
         if (!hasPostLoad) return (
             <div className={style.preloader_container}>
@@ -75,11 +83,11 @@ class Post extends React.Component {
                             {prepareTextForShow(post.text)}
                         </div>
                         <div className={style.stat_container}>
-                            <PostStat postId={post.id}/>
+                            <PostStat key={statKey} postId={post.id}/>
                         </div>
                     </div>
                 </div>
-                <CommentsContainer postId={post.id} account={account}/>
+                <CommentsContainer postId={post.id} account={account} statRefreshHandler={this.refreshStat}/>
             </>
         );
     }

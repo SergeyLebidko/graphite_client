@@ -27,7 +27,7 @@ class CommentsContainer extends React.Component {
             this.setState(prevState => ({
                 hasLoad: true,
                 comments: [...prevState.comments, ...data.results.reverse()],
-                nextPage: prevState.next
+                nextPage: data.next
             }));
         });
     }
@@ -37,39 +37,39 @@ class CommentsContainer extends React.Component {
     }
 
     addCommentHandler(comment) {
+        let {statRefreshHandler} = this.props;
         this.setState(prevState => ({
             comments: [...prevState.comments, comment]
         }));
+        statRefreshHandler();
     }
 
     getDownloadButtonBlock() {
-        let {nextPage} = this.state;
+        let {hasLoad, nextPage} = this.state;
         if (nextPage !== null) return (
-            <div>
-                <MiniButton buttonType="download_up" clickHandler={() => this.downloadData()}/>
+            <div className={style.download_button_block}>
+                {hasLoad ?
+                    <MiniButton buttonType="download_up" clickHandler={() => this.downloadData()}/>
+                    :
+                    <Preloader modal={false}/>
+                }
+            </div>
+        );
+        if (!hasLoad) return (
+            <div className={style.download_button_block}>
+                <Preloader modal={false}/>
             </div>
         );
         return '';
     }
 
-    getCommentsList() {
-        let {comments} = this.state;
-        if (comments.length === 0) return '';
-
-        return (
-            <>
-                {this.getDownloadButtonBlock()}
-                {comments.map(comment => <Comment key={comment.id} comment={comment}/>)}
-            </>
-        );
-    }
-
     render() {
         let {account, postId} = this.props;
-        let {hasLoad} = this.state;
+        let {comments} = this.state;
         return (
             <div className={style.comments_container}>
-                {hasLoad ? this.getCommentsList() : <Preloader modal={false}/>}
+                {this.getDownloadButtonBlock()}
+                {comments.length > 0 ? comments.map(comment => <Comment key={comment.id} comment={comment}/>) : ''}
                 {account !== null ?
                     <CommentCreator account={account} postId={postId} addCommentHandler={this.addCommentHandler}/>
                     : ''

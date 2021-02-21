@@ -1,8 +1,14 @@
 .comments_container {
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 100px;
 }
 
-.comments_container > div:not(:first-child) {
-    margin-top: 5px;
+.comments_container > div {
+    margin-top: 10px;
+}
+
+.download_button_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
