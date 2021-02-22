@@ -30,7 +30,12 @@ class Post extends React.Component {
     }
 
     downloadData(postId) {
-        $.ajax(POST_URL + postId + '/').then(data => {
+        let token = localStorage.getItem('token');
+        let headers = token === null ? {} : {'Authorization': token};
+
+        $.ajax(POST_URL + postId + '/', {
+            headers
+        }).then(data => {
             this.setState({
                 hasPostLoad: true,
                 post: data
