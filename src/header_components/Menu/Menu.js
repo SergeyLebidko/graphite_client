@@ -31,6 +31,15 @@ class Menu extends React.Component {
                         <li>
                             <Link to={pages.POSTS_PAGE}>Последние обновления</Link>
                         </li>
+                        <li>
+                            <Link to={pages.POSTS_PAGE + '/?order=views'}>Больше всех просмотров</Link>
+                        </li>
+                        <li>
+                            <Link to={pages.POSTS_PAGE + '/?order=likes'}>Урожай лайков</Link>
+                        </li>
+                        <li>
+                            <Link to={pages.POSTS_PAGE + '/?order=comments'}>Самые обсуждаемые</Link>
+                        </li>
                     </ul>
                 </div>
                 <div>
@@ -38,6 +47,15 @@ class Menu extends React.Component {
                     <ul>
                         <li>
                             <Link to={pages.ACCOUNTS_PAGE}>Вновь прибывшие</Link>
+                        </li>
+                        <li>
+                            <Link to={pages.ACCOUNTS_PAGE + '/?order=views'}>Самые читаемые</Link>
+                        </li>
+                        <li>
+                            <Link to={pages.ACCOUNTS_PAGE + '/?order=likes'}>Урожай лайков</Link>
+                        </li>
+                        <li>
+                            <Link to={pages.ACCOUNTS_PAGE + '/?order=comments'}>Самые обсуждаемые</Link>
                         </li>
                     </ul>
                 </div>
