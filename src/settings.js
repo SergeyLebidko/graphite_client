@@ -59,3 +59,6 @@ export const COMMENTS_URL = `${HOST}/api/comments/`;
 
 // Максимальная длина комментария
 export const COMMENT_MAX_LEN = 500;
+
+// Хук для работы с лайками для постов
+export const POST_LIKE_URL = `${HOST}/api/post_like/`;

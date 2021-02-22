@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import style from './PostStat.module.css';
 import {POST_STAT_URL} from '../../settings';
+import PostLike from '../PostLike/PostLike';
 
 class PostStat extends React.Component {
     constructor(props) {
@@ -15,9 +16,12 @@ class PostStat extends React.Component {
         this.elementEnterHandler = this.elementEnterHandler.bind(this);
         this.elementLeaveHandler = this.elementLeaveHandler.bind(this);
         this.elementMoveHandler = this.elementMoveHandler.bind(this);
+        this.refreshHandler = this.refreshHandler.bind(this);
     }
 
-    componentDidMount() {
+    downloadData() {
+        this.setState({hasLoad: false});
+
         let {postId} = this.props;
         $.ajax(POST_STAT_URL, {
             data: {post: postId}
@@ -33,6 +37,14 @@ class PostStat extends React.Component {
                 hpLeft: null
             })
         });
+    }
+
+    componentDidMount() {
+        this.downloadData();
+    }
+
+    refreshHandler(){
+        this.downloadData();
     }
 
     elementEnterHandler(event, text) {
@@ -59,7 +71,6 @@ class PostStat extends React.Component {
 
     render() {
         let {hasLoad, likeCount, viewsCount, commentCount} = this.state;
-        if (!hasLoad) return ''
 
         let {showHelpTextFlag, helpText, hpTop, hpLeft} = this.state;
         let helpBlockStyle = {
@@ -75,17 +86,20 @@ class PostStat extends React.Component {
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество лайков')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <img src="/images/like_blue.svg"/> {likeCount}
+                        <PostLike postId={this.props.postId} refreshHandler={this.refreshHandler}/>
+                        {hasLoad ? likeCount : '...'}
                     </li>
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество комментариев')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <img src="/images/comment.svg"/> {commentCount}
+                        <img src="/images/comment.svg"/>
+                        {hasLoad ? commentCount : '...'}
                     </li>
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество просмотров')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <img src="/images/view.svg"/> {viewsCount}
+                        <img src="/images/view.svg"/>
+                        {hasLoad ? viewsCount : '...'}
                     </li>
                 </ul>
             </>
