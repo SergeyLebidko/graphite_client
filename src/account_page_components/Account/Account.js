@@ -13,7 +13,7 @@ import LoginControl from '../LoginControl/LoginControl';
 import PasswordControl from '../PasswordControl/PasswordControl';
 import LogoutControl from '../LogoutControl/LogoutControl';
 import RemoveAccountControl from '../RemoveAccountControl/RemoveAccountControl';
-import AccountStat from '../../AccountStat/AccountStat';
+import AccountStat from '../../common_components/AccountStat/AccountStat';
 import Preloader from '../../common_components/Preloader/Preloader';
 import NoMatch from '../../common_components/NoMatch/NoMatch';
 import * as pages from '../../internal_pages';

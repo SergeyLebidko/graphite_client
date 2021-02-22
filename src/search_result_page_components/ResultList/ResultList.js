@@ -4,9 +4,9 @@ import style from './ResultList.module.css';
 import {POST_URL, ACCOUNT_URL} from '../../settings';
 import {POSTS, ACCOUNTS} from '../SearchResult/SearchResult';
 import Preloader from '../../common_components/Preloader/Preloader';
-import PostCard from '../../PostCard/PostCard';
+import PostCard from '../../common_components/PostCard/PostCard';
 import {MiniButton} from '../../common_components/MiniButton/MiniButton';
-import AccountCard from '../../AccountCard/AccountCard';
+import AccountCard from '../../common_components/AccountCard/AccountCard';
 
 class ResultList extends React.Component {
     constructor(props) {

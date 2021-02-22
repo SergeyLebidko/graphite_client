@@ -2,8 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import AccountStat from '../AccountStat/AccountStat';
 import style from './AccountCard.module.css';
-import * as pages from '../internal_pages';
-import {createAvatarURL} from "../utils";
+import * as pages from '../../internal_pages';
+import {createAvatarURL} from "../../utils";
 
 const AccountCard = props => {
     let {account, history} = props;

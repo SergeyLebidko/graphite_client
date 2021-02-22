@@ -1,8 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './CommentCreator.module.css';
-import {SimpleButton} from '../common_components/SimpleButton/SimpleButton';
-import {COMMENTS_URL, COMMENT_MAX_LEN} from '../settings';
+import {SimpleButton} from '../SimpleButton/SimpleButton';
+import {COMMENTS_URL, COMMENT_MAX_LEN} from '../../settings';
 
 class CommentCreator extends React.Component {
     constructor(props) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './CommentsContainer.module.css';
-import {COMMENTS_URL} from '../settings';
-import Preloader from '../common_components/Preloader/Preloader';
-import {MiniButton} from '../common_components/MiniButton/MiniButton';
+import {COMMENTS_URL} from '../../settings';
+import Preloader from '../Preloader/Preloader';
+import {MiniButton} from '../MiniButton/MiniButton';
 import Comment from '../Comment/Comment';
 import CommentCreator from '../CommentCreator/CommentCreator';
 

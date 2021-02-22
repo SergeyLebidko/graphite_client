@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Comment.module.css';
-import {createAvatarURL, dateStringForDisplay, prepareTextForShow} from "../utils";
+import {createAvatarURL, dateStringForDisplay, prepareTextForShow} from "../../utils";
 import {Link} from "react-router-dom";
-import * as pages from '../internal_pages';
+import * as pages from '../../internal_pages';
 
 class Comment extends React.Component {
     constructor(props) {

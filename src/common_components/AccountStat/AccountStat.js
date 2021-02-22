@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './AcountStat.module.css'
-import {ACCOUNT_STAT_URL} from '../settings';
+import {ACCOUNT_STAT_URL} from '../../settings';
 
 class AccountStat extends React.Component {
     constructor(props) {

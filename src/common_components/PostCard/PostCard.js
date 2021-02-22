@@ -2,9 +2,9 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import PostStat from '../PostStat/PostStat';
 import style from './PostCard.module.css';
-import {HOST} from '../settings';
-import * as pages from '../internal_pages';
-import {dateStringForDisplay, prepareTextForShow} from '../utils';
+import {HOST} from '../../settings';
+import * as pages from '../../internal_pages';
+import {dateStringForDisplay, prepareTextForShow} from '../../utils';
 
 class PostCard extends React.Component {
     constructor(props) {

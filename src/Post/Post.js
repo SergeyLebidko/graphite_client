@@ -1,15 +1,15 @@
 import React from 'react';
 import $ from 'jquery';
 import NoMatch from '../common_components/NoMatch/NoMatch';
-import PostRemover from '../PostRemover/PostRemover';
-import PostStat from '../PostStat/PostStat';
+import PostRemover from '../common_components/PostRemover/PostRemover';
+import PostStat from '../common_components/PostStat/PostStat';
 import Preloader from '../common_components/Preloader/Preloader';
 import {withRouter, Link} from 'react-router-dom';
 import style from './Post.module.css'
 import * as pages from '../internal_pages';
 import {POST_URL} from '../settings';
 import {dateStringForDisplay, prepareTextForShow, createAvatarURL} from '../utils';
-import CommentsContainer from "../CommentsContainer/CommentsContainer";
+import CommentsContainer from "../common_components/CommentsContainer/CommentsContainer";
 
 class Post extends React.Component {
     constructor(props) {

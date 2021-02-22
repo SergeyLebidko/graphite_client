@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import style from './PostStat.module.css';
-import {POST_STAT_URL} from '../settings';
+import {POST_STAT_URL} from '../../settings';
 
 class PostStat extends React.Component {
     constructor(props) {
