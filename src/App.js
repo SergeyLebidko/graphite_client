@@ -23,7 +23,6 @@ class App extends React.Component {
             hasInit: false,
             account: null
         }
-
         this.accountLogoutHandler = this.accountLogoutHandler.bind(this);
         this.refreshAccount = this.refreshAccount.bind(this);
         this.accountRegisterHandler = this.accountRegisterHandler.bind(this);

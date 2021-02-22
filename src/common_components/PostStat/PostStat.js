@@ -8,7 +8,6 @@ class PostStat extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasLoad: false,
             likeCount: null,
             viewsCount: null,
             commentCount: null
@@ -20,14 +19,11 @@ class PostStat extends React.Component {
     }
 
     downloadData() {
-        this.setState({hasLoad: false});
-
         let {postId} = this.props;
         $.ajax(POST_STAT_URL, {
             data: {post: postId}
         }).then(data => {
             this.setState({
-                hasLoad: true,
                 likeCount: data['like_count'],
                 viewsCount: data['views_count'],
                 commentCount: data['comment_count'],
@@ -70,7 +66,7 @@ class PostStat extends React.Component {
     }
 
     render() {
-        let {hasLoad, likeCount, viewsCount, commentCount} = this.state;
+        let {likeCount, viewsCount, commentCount} = this.state;
 
         let {showHelpTextFlag, helpText, hpTop, hpLeft} = this.state;
         let helpBlockStyle = {
@@ -92,13 +88,13 @@ class PostStat extends React.Component {
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество комментариев')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <img src="/images/comment.svg"/>
+                        <img src="/images/comment.svg" alt="Комментарии"/>
                         {commentCount}
                     </li>
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество просмотров')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <img src="/images/view.svg"/>
+                        <img src="/images/view.svg" alt="Просмотры"/>
                         {viewsCount}
                     </li>
                 </ul>

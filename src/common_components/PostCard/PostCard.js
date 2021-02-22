@@ -59,10 +59,10 @@ class PostCard extends React.Component {
                 <div className={style.header_block}>
                     <div onClick={this.avatarClickHandler}>
                         <img src={account_avatar === null ? '/images/no_avatar.svg' : `${HOST}${account_avatar}`}
+                             alt="Аватар автора"
                              onMouseEnter={this.avatarMouseEnterHandler}
                              onMouseLeave={this.avatarMouseLeaveHandler}
-                             onMouseMove={this.avatarMouseMoveHandler}
-                        />
+                             onMouseMove={this.avatarMouseMoveHandler}/>
                     </div>
                     <div>
                         <p>

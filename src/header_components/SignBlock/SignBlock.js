@@ -16,7 +16,8 @@ export function SignBlock(props) {
         return (
             <div className={style.sign_block}>
                 <img src={(avatarURL == null) ? '/images/no_avatar.svg' : `${HOST}${avatarURL}`}
-                     onClick={avatarClickHandler}/>
+                     onClick={avatarClickHandler}
+                     alt="Аватар автора"/>
             </div>
         )
     }

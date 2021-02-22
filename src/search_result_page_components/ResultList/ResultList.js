@@ -59,6 +59,7 @@ class ResultList extends React.Component {
                         posts.map(value => {
                             if (listType === POSTS) return <PostCard key={value.id} post={value} account={account}/>;
                             if (listType === ACCOUNTS) return <AccountCard key={value.id} account={value}/>;
+                            return '';
                         })
                         : ''
                     }

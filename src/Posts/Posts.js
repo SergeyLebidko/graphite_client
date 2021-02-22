@@ -53,7 +53,7 @@ class Posts extends React.Component {
         return (
             <div className={style.header_block}>
                 <MiniButton buttonType="add" clickHandler={() => history.push(pages.CREATE_POST_PAGE)}/>
-                {account.id == accountInURL ? <AccountStat accountId={account.id}/> : ''}
+                {account.id === +accountInURL ? <AccountStat accountId={account.id}/> : ''}
             </div>
         );
     }

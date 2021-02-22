@@ -48,7 +48,7 @@ class SearchField extends React.Component {
             <div className={style.search_block}>
                 <input type="text" value={searchText} onChange={this.changeHandler} onKeyUp={this.enterPressHandler}/>
                 <span ref="searchButton" onClick={this.searchButtonClickHandler}>
-                    <img src="/images/find.svg"/>
+                    <img src="/images/find.svg" alt="Кнопка поиска"/>
                 </span>
             </div>
         )

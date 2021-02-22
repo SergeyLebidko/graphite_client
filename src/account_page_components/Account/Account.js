@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import $ from 'jquery';
 import style from './Account.module.css';
 import {ACCOUNT_URL} from '../../settings';

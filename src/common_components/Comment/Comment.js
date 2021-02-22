@@ -31,7 +31,7 @@ class Comment extends React.Component {
         let {likeCount} = this.state;
         return (
             <div className={style.comment_container}>
-                <img src={createAvatarURL(comment['account_avatar'])}/>
+                <img src={createAvatarURL(comment['account_avatar'])} alt="Аватар автора"/>
                 <div>
                     <p className={style.username_block}>
                         <Link to={pages.ACCOUNT_PAGE + `/${comment.account}`}>{comment['account_username']}</Link>

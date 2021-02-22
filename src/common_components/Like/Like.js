@@ -48,7 +48,7 @@ class Like extends React.Component {
 
     render() {
         let {likeURL} = this.state;
-        return <img src={likeURL} onClick={event => {
+        return <img src={likeURL} alt="Лайк" onClick={event => {
             event.stopPropagation();
             this.downloadData(true);
         }}/>;

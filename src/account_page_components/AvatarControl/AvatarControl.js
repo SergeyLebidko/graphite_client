@@ -61,7 +61,8 @@ class AvatarControl extends React.Component {
             <div className={style.avatar_container}>
                 <img src={avatarURL}
                      onClick={this.avatarClickHandler}
-                     style={editorStyle}/>
+                     style={editorStyle}
+                     alt="Аватар автора"/>
                 <PopUpMessage msg={error} msgType="error" endShow={() => this.setState({error: null})}/>
                 <input type="file" style={{display: 'none'}} onChange={this.fileChoiceHandler} id="avatar_chooser"/>
             </div>

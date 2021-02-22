@@ -3,7 +3,7 @@ import style from './MiniButton.module.css'
 
 export const MiniButton = props => {
     let filePath = `/images/${props.buttonType}.svg`;
-    let content = <img src={filePath} onClick={props.clickHandler}/>;
+    let content = <img src={filePath} onClick={props.clickHandler} alt={`Кнопка ${props.buttonType}`}/>;
     let targetClasses = `${style.mini_button_container} ${style[props.buttonType]}`;
     return <div className={targetClasses}>{content}</div>;
 }

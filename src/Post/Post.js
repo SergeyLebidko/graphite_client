@@ -67,7 +67,7 @@ class Post extends React.Component {
             <>
                 <div className={style.post_container}>
                     <div className={style.account_container}>
-                        <img src={createAvatarURL(post['account_avatar'])}/>
+                        <img src={createAvatarURL(post['account_avatar'])} alt="Аватар автора"/>
                         <p>
                             <Link to={pages.ACCOUNT_PAGE + `/${post.account}`}> {post['account_username']}</Link>
                             <Link to={pages.POSTS_PAGE + `/?account=${post.account}`}>все посты этого автора</Link>

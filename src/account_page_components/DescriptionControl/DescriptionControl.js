@@ -31,7 +31,8 @@ class DescriptionControl extends React.Component {
         if (description === '') {
             if (enableEditor) return null;
             return <span className={style.not_specified_element}><em>автор ничего не написал о себе...</em></span>;
-        };
+        }
+        ;
         return (<div className={style.description_container}>
             {content.map((value, index) => <p key={index}>{value}</p>)}
         </div>);
@@ -95,10 +96,13 @@ class DescriptionControl extends React.Component {
     render() {
         let {enableEditor} = this.props;
         let {description} = this.props.account;
+
+        let inlineStyle = {};
+        if (description !== '') Object.assign(inlineStyle, {borderBottom: '1px dotted dimgray'});
+        if (enableEditor) Object.assign(inlineStyle, {cursor: 'pointer'});
         return (
             <div className={style.control_container}>
-                <p style={description === '' ? {} : {borderBottom: '1px dotted dimgray'}}
-                   onClick={this.descriptionClickHandler} style={enableEditor ? {cursor: 'pointer'} : {}}>
+                <p style={inlineStyle} onClick={this.descriptionClickHandler}>
                     Немного о себе:
                     {this.state.editMode ? ` (осталось ${ACCOUNT_DESCRIPTION_MAX_LEN - this.state.description.length})` : null}
                 </p>

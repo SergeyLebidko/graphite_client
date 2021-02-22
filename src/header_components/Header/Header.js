@@ -1,6 +1,5 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import $ from 'jquery';
 import MenuButton from '../MenuButton/MenuButton';
 import Menu from '../Menu/Menu';
 import SearchField from '../SearchField/SearchField';

@@ -36,10 +36,18 @@ class AccountStat extends React.Component {
         let {postCount, likeCount, commentCount, totalViewsCount} = this.state;
         return (
             <ul className={style.stat_items_block}>
-                <li><img src="/images/post.svg"/> {postCount}</li>
-                <li><img src="/images/like_blue.svg"/> {likeCount}</li>
-                <li><img src="/images/comment.svg"/> {commentCount}</li>
-                <li><img src="/images/view.svg"/> {totalViewsCount}</li>
+                <li>
+                    <img src="/images/post.svg" alt="Количество постов автора"/> {postCount}
+                </li>
+                <li>
+                    <img src="/images/like_blue.svg" alt="Количество лайков под постами автора"/> {likeCount}
+                </li>
+                <li>
+                    <img src="/images/comment.svg" alt="Количество комментариев под постами автора"/> {commentCount}
+                </li>
+                <li>
+                    <img src="/images/view.svg" alt="Количество просмотров постов автора"/> {totalViewsCount}
+                </li>
             </ul>
         )
     }
