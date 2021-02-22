@@ -62,3 +62,6 @@ export const COMMENT_MAX_LEN = 500;
 
 // Хук для работы с лайками для постов
 export const POST_LIKE_URL = `${HOST}/api/post_like/`;
+
+// Хук для работы с лайками для комментариев
+export const COMMENT_LIKE_URL = `${HOST}/api/comment_like/`;

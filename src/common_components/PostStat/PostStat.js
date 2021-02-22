@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import style from './PostStat.module.css';
 import {POST_STAT_URL} from '../../settings';
-import PostLike from '../PostLike/PostLike';
+import Like, {POST_LIKE} from '../Like/Like';
 
 class PostStat extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class PostStat extends React.Component {
         this.downloadData();
     }
 
-    refreshHandler(){
+    refreshHandler() {
         this.downloadData();
     }
 
@@ -86,20 +86,20 @@ class PostStat extends React.Component {
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество лайков')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
-                        <PostLike postId={this.props.postId} refreshHandler={this.refreshHandler}/>
-                        {hasLoad ? likeCount : '...'}
+                        <Like likeType={POST_LIKE} postId={this.props.postId} refreshHandler={this.refreshHandler}/>
+                        {likeCount}
                     </li>
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество комментариев')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
                         <img src="/images/comment.svg"/>
-                        {hasLoad ? commentCount : '...'}
+                        {commentCount}
                     </li>
                     <li onMouseEnter={(e) => this.elementEnterHandler(e, 'Количество просмотров')}
                         onMouseLeave={this.elementLeaveHandler}
                         onMouseMove={this.elementMoveHandler}>
                         <img src="/images/view.svg"/>
-                        {hasLoad ? viewsCount : '...'}
+                        {viewsCount}
                     </li>
                 </ul>
             </>

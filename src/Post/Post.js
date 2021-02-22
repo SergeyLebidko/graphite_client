@@ -25,7 +25,7 @@ class Post extends React.Component {
 
     refreshStat() {
         this.setState({
-            statKey: Math.random
+            statKey: Math.random()
         });
     }
 
