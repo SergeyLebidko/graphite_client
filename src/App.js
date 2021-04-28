@@ -60,6 +60,10 @@ class App extends React.Component {
                     hasInit: true
                 });
             });
+        } else {
+            this.setState({
+                hasInit: true
+            });
         }
     }
 
